@@ -2,9 +2,17 @@
 
 Include step-by-step instructions on how to install and set up the backend project. This may include dependencies, environment setup, etc.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies](#technologies)
+- [Features](#features)
+- [Test User Login Information](#test-user-login-information)
+- [Acknowledgements](#acknowledgements)
+
 ## Project setup
 
-- Initial README author: `Li-Ting (a1847791)`
 - MongoDB atlas database setup: `Li-Ting (a1847791)`
 - To access MongoDB atlas database, please go to https://www.mongodb.com/ and log in using our group account: `mcigroupn22@gmail.com`
 
@@ -56,3 +64,7 @@ Once the server starts successfully, you should see the following message in the
 MongoDB database is connected successfully
 Server is running on port: 5000
 ```
+
+## Acknowledgements
+
+- Initial README author: `Li-Ting (a1847791)`
