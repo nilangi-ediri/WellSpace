@@ -6,7 +6,7 @@ Include step-by-step instructions on how to install and set up the backend proje
 
 - Initial README author: `Li-Ting (a1847791)`
 - MongoDB atlas database setup: `Li-Ting (a1847791)`
-- MongoDB atlas database access please use our group account: `mcigroupn22@gmail.com`
+- To access MongoDB atlas database, please go to https://www.mongodb.com/ and log in using our group account: `mcigroupn22@gmail.com`
 
 ## Installation
 
@@ -53,5 +53,6 @@ npm run start-dev
 Once the server starts successfully, you should see the following message in the terminal:
 
 ```bash
+MongoDB database is connected successfully
 Server is running on port: 5000
 ```
