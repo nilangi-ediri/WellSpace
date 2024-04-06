@@ -1,35 +1,86 @@
-.hero-section {
+/* .hero-section {
     position: relative;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 100px 0;
     color: #fff;
+    background-color: lightblue;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+.hero-section {
+    background-color: lightblue;
+
 }
 
-.hero-section::before {
+.hero-text {
+    font-family: 'Open Sans', sans-serif;
+    /* This is just an example */
+    color: #333;
+    /* Dark gray for better readability */
+    text-align: center;
+    /* or center, based on your preference */
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    /* Adjust size as needed */
+    font-weight: 700;
+    /* 700 is for bold text */
+    margin-bottom: 0.5rem;
+    /* Adds space below the heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* X-offset, Y-offset, blur-radius, color */
+
+}
+
+.hero-text p {
+    font-size: 1rem;
+    color: #555;
+    /* Slightly lighter than the heading for contrast */
+    /* max-width: 80%; */
+    /* Don't let the text stretch too wide */
+}
+
+/* Fallback color
+
+
+/* .hero-section::before {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(120, 225, 233, 0.5);
     z-index: 1;
+} */
+
+.hero-image img {
+    width: 100%;
+    height: 350px;
+
+    /* This will cover the area, potentially cropping the image */
 }
+
+/* Make image responsive */
+/* Ensure the image path is correct
+
 
 /* Make sure the content of the hero section is on top of the overlay */
-.hero-section>* {
+/* .hero-section>* {
     position: relative;
     z-index: 2;
-}
+} */
 
 /* You can add media queries to adjust the padding for smaller screens */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .hero-section {
         padding: 50px 0;
     }
-}
+} */
 
 /* Get Involved section */
 .section-title {
