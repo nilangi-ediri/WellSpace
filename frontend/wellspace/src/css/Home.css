@@ -89,6 +89,10 @@
     margin-bottom: 1rem;
 }
 
+.card {
+    background-color: #8decd6;
+}
+
 .custom-btn {
     display: block;
     /* Make buttons block-level for full-width */
@@ -170,7 +174,7 @@
 
 /* youtube video section */
 .testimonial-video-section {
-    background-color: #f8bbd0;
+    background-color: #8decd6;
     /* Light pink background */
     color: #9c27b0;
     /* Stylized font color */
@@ -302,16 +306,16 @@
     position: relative;
 }
 
-.testimonial-quote:before {
+/* .testimonial-quote:before {
     content: "\201C";
     /* Unicode for left double quotation mark */
-    font-size: 48px;
-    color: #ccc;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -40px;
-}
+/* font-size: 48px; */
+/* color: #ccc; */
+/* position: absolute; */
+/* left: 50%; */
+/* transform: translateX(-50%); */
+/* top: -40px; */
+/* }  */
 
 .owl-theme .owl-dots .owl-dot span {
     background: #ccc;

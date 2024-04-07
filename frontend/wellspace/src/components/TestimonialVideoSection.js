@@ -10,7 +10,7 @@ const TestimonialVideoSection = () => {
       <Row className="align-items-center">
         <Col md={6} className="quote-section">
           <blockquote className="testimonial-quote">
-            “If it wasn't for Mind I wouldn't be here now. I will never forget their part in my recovery.”
+            “Your mental health is just as important as your physical health.”
           </blockquote>
         </Col>
         <Col md={6} className="video-section">
