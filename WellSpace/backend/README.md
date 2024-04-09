@@ -66,6 +66,13 @@ MongoDB database is connected successfully
 Server is running on port: 5000
 ```
 
+## Variable naming
+
+Since "users" can be the general public or the experts (doctors):
+
+- The general public is called "patient" and
+- The experts is called "doctors" in the code base.
+
 ## Acknowledgements
 
 - Initial README author: `Li-Ting (a1847791)`
