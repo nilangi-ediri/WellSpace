@@ -34,6 +34,7 @@ For each parameters, there will be actually secret keys that you need to fill in
 ```bash
 PORT=5000
 MONGO_URL=
+JWT_SECRET_KEY=
 ```
 
 ## File Structure
@@ -64,6 +65,13 @@ Once the server starts successfully, you should see the following message in the
 MongoDB database is connected successfully
 Server is running on port: 5000
 ```
+
+## Variable naming
+
+Since "users" can be the general public or the experts (doctors):
+
+- The general public is called "patient" and
+- The experts is called "doctors" in the code base.
 
 ## Acknowledgements
 
