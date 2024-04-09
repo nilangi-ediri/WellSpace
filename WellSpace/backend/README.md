@@ -34,6 +34,7 @@ For each parameters, there will be actually secret keys that you need to fill in
 ```bash
 PORT=5000
 MONGO_URL=
+JWT_SECRET_KEY=
 ```
 
 ## File Structure
