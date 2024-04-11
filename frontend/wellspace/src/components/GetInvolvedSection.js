@@ -1,46 +1,32 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import './GridExample.css'; // Import your CSS file for styles
 
-const GetInvolvedSection = () => {
+function GridExample() {
+    const cardInfo = [
+        { title: "Help Seeker", text: "Are you looking for help? Begin your journey with us.", imageSrc: "holder.js/100px160" },
+        { title: "Expert", text: "Are you an expert? Enrich lives by sharing your knowledge.", imageSrc: "holder.js/100px160" },
+        { title: "Donor", text: "Would you like to donate? Your support can change lives.", imageSrc: "holder.js/100px160" },
+        { title: "Volunteer", text: "Join our community as a volunteer and make a difference.", imageSrc: "holder.js/100px160" }
+    ];
+
     return (
-        <Container fluid style={{ backgroundColor: '#DFDFDF' }}>
-            <Container className="py-5" >
-                <h2 className="section-title text-center mb-4">Get Involved</h2>
-                <Row className="align-items-center mb-3">
-                    <Col md={6}>
-                        <p className="question">Are you a help seeker?</p>
-                    </Col>
-                    <Col md={6}>
-                        <Button className="action-btn" href="#">Begin Your Journey</Button>
-                    </Col>
-                </Row>
-                <Row className="align-items-center mb-3">
-                    <Col md={6}>
-                        <p className="question">Are you an expert?</p>
-                    </Col>
-                    <Col md={6}>
-                        <Button className="action-btn" href="#">Enrich Lives</Button>
-                    </Col>
-                </Row>
-                <Row className="align-items-center mb-3">
-                    <Col md={6}>
-                        <p className="question">Would you like to donate?</p>
-                    </Col>
-                    <Col md={6}>
-                        <Button className="action-btn" href="#">Offer Support</Button>
-                    </Col>
-                </Row>
-                <Row className="align-items-center mb-3">
-                    <Col md={6}>
-                        <p className="question">Would you like to volunteer?</p>
-                    </Col>
-                    <Col md={6}>
-                        <Button className="action-btn" href="#">Join The Community</Button>
-                    </Col>
-                </Row>
-            </Container>
-        </Container>
+        <Row xs={1} md={2} className="g-4">
+            {cardInfo.map((info, idx) => (
+                <Col key={idx}>
+                    <Card className="animated-card">
+                        <Card.Img variant="top" src={info.imageSrc} />
+                        <Card.Body>
+                            <Card.Title>{info.title}</Card.Title>
+                            <Card.Text>{info.text}</Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            ))}
+        </Row>
     );
-};
+}
 
-export default GetInvolvedSection;
+export default GridExample;

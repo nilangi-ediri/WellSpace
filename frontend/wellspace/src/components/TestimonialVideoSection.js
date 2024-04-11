@@ -2,15 +2,15 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const TestimonialVideoSection = () => {
-  const videoId = 'G0M41N1Lyw4';
+  const videoId = 'DxIDKZHW3-E';
   const videoUrl = `https://www.youtube.com/embed/${videoId}`;
 
   return (
-    <Container fluid className="testimonial-video-section">
+    <Container className="testimonial-video-section">
       <Row className="align-items-center">
         <Col md={6} className="quote-section">
           <blockquote className="testimonial-quote">
-            “Your mental health is just as important as your physical health.”
+            “Caring for the mind is as crucial as nurturing the body, for one cannot flourish without the other.”
           </blockquote>
         </Col>
         <Col md={6} className="video-section">

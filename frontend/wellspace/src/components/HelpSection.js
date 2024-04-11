@@ -7,16 +7,16 @@ const HelpSection = () => {
             <h2 className="mb-3">Need Help?</h2>
             <Row className="justify-content-center">
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Button variant="primary" className="help-button">Book a Counsellor</Button>
+                    <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Book a Counsellor</Button>
                 </Col>
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Button variant="primary" className="help-button">Get Information</Button>
+                    <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Get Information</Button>
                 </Col>
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Button variant="primary" className="help-button">Discuss with Others</Button>
+                    <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Discuss with Others</Button>
                 </Col>
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Button variant="primary" className="help-button">Activities</Button>
+                    <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Activities</Button>
                 </Col>
             </Row>
         </Container>
