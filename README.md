@@ -1,51 +1,55 @@
-# Team-22N
+#Step 1: Initial Setup
+Make sure you have Node.js and npm (Node Package Manager) installed. You can download and install them from nodejs.org.
 
-## Table of Contents
+#Step 2: Setting up the Project
+Create a new directory for your project:
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Technologies](#technologies)
-- [Features](#features)
-- [Test User Login Information](#test-user-login-information)
-- [Acknowledgements](#acknowledgements)
+bash
+Copy code
+mkdir my-website-backend
+cd my-website-backend
+Initialize a new Node.js project:
 
-## About WellSpace
+bash
+Copy code
+npm init -y
+Install the necessary packages:
 
-WellSpace is an online platform dedicated to promoting mental health wellness. By combining peer support, professional counseling services, and educational resources, we address the need for accessible mental health support in today's fast-paced world. Our platform integrates peer support and professional counseling, offering key pages including Information, Challenges, Blog, Forum, Events, Booking a Doctor, and Donation & Volunteer, providing a comprehensive solution for mental health resources.
+bash
+Copy code
+npm install express cookie-parser cors mongoose dotenv
+Create your project structure:
 
-## Team Members
+Create a new file for your server configuration: index.js
+Create directories for routes and models:
+bash
+Copy code
+mkdir Routes Models
 
-- Li-Ting Liao (a1847791)
-- Nilangi Edirisinghe (a1882259)
-- Siyu Ni (a1872641)
-- Vishal Dixit (a1880759)
-- Yuyue Chang (a1893609)
+#Step 3: Configure Environment Variables
+Create a .env file in the root of your project to store environment variables:
+makefile
+Copy code
+PORT=8000
+MONGO_URL=your_mongodb_connection_string
 
-## Responsibilities
+#Step 4: Set Up MongoDB
+Make sure you have a MongoDB database setup, either locally or hosted (e.g., MongoDB Atlas).
+Update the MONGO_URL in the .env file with your database connection string.
 
-- Frontend:
-  - Nilangi Edirisinghe (a1882259)
-  - Vishal Dixit (a1880759)
-  - Yuyue Chang (a1893609)
-- Backend:
-  - Li-Ting Liao (a1847791)
-  - Siyu Ni (a1872641)
+#Step 5: Create API Routes
+Information API
 
-## File Structure
+-Create a new file in the Routes directory:
 
-```bash
-Team-22N/
-├── README.md
-├── Project Management/
-│   ├── Client Meetings/
-│   └── Timesheets/
-└── WellSpace/
-    ├── backend/
-    └── frontend/
-```
+bash
+Copy code
+touch Routes/information.js
 
-In the `backend` folder, there will be another README.md for the backend part of implementation.
+-Quizzes API
 
-## Acknowledgements
+Create another file in the Routes directory:
 
-- Initial README author: `Li-Ting (a1847791)`
+bash
+Copy code
+touch Routes/quizzes.js
