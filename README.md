@@ -25,12 +25,14 @@ Create directories for routes and models:
 bash
 Copy code
 mkdir Routes Models
+
 #Step 3: Configure Environment Variables
 Create a .env file in the root of your project to store environment variables:
 makefile
 Copy code
 PORT=8000
 MONGO_URL=your_mongodb_connection_string
+
 #Step 4: Set Up MongoDB
 Make sure you have a MongoDB database setup, either locally or hosted (e.g., MongoDB Atlas).
 Update the MONGO_URL in the .env file with your database connection string.
