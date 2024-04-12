@@ -40,13 +40,13 @@ Update the MONGO_URL in the .env file with your database connection string.
 #Step 5: Create API Routes
 Information API
 
-Create a new file in the Routes directory:
+-Create a new file in the Routes directory:
 
 bash
 Copy code
 touch Routes/information.js
 
-Quizzes API
+-Quizzes API
 
 Create another file in the Routes directory:
 
