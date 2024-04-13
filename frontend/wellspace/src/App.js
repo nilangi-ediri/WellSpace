@@ -18,6 +18,7 @@ import { createEditor } from 'slate'
 
 // Import the Slate components and React plugin.
 import { Slate, Editable, withReact } from 'slate-react'
+import BlogPostView from './pages/blog/BlogView';
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()))
@@ -29,6 +30,7 @@ function App() {
           <Route path="/sign-up" element={<UserSignUp />} />
           <Route path="/blog" element={<AllBlogPosts />} />
           <Route path="/create-blog" element={<CreateBlogPost />} />
+          <Route path="/view-blog" element={<BlogPostView />} />
           {/* <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} /> */}
         </Routes>
