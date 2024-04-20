@@ -9,20 +9,20 @@ const DoctorSchema = new mongoose.Schema({
   role: {
     type: String,
   },
+  gender: { type: String, enum: ["male", "female", "other"] },
 
-  // Fields for doctors only
+  // Doctors only:
   specialization: { type: String },
   qualifications: {
     type: Array,
   },
-
   experiences: {
     type: Array,
   },
-
   bio: { type: String, maxLength: 50 },
   about: { type: String },
   timeSlots: { type: Array },
+  reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
   averageRating: {
     type: Number,
     default: 0,
@@ -37,6 +37,7 @@ const DoctorSchema = new mongoose.Schema({
     default: "pending",
   },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+  blogs: [{ type: mongoose.Types.ObjectId, ref: "Blog" }],
 });
 
 export default mongoose.model("Doctor", DoctorSchema);

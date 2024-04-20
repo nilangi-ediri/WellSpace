@@ -9,6 +9,10 @@ import Doctor from "../Models/DoctorSchema.js"
 import { doctors } from "../seed/doctors.js"
 import User from "../Models/UserSchema.js"
 import { users } from "../seed/users.js"
+import Blog from "../Models/BlogSchema.js"
+import { blogs } from "../seed/blogs.js"
+import Review from "../Models/ReviewSchema.js"
+import { reviews } from "../seed/reviews.js"
 
 dotenv.config()
 
@@ -31,12 +35,20 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() => app.listen(port, () => console.log("Server is running on port: " + port)))
   .then(async () => {
+    // Drop all collections
     try {
       await mongoose.connection.dropCollection('users');
       console.log("Collection 'users' dropped.");
 
       await mongoose.connection.dropCollection('doctors');
-      console.log("Collection 'doctors' dropped.")
+      console.log("Collection 'doctors' dropped.");
+
+      await mongoose.connection.dropCollection('blogs');
+      console.log("Collection 'blogs' dropped.");
+
+      await mongoose.connection.dropCollection('reviews');
+      console.log("Collection 'reviews' dropped.");
+
     } catch (error) {
       console.error("Error dropping collections:", error);
     }
@@ -46,5 +58,9 @@ mongoose
     console.log("Seeded Doctors...")
     User.insertMany(users)
     console.log("Seeded Users...")
+    Blog.insertMany(blogs)
+    console.log("Seeded Blogs...")
+    Review.insertMany(reviews)
+    console.log("Seeded Reviews...")
   })
   .catch((error) => console.log(`${error}: connection failed`))

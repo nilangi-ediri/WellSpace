@@ -37,7 +37,7 @@ export const doctors = [
       }
     ],
     bio: "Empathic Listener, Healing Minds",
-    about: "My journey in psychiatry began with a passion for understanding the complexities of the human mind and helping others navigate through life's challenges. Throughout my career, I've had the privilege of working with diverse populations, from children and adolescents to adults and seniors, addressing issues such as anxiety, depression, trauma, ADHD, bipolar disorder, and beyond.",
+    about: "My journey in psychiatry began with a passion for understanding the complexities of the human mind and helping others navigate through life's challenges.",
     timeSlots: [
       {
         startingTime: "14:32",
@@ -45,55 +45,11 @@ export const doctors = [
         day: "tuesday"
       }
     ],
+    reviews: [],
     averageRating: 5,
     totalRating: 2,
     isApproved: "approved",
     appointments: [],
+    blogs: [],
   },
-  {
-    _id: "660247adb56a95c2c97fa68c",
-    email: "john@gmail.com",
-    password: hashPassword,
-    name: "John Oxford",
-    phone: 412345678,
-    ticketPrice: 50,
-    role: "doctor",
-    gender: "male",
-    specialization: "ADHD",
-    qualifications: [
-      {
-        startingDate: "2012-03-04",
-        endingDate: "2014-04-05",
-        degree: "Masters in Psychology",
-        university: "Queensland University"
-      }
-    ],
-    experiences: [
-      {
-        startingDate: "2004-02-27",
-        endingDate: "2010-03-15",
-        position: "Junior Psychiatrists",
-        hospital: "Women's and Children's Hospital"
-      },
-      {
-        startingDate: "2014-03-13",
-        endingDate: "2024-03-29",
-        position: "Senior Psychiatrists",
-        hospital: "Women's and Children's Hospital"
-      }
-    ],
-    bio: "Mental Health Advocate.",
-    about: "I believe in a holistic approach to mental health, incorporating both medication management and psychotherapy to tailor treatment plans to each individual's unique needs and goals. By fostering a collaborative and non-judgmental therapeutic environment, I strive to empower my patients to explore their strengths, overcome obstacles, and achieve lasting positive change.",
-    timeSlots: [
-      {
-        startingTime: "14:32",
-        endingTime: "15:32",
-        day: "tuesday"
-      }
-    ],
-    averageRating: 2,
-    totalRating: 2,
-    isApproved: "approved",
-    appointments: [],
-  }
 ]
