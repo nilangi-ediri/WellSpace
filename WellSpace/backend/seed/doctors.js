@@ -52,4 +52,52 @@ export const doctors = [
     appointments: [],
     blogs: [],
   },
+  {
+    _id: "660247adb56a95c2c97fa68c",
+    email: "john@gmail.com",
+    password: hashPassword,
+    name: "John Oxford",
+    phone: 412345678,
+    ticketPrice: 50,
+    role: "doctor",
+    gender: "male",
+    specialization: "ADHD",
+    qualifications: [
+      {
+        startingDate: "2012-03-04",
+        endingDate: "2014-04-05",
+        degree: "Masters in Psychology",
+        university: "Queensland University"
+      }
+    ],
+    experiences: [
+      {
+        startingDate: "2004-02-27",
+        endingDate: "2010-03-15",
+        position: "Junior Psychiatrists",
+        hospital: "Women's and Children's Hospital"
+      },
+      {
+        startingDate: "2014-03-13",
+        endingDate: "2024-03-29",
+        position: "Senior Psychiatrists",
+        hospital: "Women's and Children's Hospital"
+      }
+    ],
+    bio: "Mental Health Advocate.",
+    about: "I believe in a holistic approach to mental health, incorporating both medication management and psychotherapy to tailor treatment plans to each individual's unique needs and goals.",
+    timeSlots: [
+      {
+        startingTime: "14:32",
+        endingTime: "15:32",
+        day: "tuesday"
+      }
+    ],
+    reviews: [],
+    averageRating: 2,
+    totalRating: 2,
+    isApproved: "approved",
+    appointments: [],
+    blogs: [],
+  }
 ]
