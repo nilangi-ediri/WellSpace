@@ -4,6 +4,11 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoute from "../Routes/auth.js";
+import doctorRoute from "../Routes/doctor.js";
+import Doctor from "../Models/DoctorSchema.js"
+import { doctors } from "../seed/doctors.js"
+import User from "../Models/UserSchema.js"
+import { users } from "../seed/users.js"
 
 dotenv.config()
 
@@ -18,13 +23,28 @@ app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
 app.use('/api/v1/auth', authRoute)
+app.use('/api/v1/doctors', doctorRoute)
 
 mongoose.set('strictQuery', false)
 
 mongoose
   .connect(process.env.MONGO_URL)
+  .then(() => app.listen(port, () => console.log("Server is running on port: " + port)))
+  .then(async () => {
+    try {
+      await mongoose.connection.dropCollection('users');
+      console.log("Collection 'users' dropped.");
+
+      await mongoose.connection.dropCollection('doctors');
+      console.log("Collection 'doctors' dropped.")
+    } catch (error) {
+      console.error("Error dropping collections:", error);
+    }
+  })
   .then(() => {
-    console.log("MongoDB database is connected successfully")
-    app.listen(port, () => console.log("Server is running on port: " + port))
+    Doctor.insertMany(doctors)
+    console.log("Seeded Doctors...")
+    User.insertMany(users)
+    console.log("Seeded Users...")
   })
   .catch((error) => console.log(`${error}: connection failed`))
