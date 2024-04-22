@@ -12,6 +12,10 @@ const BlogSchema = new mongoose.Schema({
     enum: ["pending", "published"],
     default: "pending",
   },
+  // Additional fields requested by frontend
+  link: { type: String },
+  category: { type: String },
+  comments: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
 },
   { timestamps: true }
 );
