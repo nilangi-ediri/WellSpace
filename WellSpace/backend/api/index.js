@@ -6,7 +6,8 @@ import dotenv from "dotenv";
 import authRoute from "../Routes/auth.js";
 import doctorRoute from "../Routes/doctor.js";
 import userRoute from "../Routes/user.js";
-import feedbackRoute from "../Routes/feedback.js"
+import feedbackRoute from "../Routes/feedback.js";
+import blogRoute from "../Routes/blog.js";
 // import Doctor from "../Models/DoctorSchema.js"
 // import { doctors } from "../seed/doctors.js"
 // import User from "../Models/UserSchema.js"
@@ -32,6 +33,7 @@ app.use('/api/v1/auth', authRoute)
 app.use('/api/v1/doctors', doctorRoute)
 app.use('/api/v1/users', userRoute)
 app.use('/api/v1/feedbacks', feedbackRoute)
+app.use('/api/v1/blogs', blogRoute)
 
 mongoose.set('strictQuery', false)
 
