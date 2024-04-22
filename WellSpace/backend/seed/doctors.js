@@ -45,12 +45,19 @@ export const doctors = [
         day: "tuesday"
       }
     ],
-    reviews: [],
+    reviews: [
+      "67035797b5fda9ee74326519",
+      "67044187b5fda9ee74326519"
+    ],
     averageRating: 5,
     totalRating: 2,
     isApproved: "approved",
     appointments: [],
-    blogs: [],
+    blogs: [
+      "6602483a0d2a3caa5dabb802",
+      "6602486dd9dd3754be293fc3",
+      "660249e90d2a3caa5dabb80f",
+    ],
   },
   {
     _id: "660247adb56a95c2c97fa68c",
@@ -93,11 +100,18 @@ export const doctors = [
         day: "tuesday"
       }
     ],
-    reviews: [],
+    reviews: [
+      "66035787b5fda9ee74324412",
+      "66035797b5fda9ee74326517"
+    ],
     averageRating: 2,
     totalRating: 2,
     isApproved: "approved",
     appointments: [],
-    blogs: [],
+    blogs: [
+      "66024acc0d2a3caa5dabb81c",
+      "66024d63110e6ceadbca8b33",
+      "66024fb2d9dd3754be293fdc",
+    ],
   }
 ]
