@@ -1,0 +1,125 @@
+/* info.css */
+
+.header-container {
+    background-color: #d1e0c7;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.concept-heading {
+    color: #333;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.concept-subheading {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+
+.heading-container {
+    margin-left: 50px;
+}
+
+.concept-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.imageDiv,
+.image1Div,
+.image3,
+.image4,
+.image5,
+.image6,
+.image7,
+.image9Div,
+.image10Div,
+.image11Div,
+.image12Div,
+.image13,
+.image14Div,
+.image15Div,
+.image16Div,
+.image17Div {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.image1,
+.image3,
+.image4,
+.image5,
+.image6,
+.image7,
+.image9,
+.image10,
+.image11,
+.image12,
+.image13,
+.image14,
+.image15,
+.image16,
+.image17 {
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.image10Div {
+    background-color: #f1d8b0;
+}
+
+.image9Div {
+    background-color: #a3c9d0;
+}
+
+.image14Div,
+.image15Div,
+.single-line-box,
+.box {
+    background-color: #d1e0c7;
+}
+
+.gradient-line {
+    height: 8px;
+    background: linear-gradient(to right, #f8f8f8, #d1e0c7);
+}
+
+.single-line-box,
+.box {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-line-box p,
+.box h2,
+.box ul,
+.box li {
+    color: #333;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.box li::before {
+    content: "\0261B";
+    position: absolute;
+    left: 0;
+}
+
+.linkStyle {
+    color: #5b6060;
+    text-decoration: underline;
+}
+
+/* Additional Bootstrap-specific overrides or extensions can go here */
+
+/* Always ensure your custom styles come after the bootstrap.css is loaded */
