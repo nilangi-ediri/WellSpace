@@ -20,8 +20,13 @@ import quizzesRoute from '../Routes/quizzes.js'; // Adjust the path as needed
 // import Review from "../Models/ReviewSchema.js"
 // import { reviews } from "../seed/reviews.js"
 // import information&quiz from Routes
+import path from 'path';
 
-dotenv.config()
+
+console.log('MONGO_URL:', process.env.MONGO_URL);
+
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+
 
 const app = express()
 const port = process.env.PORT || 8000
@@ -46,6 +51,9 @@ app.use('/api/v1/information', informationRoute);
 app.use('/api/v1/quizzes', quizzesRoute);
 
 mongoose.set('strictQuery', false)
+console.log(process.env.MONGO_URL); // This should print the connection string
+mongoose.connect(process.env.MONGO_URL);
+
 
 mongoose
   .connect(process.env.MONGO_URL)
