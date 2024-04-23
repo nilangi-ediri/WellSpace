@@ -8,6 +8,8 @@ import doctorRoute from "../Routes/doctor.js";
 import userRoute from "../Routes/user.js";
 import feedbackRoute from "../Routes/feedback.js";
 import blogRoute from "../Routes/blog.js";
+import informationRoute from '../Routes/information.js';
+import quizzesRoute from '../Routes/quizzes.js';
 // import Doctor from "../Models/DoctorSchema.js"
 // import { doctors } from "../seed/doctors.js"
 // import User from "../Models/UserSchema.js"
@@ -16,6 +18,10 @@ import blogRoute from "../Routes/blog.js";
 // import { blogs } from "../seed/blogs.js"
 // import Review from "../Models/ReviewSchema.js"
 // import { reviews } from "../seed/reviews.js"
+// import Information from "../Models/ InformationSchema.js"
+// import { informations } from "../seed/information.js"
+// import Quiz from "../Models/QuizSchema.js"
+// import { quizzes } from "../seed/quizzes.js"
 
 dotenv.config()
 
@@ -34,6 +40,8 @@ app.use('/api/v1/doctors', doctorRoute)
 app.use('/api/v1/users', userRoute)
 app.use('/api/v1/feedbacks', feedbackRoute)
 app.use('/api/v1/blogs', blogRoute)
+app.use('/api/v1/information', informationRoute); // Added
+app.use('/api/v1/quizzes', quizzesRoute); // Added
 
 mongoose.set('strictQuery', false)
 
