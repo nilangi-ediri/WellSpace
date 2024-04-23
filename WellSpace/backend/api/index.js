@@ -18,10 +18,6 @@ import quizzesRoute from '../Routes/quizzes.js';
 // import { blogs } from "../seed/blogs.js"
 // import Review from "../Models/ReviewSchema.js"
 // import { reviews } from "../seed/reviews.js"
-// import Information from "../Models/ InformationSchema.js"
-// import { informations } from "../seed/information.js"
-// import Quiz from "../Models/QuizSchema.js"
-// import { quizzes } from "../seed/quizzes.js"
 
 dotenv.config()
 
