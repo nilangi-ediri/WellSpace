@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import Information from '../models/InformationSchema.js'; // Adjust the path as necessary
+import Information from '../Models/InformationSchema.js'; // Adjust the path as necessary
 
 dotenv.config();
 

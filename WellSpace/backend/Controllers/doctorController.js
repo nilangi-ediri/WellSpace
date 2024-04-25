@@ -6,7 +6,7 @@ export const getSingleDoctor = async (req, res) => {
   try {
 
     const singleDoctor = await Doctor.findById(id)
-      .populate("reviews")
+      // .populate("reviews")
       .select("-password")
 
     res.status(200).json({
