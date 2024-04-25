@@ -5,6 +5,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ReusableRichTextEditor from '../../components/ReusableRichTextEditor';
 import TextEditor from '../../components/ReusableRichTextEditor';
+import HeroSectionBlog from '../../components/HeroSectionBlog';
 
 // Static data for categories, you could dynamically generate this list too
 const categories = ['Technology', 'Health', 'Business', 'Entertainment', 'Sports', 'Science'];
@@ -36,9 +37,13 @@ const CreateBlogPost = () => {
   return (
     <>
       <NavigationBar />
+      <HeroSectionBlog 
+        title="Share Your Expertise" 
+        subtitle="Your insights could be the guide someone needs. Write an article and join our mission in promoting mental wellness."
+      />
       <Container className='mt-3'>
         <Row>
-          <Col md={8}>
+          <div>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="blogTitle">
                 <Form.Label>Title</Form.Label>
@@ -79,25 +84,10 @@ const CreateBlogPost = () => {
                 </Form.Control>
               </Form.Group>
               <Button variant="primary" type="submit">
-                Create Post
+                Publish
               </Button>
             </Form>
-          </Col>
-          <Col md={4}>
-            <Form className="mb-4">
-              <Form.Group controlId="searchBar">
-                <Form.Control type="text" placeholder="Search blog..." />
-              </Form.Group>
-            </Form>
-            <ListGroup>
-              <ListGroup.Item active>Categories</ListGroup.Item>
-              {categories.map((category, index) => (
-                <ListGroup.Item key={index} action>
-                  {category}
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
-          </Col>
+          </div>
         </Row>
       </Container>
     </>

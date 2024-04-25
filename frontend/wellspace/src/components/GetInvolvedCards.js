@@ -17,10 +17,10 @@ const cardData = [
 ];
 
 function GetInvolvedCards() {
-    const gradientStyle = {
-        // background: 'linear-gradient(to right, #a7f1e5, white)'
-        background: 'linear-gradient(to right, black, white)'
-    };
+    // const gradientStyle = {
+    //     background: '#a7f1e5'
+    //     // background: 'linear-gradient(to right, black, white)'
+    // };
 
     return (
         <Container className="text-center my-4">
@@ -29,9 +29,9 @@ function GetInvolvedCards() {
                 {cardData.map((card, idx) => (
                     <Col key={idx}>
                         <Link to={card.link} style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <Card
+                            <Card style={{ backgroundColor: '#e0f7fa' }}
                                 className="card-hoverable card-clickable"
-                                style={gradientStyle}
+                            // style={gradientStyle}
                             >
                                 <div className="icon-container" style={{ fontSize: '4rem' }}>{card.icon}</div>
                                 <Card.Body>

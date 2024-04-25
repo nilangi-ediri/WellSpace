@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Form, Button, ToggleButtonGroup, ToggleButton, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 function UserSignUp() {
   const [userDetails, setUserDetails] = useState({
@@ -9,6 +9,7 @@ function UserSignUp() {
     username: '',
     phoneNumber: '',
     email: '',
+    password: '',
     verificationDocument: null
   });
 
@@ -31,6 +32,7 @@ function UserSignUp() {
       username: userDetails.username,
       phoneNumber: userDetails.phoneNumber,
       email: userDetails.email,
+      password: userDetails.password,
       verificationDocumentURL: '',
       status: userDetails.role === 'expert' ? 'pending' : 'active'
     };
@@ -59,90 +61,110 @@ function UserSignUp() {
   };
 
   return (
-    <div className="container mt-3">
-      <h2>Sign Up</h2>
-      <ToggleButtonGroup type="radio" name="role" defaultValue={userDetails.role} onChange={handleRoleChange}>
-        <ToggleButton id="tbg-radio-1" value={'user'} variant="outline-primary">User</ToggleButton>
-        <ToggleButton id="tbg-radio-2" value={'expert'} variant="outline-secondary">Expert</ToggleButton>
-      </ToggleButtonGroup>
+    <div className="signup-container">
+      <div className="signup-form">
+      <h2 className="text-center">WellSpace</h2>
+      <img
+      src="/images/Logo.png"
+      style={{
+        display: 'block',
+        margin: '0 auto',
+        width: '60px', // Adjust width as needed
+        height: 'auto' // Keeps the aspect ratio
+      }}
+      alt="WellSpace Logo"
+    />
+   
+      
+        <ToggleButtonGroup type="radio" name="role" defaultValue={userDetails.role} onChange={handleRoleChange}>
+          <ToggleButton id="tbg-radio-1" value={'user'} variant="outline-dark">User</ToggleButton>
+          <ToggleButton id="tbg-radio-2" value={'expert'} variant="outline-dark">Expert</ToggleButton>
+        </ToggleButtonGroup>
 
-      <Form onSubmit={handleSubmit} className="mt-3">
-        <Form.Group className="mb-3" controlId="formFirstName">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control
-            type="text"
-            name="firstName"
-            placeholder="Enter first name"
-            value={userDetails.firstName}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formLastName">
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control
-            type="text"
-            name="lastName"
-            placeholder="Enter last name"
-            value={userDetails.lastName}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formUsername">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            type="text"
-            name="username"
-            placeholder="Enter username"
-            value= {userDetails.username}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formPhone">
-          <Form.Label>Phone Number</Form.Label>
-          <Form.Control
-            type="number"
-            name="phoneNumber"
-            placeholder="Enter phone number"
-            value={userDetails.phoneNumber}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            placeholder="Enter email"
-            value={userDetails.email}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        {userDetails.role === 'expert' && (
-          <Form.Group className="mb-3" controlId="formVerificationDocument">
-            <Form.Label>Expert Verification Document</Form.Label>
+        <Form onSubmit={handleSubmit} className="mt-3">
+          <Form.Group className="mb-3" controlId="formFirstName">
             <Form.Control
-              type="file"
-              name="verificationDocument"
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={userDetails.firstName}
               onChange={handleChange}
-              required={userDetails.role === 'expert'}
+              required
             />
           </Form.Group>
-        )}
 
-        <Button variant="primary" type="submit">
-          {userDetails.role === 'expert' ? 'Register as Expert' : 'Create Account'}
-        </Button>
-      </Form>
+          <Form.Group className="mb-3" controlId="formLastName">
+            <Form.Control
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={userDetails.lastName}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formUsername">
+            <Form.Control
+              type="text"
+              name="username"
+              placeholder="User Name"
+              value={userDetails.username}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formPhone">
+            <Form.Control
+              type="number"
+              name="phoneNumber"
+              placeholder="Phone Number"
+              value={userDetails.phoneNumber}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              value={userDetails.email}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={userDetails.password}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+          {userDetails.role === 'expert' && (
+            <Form.Group className="mb-3" controlId="formVerificationDocument">
+              <Form.Label>Expert Verification Document</Form.Label>
+              <Form.Control
+                type="file"
+                name="verificationDocument"
+                onChange={handleChange}
+                required={userDetails.role === 'expert'}
+              />
+            </Form.Group>
+          )}
+
+          <Button variant="dark" type="submit" className="w-100">
+            {userDetails.role === 'expert' ? 'Register as Expert' : 'Create Account'}
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 }
