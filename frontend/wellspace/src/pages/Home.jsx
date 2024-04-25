@@ -1,7 +1,5 @@
 import React from 'react'
 import '../css/Home.css'
-
-
 import HeroSection from '../components/HeroSection';
 import HelpSection from '../components/HelpSection';
 import TestimonialVideoSection from '../components/TestimonialVideoSection';

@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Home from './pages/Home';
-import UserSignUp from './pages/UserSignUp';
 import AllBlogPosts from './pages/blog/AllBlogPosts';
 import CreateBlogPost from './pages/blog/CreateBlogPost';
 import 'animate.css';
@@ -18,6 +17,10 @@ import { createEditor } from 'slate'
 
 // Import the Slate components and React plugin.
 import { Slate, Editable, withReact } from 'slate-react'
+import BlogPostView from './pages/blog/BlogView';
+import UserLogin from './pages/Authentification/Login';
+import UserSignUp from './pages/Authentification/SignUp';
+import Information from './pages/Information';
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()))
@@ -26,11 +29,15 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/sign-up" element={<UserSignUp />} />
+
           <Route path="/blog" element={<AllBlogPosts />} />
           <Route path="/create-blog" element={<CreateBlogPost />} />
+          <Route path="/view-blog" element={<BlogPostView />} />
           {/* <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/login" element={<UserLogin />} />
+          <Route path="/sign-up" element={<UserSignUp />} />
+          <Route path="/info" element={<Information />} />
         </Routes>
       </Router>
     </>
