@@ -51,7 +51,7 @@ const InfoContent = () => {
                     <Card id="mental-health" className="mb-4">
                         <Card.Body>
                             <Card.Title>What is Mental Health?</Card.Title>
-                            <Card.Img variant="top" src="path_to_mental_health_image.png" />
+                            <Card.Img variant="top" className="w-50" src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=2038&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                             <Card.Text>
                                 Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make choices.
                             </Card.Text>
@@ -61,7 +61,7 @@ const InfoContent = () => {
                     <Card id="mindfulness" className="mb-4">
                         <Card.Body>
                             <Card.Title>Mindfulness and Mental Wellbeing</Card.Title>
-                            <Card.Img variant="top" src="path_to_mindfulness_image.png" />
+                            <Card.Img variant="top" className="w-50" src="https://images.unsplash.com/photo-1611800065908-233b597db552?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                             <Card.Text>
                                 Mindfulness is the practice of being present and fully engaged with whatever we're doing at the moment — free from distraction or judgment, and aware of our thoughts and feelings without getting caught up in them.
                             </Card.Text>
@@ -71,7 +71,7 @@ const InfoContent = () => {
                     <Card id="emotional-wellbeing" className="mb-4">
                         <Card.Body>
                             <Card.Title>Emotional Wellbeing</Card.Title>
-                            <Card.Img variant="top" src="path_to_emotional_wellbeing_image.png" />
+                            <Card.Img variant="top" className="w-50" src="https://images.unsplash.com/photo-1612531810887-6c402753239c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                             <Card.Text>
                                 Emotional wellbeing is about how we think, feel, and behave. It involves being able to navigate complex emotions, understand and empathize with others, and maintain a sense of perspective.
                             </Card.Text>
