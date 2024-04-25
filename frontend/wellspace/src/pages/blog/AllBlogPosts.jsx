@@ -18,7 +18,7 @@ const HeroSection = () => (
   </Card>
 );
 // Mock data structure for a blog post
-const blogPostsData = [
+const blogPostsData = [//api call get all
     {
       id: 1,
       title: "The Importance of Mental Health",

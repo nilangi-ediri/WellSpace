@@ -24,12 +24,13 @@ const NavigationBar = () => {
                         {/* Replace hrefs with actual paths */}
                         <Nav.Link href="#learn">Learn About Mental Health</Nav.Link>
                         <Nav.Link href="#about">About Us</Nav.Link>
-                        <Nav.Link href="#blog">Blog and Discussion</Nav.Link>
+                        <Nav.Link href="/blog">Blog & Discussion </Nav.Link>
                         <Nav.Link href="#challenges">Challenges</Nav.Link>
                         <Nav.Link href="#contact">Contact Us</Nav.Link>
                     </Nav>
                     <Nav>
                         {/* Update href to your login page route */}
+                        <Nav.Link href="/">Sign up</Nav.Link>
                         <Nav.Link href="#login">Log In</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

@@ -1,125 +1,41 @@
-/* info.css */
+/* Info.css */
 
-.header-container {
-    background-color: #d1e0c7;
-    border-radius: 8px;
-    margin-bottom: 20px;
+.content-section .content-title {
+    position: relative;
+    padding-bottom: 1rem;
+    /* Spacing below the title */
 }
 
-.concept-heading {
-    color: #333;
-    font-size: 2rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-left: 50px;
-}
-
-.concept-subheading {
-    color: #555;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    margin-left: 50px;
-}
-
-.heading-container {
-    margin-left: 50px;
-}
-
-.concept-image img {
+.content-image img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    margin-bottom: 1rem;
+    /* Spacing below the image */
 }
 
-.imageDiv,
-.image1Div,
-.image3,
-.image4,
-.image5,
-.image6,
-.image7,
-.image9Div,
-.image10Div,
-.image11Div,
-.image12Div,
-.image13,
-.image14Div,
-.image15Div,
-.image16Div,
-.image17Div {
-    width: 100%;
-    margin: 0 auto;
+.content-gradient-line {
+    height: 4px;
+    background: linear-gradient(to right, #a18cd1 0%, #fbc2eb 100%);
+    margin-bottom: 1rem;
+    /* Spacing below the gradient line */
 }
 
-.image1,
-.image3,
-.image4,
-.image5,
-.image6,
-.image7,
-.image9,
-.image10,
-.image11,
-.image12,
-.image13,
-.image14,
-.image15,
-.image16,
-.image17 {
-    width: 75%;
-    height: auto;
-    margin: 0 auto;
+.content-list-box {
+    list-style: none;
+    padding-left: 0;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
 }
 
-.image10Div {
-    background-color: #f1d8b0;
+.content-list-box li {
+    margin-bottom: 0.5rem;
+    /* Spacing between list items */
 }
 
-.image9Div {
-    background-color: #a3c9d0;
+.content-list-box li:last-child {
+    margin-bottom: 0;
 }
 
-.image14Div,
-.image15Div,
-.single-line-box,
-.box {
-    background-color: #d1e0c7;
-}
-
-.gradient-line {
-    height: 8px;
-    background: linear-gradient(to right, #f8f8f8, #d1e0c7);
-}
-
-.single-line-box,
-.box {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.single-line-box p,
-.box h2,
-.box ul,
-.box li {
-    color: #333;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.box li::before {
-    content: "\0261B";
-    position: absolute;
-    left: 0;
-}
-
-.linkStyle {
-    color: #5b6060;
-    text-decoration: underline;
-}
-
-/* Additional Bootstrap-specific overrides or extensions can go here */
-
-/* Always ensure your custom styles come after the bootstrap.css is loaded */
+/* Add more custom styles as needed */

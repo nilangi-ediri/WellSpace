@@ -20,7 +20,7 @@ import { Slate, Editable, withReact } from 'slate-react'
 import BlogPostView from './pages/blog/BlogView';
 import UserLogin from './pages/Authentification/Login';
 import UserSignUp from './pages/Authentification/SignUp';
-import InformationPage from './pages/Information';
+import Information from './pages/Information';
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()))
@@ -37,7 +37,7 @@ function App() {
         <Route path="/contact" element={<Contact />} /> */}
           <Route path="/login" element={<UserLogin />} />
           <Route path="/sign-up" element={<UserSignUp />} />
-          <Route path="/info" element={<InformationPage />} />
+          <Route path="/info" element={<Information />} />
         </Routes>
       </Router>
     </>
