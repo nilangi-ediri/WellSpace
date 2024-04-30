@@ -1,0 +1,461 @@
+/* .hero-section {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    color: #fff;
+    background-color: lightblue;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+.hero-section {
+    background: linear-gradient(to right, #3c8383 0%, #ffffff 100%);
+    /* Teal to white gradient */
+    color: #333;
+    /* Sets a default text color, you can choose what suits you best */
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    /* Larger font size for the main title */
+    color: #ffffff;
+    /* White color for the title to stand out on gradient */
+    margin-bottom: 0.5em;
+    /* Space below the title */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Text shadow for better readability */
+    text-align: center;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    /* Slightly larger paragraph font size */
+    color: #f8f8f8;
+    /* Lighter text color for the paragraph */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    /* Text shadow for better readability */
+    text-align: center;
+}
+
+/* Add responsiveness for smaller devices */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+        /* Smaller font size for mobile */
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+        /* Smaller paragraph font size for mobile */
+    }
+}
+
+/* Image styles */
+.hero-image img {
+    width: 100%;
+    /* Ensures the image takes the full width of its parent */
+    height: auto;
+    /* Ensures the image height scales properly */
+    object-fit: cover;
+    /* Ensures the image covers the area nicely */
+}
+
+
+/* Fallback color
+
+
+/* .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(120, 225, 233, 0.5);
+    z-index: 1;
+} */
+
+.hero-image img {
+    width: 100%;
+    height: 350px;
+
+    /* This will cover the area, potentially cropping the image */
+}
+
+/* Make image responsive */
+/* Ensure the image path is correct
+
+
+/* Make sure the content of the hero section is on top of the overlay */
+/* .hero-section>* {
+    position: relative;
+    z-index: 2;
+} */
+
+/* You can add media queries to adjust the padding for smaller screens */
+/* @media (max-width: 768px) {
+    .hero-section {
+        padding: 50px 0;
+    }
+} */
+
+/* Get Involved section */
+.section-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.card {
+    background-color: #8decd6;
+}
+
+.custom-btn {
+    display: block;
+    /* Make buttons block-level for full-width */
+    color: #fff;
+    background-color: #17a2b8;
+    /* Bootstrap's info button color */
+    border: none;
+    margin-bottom: 1rem;
+    /* Spacing between buttons */
+    transition: transform 0.2s;
+    /* Smooth transform transition */
+}
+
+.custom-btn:hover {
+    transform: scale(1.05);
+    /* Slightly enlarge buttons on hover */
+}
+
+/* Styling for the questions on the left side */
+.section-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.question {
+    font-size: 1rem;
+    margin: 0;
+    text-align: right;
+
+    animation: bounce;
+    /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s;
+    /* don't forget to set a duration! */
+    /* Remove default paragraph margin */
+}
+
+.action-btn {
+    width: 100%;
+    /* Make buttons full width for smaller screens */
+    margin-top: 0.5rem;
+    /* Spacing between question and button */
+}
+
+@media (min-width: 768px) {
+    .action-btn {
+        width: auto;
+        /* Auto width for larger screens */
+        display: inline-block;
+        /* Make buttons sit next to the questions */
+        margin-top: 0;
+        /* Align button with question */
+    }
+}
+
+
+/* Get Involved section */
+
+/* Need help section */
+.help-button {
+    width: 100%;
+    border-radius: 20px;
+    /* Rounded corners for the buttons */
+    /* background-color: #1cd4d7; */
+    /* Bootstrap primary color */
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+    /* Slight shadow for depth */
+    transition: all 0.3s ease-in-out;
+    /* Smooth transition for hover effects */
+
+}
+
+.help-button:hover,
+.help-button:focus {
+    background-color: #3c8383;
+    /* Darker shade when hovered */
+    box-shadow: 0 6px 8px rgba(14, 136, 145, 0.548);
+    /* Larger shadow for hover effect */
+    transform: translateY(-5px);
+    /* Lift the button up slightly */
+}
+
+/* Need help section */
+
+/* youtube video section */
+.testimonial-video-section {
+    background-color: #e0f7fa;
+    /* Light teal background to match the hero section */
+    padding: 2rem 0;
+    /* Spacing above and below the content */
+
+}
+
+.quote-section blockquote {
+    font-size: 1.5rem;
+    /* Stylized large font size for quote */
+    font-weight: bold;
+    font-style: italic;
+    quotes: "“" "”" "‘" "’";
+    padding: 20px;
+    border-left: 5px solid #0e634b;
+    /* Left border color */
+    margin: 0;
+    line-height: 1.6;
+}
+
+.video-section iframe {
+    max-width: 100%;
+    /* Ensures the video is responsive */
+    border-radius: 10px;
+    /* Rounded corners for the video iframe */
+}
+
+@media (max-width: 768px) {
+    .quote-section blockquote {
+        font-size: 1.2rem;
+        /* Smaller font size for smaller devices */
+    }
+}
+
+/* youtube video section */
+
+/* user testimonials */
+/* TestimonialsSection.css */
+
+/* TestimonialsSection.css */
+
+.testimonials-container {
+    background-color: #ffffff;
+    /* Or any color as per your design */
+    padding: 50px 15px;
+    /* Padding for the container */
+    font-family: Arial, sans-serif;
+    /* Use your preferred font-family */
+}
+
+.testimonials-container h2 {
+    color: #333;
+    /* Title color */
+    margin-bottom: 24px;
+    /* Space below the title */
+    font-size: 2rem;
+    /* Title font size */
+}
+
+.testimonials-container p {
+    color: #666;
+    /* Description text color */
+    margin-bottom: 48px;
+    /* Space below the description */
+}
+
+/* Styling for the Owl Carousel items */
+.testimonial-item {
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Card shadow */
+    border-radius: 10px;
+    /* Card border radius */
+    background: #f9f9f9;
+    /* Card background color */
+    margin: 10px;
+    /* Space around cards */
+}
+
+.testimonial-card {
+    padding: 15px;
+    background-color: #e0f7fa;
+}
+
+.card-header {
+    position: relative;
+    padding-top: 2px;
+    /* Adjusts the space for the protruding image */
+    background-color: #EEE;
+    /* Header background color */
+    border-top-left-radius: 20px;
+    /* Match the card's rounded corners */
+    border-top-right-radius: 20px;
+    /* Match the card's rounded corners */
+}
+
+.card-body {
+    padding: 20px;
+    padding-top: 80px;
+    /* Provides additional space for the image overlapping the card body */
+}
+
+.testimonial-image {
+    width: 120px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+    border: 4px solid white;
+    background-color: white;
+    display: block;
+    margin: 0 auto 20px;
+    position: relative;
+    top: -4px;
+    z-index: 2;
+}
+
+.testimonial-name {
+    font-weight: bold;
+    margin-top: 0px;
+    /* Push down to compensate for the negative margin of the image */
+    color: #333;
+}
+
+.testimonial-quote {
+    font-style: italic;
+    color: #666;
+    margin-top: 16px;
+    position: relative;
+}
+
+/* .testimonial-quote:before {
+    content: "\201C";
+    /* Unicode for left double quotation mark */
+/* font-size: 48px; */
+/* color: #ccc; */
+/* position: absolute; */
+/* left: 50%; */
+/* transform: translateX(-50%); */
+/* top: -40px; */
+/* }  */
+
+.owl-theme .owl-dots .owl-dot span {
+    background: #ccc;
+    /* Dots color */
+}
+
+.owl-theme .owl-dots .owl-dot.active span {
+    background: #333;
+    /* Active dot color */
+}
+
+.owl-theme .owl-nav [class*='owl-'] {
+    color: #FFF;
+    font-size: 14px;
+    margin: 5px;
+    padding: 4px 7px;
+    background: #D6D6D6;
+    border-radius: 3px;
+}
+
+.owl-theme .owl-nav [class*='owl-']:hover {
+    background: #869791;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .testimonial-quote:before {
+        top: -20px;
+        /* Adjust the position of the quotation mark for smaller screens */
+        font-size: 24px;
+    }
+}
+
+/* Additional responsive adjustments can be made as necessary */
+
+
+/* user testimonials */
+
+/* Footer.css */
+
+.page-footer {
+    background-color: #009688;
+    /* A nice teal background */
+    color: white;
+    /* White text color */
+    padding-top: 1rem;
+}
+
+.page-footer a {
+    color: #d0e8f2;
+    /* A lighter shade for links */
+}
+
+.page-footer a:hover {
+    color: #a1cbef;
+    /* Color for link hover state */
+    text-decoration: none;
+    /* Removes underline on hover */
+}
+
+.page-footer h5 {
+    margin-bottom: 1rem;
+}
+
+.page-footer ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.page-footer ul li a {
+    padding: 5px 0;
+    display: block;
+    /* Make the links fill the list item for easier clicking */
+}
+
+.footer-copyright {
+    background-color: #00796b;
+    /* A darker shade of the main footer color for contrast */
+    color: #d0e8f2;
+    padding: 10px 0;
+    margin-top: 1rem;
+}
+
+/* Add responsiveness to the footer */
+@media (max-width: 768px) {
+    .text-center.text-md-left {
+        text-align: center !important;
+    }
+
+    .row {
+        text-align: center;
+    }
+
+    .clearfix {
+        display: none;
+        /* Hide the hr element on small screens */
+    }
+}
+
+/* For Testimonials Container*/
+.smaller {
+    transform: scale(0.9);
+    transform-origin: center;
+}
+
+/* GetInvolvedCards.css */
+.card-hoverable {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.card-hoverable:hover {
+    transform: scale(1.05);
+}
+
+.card-clickable:active {
+    transform: scale(0.95);
+}
