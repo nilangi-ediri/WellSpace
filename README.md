@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Technologies](#technologies)
-- [Features](#features)
-- [Test User Login Information](#test-user-login-information)
+- [About WellSpace](#about-wellSpace)
+- [Team Members](#team-members)
+- [Responsibilities](#responsibilities)
+- [File Structure](#file-structure)
+- [Backend Development Documentation](#backend-development-documentation)
 - [Acknowledgements](#acknowledgements)
 
 ## About WellSpace
@@ -38,13 +38,27 @@ Team-22N/
 ├── README.md
 ├── Project Management/
 │   ├── Client Meetings/
-│   └── Timesheets/
+│   └── timesheets/
 └── WellSpace/
     ├── backend/
-    └── frontend/
+    └── frontend/ (Currently undergoing rearrangement)
 ```
 
-In the `backend` folder, there will be another README.md for the backend part of implementation.
+## Backend Development Documentation
+
+### Backend Project Setup Guide
+
+For detailed instructions on installing and setting up the backend project, refer to the README file located in the `WellSpace > backend` folder. 
+
+This README provides step-by-step guidance on installing dependencies, configuring the environment, and other essential setup procedures necessary to run the backend project seamlessly.
+
+### Task Tracking and Milestone Planning
+
+The backend development tasks, both pending and completed, are documented in this GitHub repository's Issues tab. Each task is tagged appropriately to indicate its inclusion in either milestone 1 or milestone 2, providing a clear overview of the project's progress and planned objectives.
+
+### API Documentation for Frontend Integration
+
+Comprehensive documentation of backend APIs is available in the GitHub repository's Wiki tab. This documentation serves as a valuable resource for the frontend team, offering a comprehensive overview into request URLs and the data fields included in the API responses. This hopes to ensure smooth integration between the frontend and backend components of the project.
 
 ## Acknowledgements
 
