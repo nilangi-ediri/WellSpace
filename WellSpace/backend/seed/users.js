@@ -10,21 +10,21 @@ export const users = [
     email: "mila@gmail.com",
     password: hashPassword,
     name: "Mila Osbourne",
+    userName: "milaIsCool2000",
     phoneNumber: 412345678,
     role: "patient",
     gender: "female",
     appointments: [],
-    verificationDocument: "",
   },
   {
     _id: "6602d3d1155e8f469cffdde9",
     email: "emma@gmail.com",
     password: hashPassword,
     name: "Emma Smith",
+    userName: "emma2020",
     phoneNumber: 412345678,
     role: "patient",
     gender: "female",
     appointments: [],
-    verificationDocument: "",
   }
 ]

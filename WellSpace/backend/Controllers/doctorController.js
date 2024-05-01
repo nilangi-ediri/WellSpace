@@ -33,14 +33,14 @@ export const getAllDoctor = async (req, res) => {
 
     if (query) {
       doctors = await Doctor.find({
-        isApproved: 'approved',
+        status: 'approved',
         $or: [
           { name: { $regex: query, $options: "i" } },
           { specialization: { $regex: query, $options: "i" } }
         ]
       }).select("-password")
     } else {
-      doctors = await Doctor.find({ isApproved: 'approved' }).select("-password")
+      doctors = await Doctor.find({ status: 'approved' }).select("-password")
     }
 
     res.status(200).json({
