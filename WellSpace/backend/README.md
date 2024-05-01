@@ -4,14 +4,15 @@ Include step-by-step instructions on how to install and set up the backend proje
 
 ## Table of Contents
 
+- [Project Setup](#project-setup)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Technologies](#technologies)
-- [Features](#features)
-- [Test User Login Information](#test-user-login-information)
+- [Create Local .env File](#create-local-env-file)
+- [File Structure](#file-structure)
+- [Variable Naming](#variable-naming)
+- [API Documentation](#api-documentation)
 - [Acknowledgements](#acknowledgements)
 
-## Project setup
+## Project Setup
 
 - MongoDB atlas database setup: `Li-Ting (a1847791)`
 - To access MongoDB atlas database, please go to https://www.mongodb.com/ and log in using our group account: `mcigroupn22@gmail.com`
@@ -25,7 +26,7 @@ cd backend
 npm install
 ```
 
-## Create your own local .env file
+## Create Local .env File
 
 For each parameters, there will be actually secret keys that you need to fill in. 
 
@@ -66,12 +67,16 @@ MongoDB database is connected successfully
 Server is running on port: 5000
 ```
 
-## Variable naming
+## Variable Naming
 
 Since "users" can be the general public or the experts (doctors):
 
 - The general public is called "patient" and
 - The experts is called "doctors" in the code base.
+
+## API Documentation
+
+Comprehensive documentation of backend APIs is available in the GitHub repository's Wiki tab.
 
 ## Acknowledgements
 
