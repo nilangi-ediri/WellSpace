@@ -4,6 +4,7 @@ const DoctorSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
+  userName: { type: String, required: true },
   phone: { type: Number },
   ticketPrice: { type: Number },
   role: {
@@ -31,13 +32,16 @@ const DoctorSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  isApproved: {
+  status: {
     type: String,
     enum: ["pending", "approved", "cancelled"],
     default: "pending",
   },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
   blogs: [{ type: mongoose.Types.ObjectId, ref: "Blog" }],
+  verificationDocument: {
+    type: String,
+  },
 });
 
 export default mongoose.model("Doctor", DoctorSchema);
