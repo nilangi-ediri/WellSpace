@@ -1,5 +1,5 @@
 import React from 'react'
-import HeroSection from '../components/HeroSection';
+import HeroInfo from '../components/HeroInfo';
 import Footer from '../components/Footer';
 import NavigationBar from '../components/Navbar';
 import InfoContent from '../components/InfoContent';
@@ -8,7 +8,7 @@ function Information() {
   return (
     <>
     <NavigationBar />
-    <HeroSection />
+    <HeroInfo />
     <InfoContent />
     <Footer />
     </>
