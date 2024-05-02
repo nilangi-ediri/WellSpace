@@ -1,69 +1,94 @@
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
-// import { FaExpeditedssl } from 'react-icons/fa';
-
-// function UserLogin() {
-
-//   // login procedure
-
-//   // 1. check email exsists 
-//   // 2. email n password is correct
-//   // 3. approved status is true
-
-//   return (
-//     <Form>
-//       <Form.Group className="mb-3" controlId="formBasicEmail">
-//         <Form.Label>Email address</Form.Label>
-//         <Form.Control type="email" placeholder="Enter email" />
-//       </Form.Group>
-
-//       <Form.Group className="mb-3" controlId="formBasicPassword">
-//         <Form.Label>Password</Form.Label>
-//         <Form.Control type="password" placeholder="Password" />
-//       </Form.Group>
-//       <Button variant="primary" type="submit">
-//         Submit
-//       </Button>
-//     </Form>
-//   );
-// }
-
-// export default UserLogin;
-
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import React, { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 function UserLogin() {
-  // login procedure
-  // 1. check email exists 
-  // 2. email and password are correct
-  // 3. approved status is true
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    try {
+      // Call the backend API to login 
+      const response = await axios.post('http://localhost:5000/api/v1/auth/login', {
+        email: email,
+        password: password
+      });
+
+      // You can check the response data for some condition if needed
+      if (response.data.status === 'approved') {
+        console.log('Login successful:', response.data);
+        // Redirect or do something on successful login
+      } else {
+        setError('Your account is not approved yet.');
+      }
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        setError(error.response.data.message || 'An error occurred during login.');
+      } else if (error.request) {
+        // The request was made but no response was received
+        setError('No response from server. Check your network connection.');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        setError('Error setting up request.');
+      }
+      console.error('Login error:', error);
+    }
+  };
 
   return (
-    <div className="signup-container"> {/* Use the same container class as the signup page */}
-      <div className="signup-form"> {/* Use the same form class as the signup page */}
-      <h2 className="text-center">WellSpace</h2>
-      <img
-      src="/images/Logo.png"
-      style={{
-        display: 'block',
-        margin: '0 auto',
-        width: '60px', // Adjust width as needed
-        height: 'auto' // Keeps the aspect ratio
-      }}
-      alt="WellSpace Logo"
-    />
+    <div className="signup-container">
+      <div className="signup-form">
+        <h2 className="text-center">WellSpace</h2>
+        <img
+          src="/images/Logo.png"
+          style={{
+            display: 'block',
+            margin: '0 auto',
+            width: '60px',
+            height: 'auto'
+          }}
+          alt="WellSpace Logo"
+        />
         
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control type="email" placeholder="E-mail" />
+            <Form.Control 
+              type="email" 
+              placeholder="E-mail" 
+              value={email}
+              onChange={handleEmailChange}
+              required 
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control 
+              type="password" 
+              placeholder="Password" 
+              value={password}
+              onChange={handlePasswordChange}
+              required 
+            />
           </Form.Group>
-          <Button variant="dark" type="submit" className="btn w-100">
-           LogIn
+          
+          {error && <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
+
+          <Button variant="dark" type="submit" className="w-100">
+            LogIn
           </Button>
         </Form>
       </div>

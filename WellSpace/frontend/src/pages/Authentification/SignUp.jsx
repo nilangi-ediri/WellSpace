@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, ToggleButtonGroup, ToggleButton, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import axios from 'axios';
 
 function UserSignUp() {
   const [userDetails, setUserDetails] = useState({
@@ -7,6 +8,7 @@ function UserSignUp() {
     firstName: '',
     lastName: '',
     username: '',
+    gender: '',
     phoneNumber: '',
     email: '',
     password: '',
@@ -23,8 +25,12 @@ function UserSignUp() {
 
   const handleRoleChange = (val) => setUserDetails({ ...userDetails, role: val });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+
+    // phone number = 10 digits
+    // username must include both numbers and texts
+    // email validation
     
     // The form data for the backend API
     const userData = {
@@ -33,8 +39,10 @@ function UserSignUp() {
       phoneNumber: userDetails.phoneNumber,
       email: userDetails.email,
       password: userDetails.password,
-      verificationDocumentURL: '',
-      status: userDetails.role === 'expert' ? 'pending' : 'active'
+      gender: userDetails.gender,
+      verificationDocument: '',
+      status: userDetails.role === 'expert' ? 'pending' : 'active',
+      role: userDetails.role
     };
 
     // Add verification document for expert
@@ -42,22 +50,20 @@ function UserSignUp() {
       // Convert the file to a URL or send the file itself based on your backend implementation
       // Here we're just using the file name as a placeholder
       userData.verificationDocumentURL = userDetails.verificationDocument?.name || '';
-    }
-
-    console.log('User data to be submitted:', userData);
-
-    // Here you would submit to the appropriate backend endpoint
-    if (userDetails.role === 'expert') {
       if (!userDetails.verificationDocument) {
         alert('Verification document is required for expert registration.');
         return;
       }
-      // Submit to the expert registration endpoint
-      alert('Thank you for registering as an expert. You will be notified once your documents are verified.');
-    } else {
-      // Submit to the regular user registration endpoint
-      alert('Your account has been created successfully.');
+    } 
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/v1/auth/register', userData);
+      console.log('Data sent successfully:', response.data);
+      alert(userDetails.role === 'expert' ? 'Thank you for registering as an expert. You will be notified once your documents are verified.' : 'Your account has been created successfully.');
+    } catch (error) {
+      console.error('Error:', error);
     }
+
   };
 
   return (
@@ -113,6 +119,32 @@ function UserSignUp() {
               onChange={handleChange}
               required
             />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Gender</Form.Label>
+            <div key={`inline-radio`} className="mb-3">
+              <Form.Check
+                inline
+                label="Male"
+                name="gender"
+                type="radio"
+                id={`inline-radio-1`}
+                value="Male"
+                onChange={handleChange}
+                required
+              />
+              <Form.Check
+                inline
+                label="Female"
+                name="gender"
+                type="radio"
+                id={`inline-radio-2`}
+                value="Female"
+                onChange={handleChange}
+                required
+              />
+            </div>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formPhone">
