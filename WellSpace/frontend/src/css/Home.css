@@ -17,6 +17,13 @@
     /* Sets a default text color, you can choose what suits you best */
 }
 
+.hero-section-info {
+    background: #4ba1a1;
+    /* Teal to white gradient */
+    color: #333;
+    /* Sets a default text color, you can choose what suits you best */
+}
+
 .hero-text h1 {
     font-size: 3rem;
     /* Larger font size for the main title */
