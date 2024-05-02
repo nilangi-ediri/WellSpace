@@ -19,7 +19,8 @@ const generateToken = user => {
 
 export const register = async (req, res) => {
 
-  const { email, password, name, role, gender, userName } = req.body
+  // const { email, password, name, role, gender, userName, } = req.body
+  const { name, userName, phoneNumber, email, password, gender, verificationDocument, status, role } = req.body
 
   try {
     let user = null
@@ -94,6 +95,8 @@ export const login = async (req, res) => {
       user = doctor
     }
 
+    console.log(user.status)
+
     if (!user) {
       return res.status(404).json({
         message: "User not found"
@@ -109,7 +112,7 @@ export const login = async (req, res) => {
     const { password, role, appointments, ...rest } = user._doc
 
     res.status(200).json({
-      status: true,
+      status: user.status,
       message: "User successfully logged in!",
       token,
       data: { ...rest },

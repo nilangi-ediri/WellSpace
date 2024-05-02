@@ -38,7 +38,7 @@ const NavigationBar = () => {
                         </Button>
                         <Nav.Link style={{ height: '30px', fontSize: '12px', marginTop: '9px', padding: '5px 10px' }} href="/login">Log In</Nav.Link>
                         {user.isLoggedIn && (
-                            <Nav.Link href="/profile">
+                            <Nav.Link href="/user-profile">
                                 <img
                                     src={user.profilePicture}
                                     width="30"

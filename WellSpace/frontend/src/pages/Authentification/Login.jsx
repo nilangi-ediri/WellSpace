@@ -25,7 +25,8 @@ function UserLogin() {
         email: email,
         password: password
       });
-
+      console.log(response.data)
+      console.log(response.data.status)
       // You can check the response data for some condition if needed
       if (response.data.status === 'approved') {
         console.log('Login successful:', response.data);
@@ -33,6 +34,7 @@ function UserLogin() {
       } else {
         setError('Your account is not approved yet.');
       }
+      
     } catch (error) {
       if (error.response) {
         // The request was made and the server responded with a status code
