@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function UserSignUp() {
   const [userDetails, setUserDetails] = useState({
-    role: 'user', // default role is 'user'
+    role: 'patient', // default role is 'patient'
     firstName: '',
     lastName: '',
     username: '',
@@ -35,18 +35,18 @@ function UserSignUp() {
     // The form data for the backend API
     const userData = {
       name: `${userDetails.firstName} ${userDetails.lastName}`,
-      username: userDetails.username,
+      userName: userDetails.username,
       phoneNumber: userDetails.phoneNumber,
       email: userDetails.email,
       password: userDetails.password,
       gender: userDetails.gender,
       verificationDocument: '',
-      status: userDetails.role === 'expert' ? 'pending' : 'active',
+      status: userDetails.role === 'doctor' ? 'pending' : 'active',
       role: userDetails.role
     };
 
     // Add verification document for expert
-    if (userDetails.role === 'expert') {
+    if (userDetails.role === 'doctor') {
       // Convert the file to a URL or send the file itself based on your backend implementation
       // Here we're just using the file name as a placeholder
       userData.verificationDocumentURL = userDetails.verificationDocument?.name || '';
@@ -59,7 +59,7 @@ function UserSignUp() {
     try {
       const response = await axios.post('http://localhost:5000/api/v1/auth/register', userData);
       console.log('Data sent successfully:', response.data);
-      alert(userDetails.role === 'expert' ? 'Thank you for registering as an expert. You will be notified once your documents are verified.' : 'Your account has been created successfully.');
+      alert(userDetails.role === 'doctor' ? 'Thank you for registering as an expert. You will be notified once your documents are verified.' : 'Your account has been created successfully.');
     } catch (error) {
       console.error('Error:', error);
     }
@@ -83,8 +83,8 @@ function UserSignUp() {
    
       
         <ToggleButtonGroup type="radio" name="role" defaultValue={userDetails.role} onChange={handleRoleChange}>
-          <ToggleButton id="tbg-radio-1" value={'user'} variant="outline-dark">User</ToggleButton>
-          <ToggleButton id="tbg-radio-2" value={'expert'} variant="outline-dark">Expert</ToggleButton>
+          <ToggleButton id="tbg-radio-1" value={'patient'} variant="outline-dark">User</ToggleButton>
+          <ToggleButton id="tbg-radio-2" value={'doctor'} variant="outline-dark">Expert</ToggleButton>
         </ToggleButtonGroup>
 
         <Form onSubmit={handleSubmit} className="mt-3">
@@ -130,7 +130,7 @@ function UserSignUp() {
                 name="gender"
                 type="radio"
                 id={`inline-radio-1`}
-                value="Male"
+                value="male"
                 onChange={handleChange}
                 required
               />
@@ -140,7 +140,7 @@ function UserSignUp() {
                 name="gender"
                 type="radio"
                 id={`inline-radio-2`}
-                value="Female"
+                value="female"
                 onChange={handleChange}
                 required
               />
@@ -180,20 +180,20 @@ function UserSignUp() {
           />
         </Form.Group>
 
-          {userDetails.role === 'expert' && (
+          {userDetails.role === 'doctor' && (
             <Form.Group className="mb-3" controlId="formVerificationDocument">
               <Form.Label>Expert Verification Document</Form.Label>
               <Form.Control
                 type="file"
                 name="verificationDocument"
                 onChange={handleChange}
-                required={userDetails.role === 'expert'}
+                required={userDetails.role === 'doctor'}
               />
             </Form.Group>
           )}
 
           <Button variant="dark" type="submit" className="w-100">
-            {userDetails.role === 'expert' ? 'Register as Expert' : 'Create Account'}
+            {userDetails.role === 'doctor' ? 'Register as Expert' : 'Create Account'}
           </Button>
         </Form>
       </div>
