@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Toast, ToastContainer } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function UserLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showToast, setShowToast] = useState(false);
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -18,33 +21,26 @@ function UserLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setShowToast(false);
 
     try {
-      // Call the backend API to login 
       const response = await axios.post('http://localhost:5000/api/v1/auth/login', {
         email: email,
         password: password
       });
-      console.log(response.data)
-      console.log(response.data.status)
-      // You can check the response data for some condition if needed
-      if (response.data.status === 'approved') {
-        console.log('Login successful:', response.data);
-        // Redirect or do something on successful login
-      } else {
-        setError('Your account is not approved yet.');
-      }
-      
+
+      console.log('Login successful:', response.data);
+      setShowToast(true);
+      setTimeout(() => {
+        navigate('/'); // Redirects to the home page after showing the toast
+      }, 2000); // Wait for 2 seconds before redirecting
+
     } catch (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         setError(error.response.data.message || 'An error occurred during login.');
       } else if (error.request) {
-        // The request was made but no response was received
         setError('No response from server. Check your network connection.');
       } else {
-        // Something happened in setting up the request that triggered an Error
         setError('Error setting up request.');
       }
       console.error('Login error:', error);
@@ -93,6 +89,15 @@ function UserLogin() {
             LogIn
           </Button>
         </Form>
+
+        <ToastContainer className="p-3" position="top-end">
+          <Toast onClose={() => setShowToast(false)} show={showToast} delay={2000} autohide>
+            <Toast.Header>
+              <strong className="me-auto">Login Success</strong>
+            </Toast.Header>
+            <Toast.Body>Welcome back!</Toast.Body>
+          </Toast>
+        </ToastContainer>
       </div>
     </div>
   );
