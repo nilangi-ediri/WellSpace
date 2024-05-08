@@ -5,6 +5,7 @@ import { FaRegCalendarAlt, FaRegUser, FaRegComments, FaList  } from 'react-icons
 import { FaPenToSquare  } from 'react-icons/fa6';
 import NavigationBar from '../../components/Navbar';
 import HeroSectionBlog from '../../components/HeroSectionBlog';
+import axios from 'axios';
 
 // const HeroSection = () => (
 //   <Card className="bg-dark text-white text-center hero-section">
@@ -18,6 +19,15 @@ import HeroSectionBlog from '../../components/HeroSectionBlog';
 //     </Card.ImgOverlay>
 //   </Card>
 // );
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
 
 // Mock data structure for a blog post
 const blogPostsData = [//api call get all
@@ -93,7 +103,7 @@ const BlogPost = ({ post }) => (
       <div className="d-flex justify-content-between">
         <div className="d-flex align-items-center">
           <FaRegCalendarAlt className="icon mx-1" />
-          <span>{post.date}</span>
+          <span>{formatDate(post.createdAt)}</span>
         </div>
         <div className="d-flex align-items-center">
           <FaRegUser className="icon mx-1" />
@@ -108,7 +118,7 @@ const BlogPost = ({ post }) => (
           <span>{post.category}</span>
         </div>
       </div>
-      <Link to={post.link} className="stretched-link">Read More</Link>
+      <Link to={`/blog/${post._id}`} className="stretched-link">Read More</Link>
     </Card.Body>
   </Card>
 );
@@ -119,6 +129,22 @@ const AllBlogPosts = () => {
   const [postsPerPage] = useState(5);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+
+  // Fetch blog posts from the backend
+  useEffect(() => {
+    const fetchPosts = async () => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/v1/blogs?query=${searchQuery}`);
+            setPosts(response.data.data); 
+            console.log(response.data.data)
+        } catch (error) {
+            console.error('Failed to fetch blogs:', error);
+        }
+    };
+
+    fetchPosts();
+}, [searchQuery]); 
+
 
    // Handling search input change
    const handleSearchChange = (e) => {

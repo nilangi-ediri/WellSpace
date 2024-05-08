@@ -16,6 +16,9 @@ const BlogSchema = new mongoose.Schema({
   link: { type: String },
   category: { type: String },
   comments: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
+  createdAt: { type: Date, default: Date.now },
+  summary: { type: String },
+  imageUrl: { type: String }
 },
   { timestamps: true }
 );

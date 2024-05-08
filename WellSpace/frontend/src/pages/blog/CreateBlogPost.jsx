@@ -6,6 +6,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ReusableRichTextEditor from '../../components/ReusableRichTextEditor';
 import TextEditor from '../../components/ReusableRichTextEditor';
 import HeroSectionBlog from '../../components/HeroSectionBlog';
+import axios from 'axios';
 
 // Static data for categories, you could dynamically generate this list too
 const categories = ['Technology', 'Health', 'Business', 'Entertainment', 'Sports', 'Science'];
@@ -28,10 +29,31 @@ const CreateBlogPost = () => {
 };
 
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Process the data here, i.e., send a POST request to your API
-    console.log({ title, summary, image, category, content });
+
+    const doctorId = "660247adb56a95c2c97fa68b";
+    
+    const BlogData = {
+      title: title,
+      summary: summary,
+      image: imageFile,
+      category: category,
+      content: content
+    }
+    
+    try {
+      const response = await axios.post(`http://localhost:5000/api/v1/blogs/${doctorId}`, BlogData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log('Blog post created:', response.data);
+      // Handle further actions after successful posting, like redirecting or clearing the form
+    } catch (error) {
+      console.error('Error posting blog:', error);
+      // Handle errors here, such as displaying a message to the user
+    }
   };
 
   return (
@@ -52,6 +74,16 @@ const CreateBlogPost = () => {
                   placeholder="Enter post title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="blogTitle">
+                <Form.Label>Summary</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter post summary"
+                  value={summary}
+                  onChange={(e) => setSummary(e.target.value)}
                 />
               </Form.Group>
 

@@ -3,12 +3,17 @@ import Doctor from "../Models/DoctorSchema.js"
 
 export const createBlog = async (req, res) => {
   const id = req.params.doctorId
-  const { title, content } = req.body
+  const { title, content, category, image, summary } = req.body
+
+  console.log(id)
+  console.log(req.body)
 
   try {
     const newBlog = new Blog({
       title,
       content,
+      category,
+      imageUrl: image,
       doctor: id
     })
 
