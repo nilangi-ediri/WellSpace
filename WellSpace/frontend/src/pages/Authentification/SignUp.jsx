@@ -8,7 +8,6 @@ function UserSignUp() {
     firstName: '',
     lastName: '',
     username: '',
-    gender: '',
     phoneNumber: '',
     email: '',
     password: '',
@@ -39,7 +38,6 @@ function UserSignUp() {
       phoneNumber: userDetails.phoneNumber,
       email: userDetails.email,
       password: userDetails.password,
-      gender: userDetails.gender,
       verificationDocument: '',
       status: userDetails.role === 'doctor' ? 'pending' : 'active',
       role: userDetails.role
@@ -119,32 +117,6 @@ function UserSignUp() {
               onChange={handleChange}
               required
             />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label>Gender</Form.Label>
-            <div key={`inline-radio`} className="mb-3">
-              <Form.Check
-                inline
-                label="Male"
-                name="gender"
-                type="radio"
-                id={`inline-radio-1`}
-                value="male"
-                onChange={handleChange}
-                required
-              />
-              <Form.Check
-                inline
-                label="Female"
-                name="gender"
-                type="radio"
-                id={`inline-radio-2`}
-                value="female"
-                onChange={handleChange}
-                required
-              />
-            </div>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formPhone">
