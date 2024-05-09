@@ -44,9 +44,9 @@ const CreateBlogPost = () => {
     
     try {
       const response = await axios.post(`http://localhost:5000/api/v1/blogs/${doctorId}`, BlogData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+        // headers: {
+        //   'Content-Type': 'multipart/form-data'
+        // }
       });
       console.log('Blog post created:', response.data);
       // Handle further actions after successful posting, like redirecting or clearing the form

@@ -30,7 +30,7 @@ import axios from 'axios';
   };
 
 // Mock data structure for a blog post
-const blogPostsData = [//api call get all
+/* const blogPostsData = [//api call get all
     {
       id: 1,
       title: "The Importance of Mental Health",
@@ -66,7 +66,7 @@ const blogPostsData = [//api call get all
         comments: 12
       },
     // ...other blog post objects
-  ];
+  ]; */
 
   // const staticPost = {
   //   id: 1,
@@ -124,7 +124,7 @@ const BlogPost = ({ post }) => (
 );
 
 const AllBlogPosts = () => {
-  const [posts, setPosts] = useState(blogPostsData);
+  const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   const [searchQuery, setSearchQuery] = useState('');
@@ -148,9 +148,13 @@ const AllBlogPosts = () => {
 
    // Handling search input change
    const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value.toLowerCase());
+    console.log(e.target.value.toLowerCase())
+    const lowerCase = e.target.value.toLowerCase()
+    setSearchQuery(lowerCase);
     setCurrentPage(1); // Reset to first page on search change
+
   };
+
 
   // Handling category selection
   const handleCategorySelect = (category) => {
@@ -161,7 +165,7 @@ const AllBlogPosts = () => {
   // Filter posts by search query and selected category
   const filteredPosts = posts.filter(post => {
     const inCategory = selectedCategory === 'All' || post.category === selectedCategory;
-    const inSearch = post.title.toLowerCase().includes(searchQuery) || post.summary.toLowerCase().includes(searchQuery);
+    const inSearch = post.title?.toLowerCase().includes(searchQuery) || post.summary?.toLowerCase().includes(searchQuery);
     return inCategory && inSearch;
   });
 
