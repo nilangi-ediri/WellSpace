@@ -14,7 +14,8 @@ export const createBlog = async (req, res) => {
       content,
       category,
       imageUrl: image,
-      doctor: id
+      doctor: id,
+      summary
     })
 
     const savedBlog = await newBlog.save()
