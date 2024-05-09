@@ -107,7 +107,7 @@ const BlogPost = ({ post }) => (
         </div>
         <div className="d-flex align-items-center">
           <FaRegUser className="icon mx-1" />
-          <span>{post.author}</span>
+          <span>{post.doctor.name}</span>
         </div>
         <div className="d-flex align-items-center">
           <FaRegComments className="icon mx-1" />
