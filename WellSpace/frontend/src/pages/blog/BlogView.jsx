@@ -19,6 +19,7 @@ const BlogPostView = () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/v1/blogs/${postId}`);
         setPost(response.data.data);
+        console.log(response.data.data)
       } catch (error) {
         console.error('Error fetching post:', error);
         // Optionally, handle the error by showing a message or redirecting
@@ -54,7 +55,7 @@ const BlogPostView = () => {
 
             <Row className="align-items-center justify-content-between">
               <Col md="auto" className="text-left">
-                <h6 className="mb-1 text-muted">{post.author}</h6>
+                <h6 className="mb-1 text-muted">{post.doctor.name}</h6>
               </Col>
               <Col md="auto" className="text-center">
                 <h6 className="mb-1 text-muted">{post.category}</h6>

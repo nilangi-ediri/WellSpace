@@ -29,7 +29,6 @@ function UserLogin() {
         password: password
       });
 
-      console.log('Login successful:', response.data);
       setShowToast(true);
       setTimeout(() => {
         navigate('/'); // Redirects to the home page after showing the toast
