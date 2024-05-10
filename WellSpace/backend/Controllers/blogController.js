@@ -16,6 +16,7 @@ export const createBlog = async (req, res) => {
       imageUrl: image,
       doctor: id,
       isPublished,
+      summary
     })
 
     const savedBlog = await newBlog.save()
