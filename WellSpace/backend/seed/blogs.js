@@ -9,6 +9,7 @@ export const blogs = [
     summary: "Understand anxiety disorders: GAD, panic, social anxiety. Coping strategies, treatment.",
     category: "anxiety",
     comments: [],
+    imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715592252/mountains_mqjclf.jpg"
   },
   {
     _id: "6602486dd9dd3754be293fc3",
@@ -18,7 +19,8 @@ export const blogs = [
     isPublished: "published",
     summary: "Combat depression stigma: open conversations, understanding. Recognize signs, seek support, treatment.",
     category: "depression",
-    comments: []
+    comments: [],
+    imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715592250/forest_lhmchw.jpg"
   },
   {
     _id: "660249e90d2a3caa5dabb80f",
@@ -28,7 +30,8 @@ export const blogs = [
     isPublished: "pending",
     summary: "Manage stress: mindfulness, relaxation, time management. Build resilience, thrive.",
     category: "stress",
-    comments: []
+    comments: [],
+    imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715583693/samples/two-ladies.jpg"
   },
   {
     _id: "66024acc0d2a3caa5dabb81c",
@@ -38,7 +41,8 @@ export const blogs = [
     isPublished: "published",
     summary: "Navigate grief: express, seek support, honor memories. Healing journey, seek help.",
     category: "grief",
-    comments: []
+    comments: [],
+    imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715583673/samples/people/smiling-man.jpg"
   },
   {
     _id: "66024d63110e6ceadbca8b33",
@@ -48,7 +52,8 @@ export const blogs = [
     isPublished: "published",
     summary: "Prioritize self-care: exercise, sleep, nutrition, boundaries. Invest in well-being.",
     category: "self-care",
-    comments: []
+    comments: [],
+    imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715583694/samples/smile.jpg"
   },
   {
     _id: "66024fb2d9dd3754be293fdc",
@@ -58,6 +63,7 @@ export const blogs = [
     isPublished: "pending",
     summary: "Understanding relationships, emotions, safety. Explore healing approaches for recovery.",
     category: "trauma",
-    comments: []
+    comments: [],
+    imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715592494/waterfall_tvayjl.jpg"
   }
 ]

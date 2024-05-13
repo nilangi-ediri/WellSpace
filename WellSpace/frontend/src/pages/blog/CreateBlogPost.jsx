@@ -8,6 +8,7 @@ import TextEditor from '../../components/ReusableRichTextEditor';
 import HeroSectionBlog from '../../components/HeroSectionBlog';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import uploadCloudinary from '../../utils/uploadCloudinary';
 
 // Static data for categories, you could dynamically generate this list too
 const categories = ['Technology', 'Health', 'Business', 'Entertainment', 'Sports', 'Science'];
@@ -23,20 +24,29 @@ const CreateBlogPost = () => {
   const [imageFile, setImageFile] = useState(null);
   const navigate = useNavigate();
 
-  const handleImageChange = (e) => {
-      setImageFile(e.target.files[0]);
-  };
+  // const handleImageChange = (e) => {
+  //   setImageFile(e.target.files[0]);
+  // };
+  const handleImageChange = async (e) => {
+    const { files } = e.target
+    if (files) {
+      const file = files[0]
+      const data = await uploadCloudinary(file)
+      console.log(data);
+      setImageFile(data.secure_url)
+    }
+  }
 
   const handleEditorChange = content => {
     setContent(content);
-};
+  };
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const doctorId = "660247adb56a95c2c97fa68b";
-    
+
     const BlogData = {
       title: title,
       summary: summary,
@@ -45,7 +55,7 @@ const CreateBlogPost = () => {
       content: content,
       isPublished: "published"
     }
-    
+
     try {
       const response = await axios.post(`http://localhost:5000/api/v1/blogs/${doctorId}`, BlogData, {
         // headers: {
@@ -56,7 +66,7 @@ const CreateBlogPost = () => {
       setTimeout(() => {
         setShowToast(false);
         navigate('/blog');
-      }, 2000); 
+      }, 2000);
       // Handle further actions after successful posting, like redirecting or clearing the form
     } catch (error) {
       console.error('Error posting blog:', error);
@@ -67,8 +77,8 @@ const CreateBlogPost = () => {
   return (
     <>
       <NavigationBar />
-      <HeroSectionBlog 
-        title="Share Your Expertise" 
+      <HeroSectionBlog
+        title="Share Your Expertise"
         subtitle="Your insights could be the guide someone needs. Write an article and join our mission in promoting mental wellness."
       />
       <Container className='mt-3'>
@@ -101,13 +111,13 @@ const CreateBlogPost = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="blogImage">
-                  <Form.Label>Image File</Form.Label>
-                  <Form.Control
-                      type="file"
-                      accept="image/*"  // Accepts image files only
-                      onChange={handleImageChange}
-                  />
-                  {imageFile && <div>Selected file: {imageFile.name}</div>}
+                <Form.Label>Image File</Form.Label>
+                <Form.Control
+                  type="file"
+                  accept="image/*"  // Accepts image files only
+                  onChange={handleImageChange}
+                />
+                {imageFile && <div>Selected file: {imageFile.name}</div>}
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="blogCategory">
