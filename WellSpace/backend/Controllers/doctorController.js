@@ -57,3 +57,33 @@ export const getAllDoctor = async (req, res) => {
     })
   }
 }
+
+export const updateDoctor = async (req, res) => {
+  const id = req.params.id
+
+  try {
+
+    const updateDoctor = await Doctor.findByIdAndUpdate(
+      id,
+      {
+        $set: req.body
+      },
+      {
+        new: true
+      }
+    )
+
+    res.status(200).json({
+      success: true,
+      message: 'Doctor successfully updated',
+      data: updateDoctor
+    })
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      success: false,
+      message: 'Failed to update'
+    })
+  }
+}

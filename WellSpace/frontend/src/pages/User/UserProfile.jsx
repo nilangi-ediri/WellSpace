@@ -312,6 +312,7 @@ import { Form, Button, Image, Container, Row, Col, Card } from 'react-bootstrap'
 import { PencilSquare } from 'react-bootstrap-icons'; // Ensure this is installed via `npm install react-bootstrap-icons`
 import NavigationBar from '../../components/Navbar'; // Ensure this is correctly exported
 import Footer from '../../components/Footer'; // Ensure this is correctly exported
+import uploadCloudinary from '../../utils/uploadCloudinary';
 
 const UserProfile = () => {
     const [userDetails, setUserDetails] = useState({
@@ -329,32 +330,36 @@ const UserProfile = () => {
     const [verificationDocPreview, setVerificationDocPreview] = useState(null);
 
     const handleChange = (e) => {
-        const { name, value, files } = e.target;
+        const { name, value } = e.target;
+        setUserDetails(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    }
+
+    const handleImageChange = async (e) => {
+        const { files } = e.target
         if (files) {
-            const file = files[0];
-            if (name === 'profilePicture') {
-                const reader = new FileReader();
-                reader.onload = (loadEvent) => {
-                    setUserDetails(prev => ({
-                        ...prev,
-                        [name]: loadEvent.target.result
-                    }));
-                };
-                reader.readAsDataURL(file);
-            } else if (name === 'verificationDocument') {
-                setUserDetails(prev => ({
-                    ...prev,
-                    verificationDocument: file
-                }));
-                setVerificationDocPreview(URL.createObjectURL(file));
-            }
-        } else {
+            const file = files[0]
+            const data = await uploadCloudinary(file)
             setUserDetails(prev => ({
                 ...prev,
-                [name]: value
-            }));
+                profilePicture: data.secure_url
+            }))
         }
-    };
+    }
+
+    const handleFileChange = async (e) => {
+        const { files } = e.target
+        if (files) {
+            const file = files[0]
+            const data = await uploadCloudinary(file)
+            setUserDetails(prev => ({
+                ...prev,
+                verificationDocument: data.secure_url
+            }))
+        }
+    }
 
     const toggleEdit = () => setEditing(!editing);
 
@@ -387,12 +392,12 @@ const UserProfile = () => {
                     <Row className="mb-3">
                         <Col xs={12} md={4} className="text-left">
                             <label className="profile-image-container" style={{ position: 'relative', cursor: 'pointer' }}>
-                                <Image 
-                                    src={userDetails.profilePicture} 
-                                    roundedCircle 
-                                    alt="Profile" 
-                                    thumbnail 
-                                    style={{ width: '150px', height: '150px', objectFit: 'cover' }} 
+                                <Image
+                                    src={userDetails.profilePicture}
+                                    roundedCircle
+                                    alt="Profile"
+                                    thumbnail
+                                    style={{ width: '150px', height: '150px', objectFit: 'cover' }}
                                 />
                                 {editing && (
                                     <>
@@ -401,7 +406,7 @@ const UserProfile = () => {
                                         </div>
                                         <Form.Control
                                             type="file"
-                                            onChange={handleChange}
+                                            onChange={handleImageChange}
                                             name="profilePicture"
                                             id="profile-picture-upload"
                                             style={{ display: 'none' }}
@@ -450,7 +455,7 @@ const UserProfile = () => {
                             <Form.Control
                                 type="file"
                                 name="verificationDocument"
-                                onChange={handleChange}
+                                onChange={handleFileChange}
                                 required />
                         )}
                     </Form.Group>
