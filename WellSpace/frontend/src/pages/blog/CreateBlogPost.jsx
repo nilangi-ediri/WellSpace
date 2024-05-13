@@ -23,19 +23,27 @@ const CreateBlogPost = () => {
 
   const [imageFile, setImageFile] = useState(null);
   const navigate = useNavigate();
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState('');
 
   // const handleImageChange = (e) => {
   //   setImageFile(e.target.files[0]);
   // };
   const handleImageChange = async (e) => {
-    const { files } = e.target
-    if (files) {
-      const file = files[0]
-      const data = await uploadCloudinary(file)
-      console.log(data);
-      setImageFile(data.secure_url)
+    const { files } = e.target;
+    if (files.length) {
+      const file = files[0];
+      setImagePreviewUrl(URL.createObjectURL(file));
+      try {
+        const data = await uploadCloudinary(file, (progress) => setUploadProgress(progress));
+        console.log(data);
+        setImageFile(data.secure_url);
+        console.log(imageFile)
+      } catch (error) {
+        console.error('Upload failed:', error);
+      }
     }
-  }
+  };
 
   const handleEditorChange = content => {
     setContent(content);
@@ -50,18 +58,14 @@ const CreateBlogPost = () => {
     const BlogData = {
       title: title,
       summary: summary,
-      image: imageFile.path,
+      image: imageFile,
       category: category,
       content: content,
       isPublished: "published"
     }
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/v1/blogs/${doctorId}`, BlogData, {
-        // headers: {
-        //   'Content-Type': 'multipart/form-data'
-        // } //This is to post the image
-      });
+      const response = await axios.post(`http://localhost:5000/api/v1/blogs/${doctorId}`, BlogData);
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
@@ -117,7 +121,18 @@ const CreateBlogPost = () => {
                   accept="image/*"  // Accepts image files only
                   onChange={handleImageChange}
                 />
-                {imageFile && <div>Selected file: {imageFile.name}</div>}
+                {uploadProgress > 0 && uploadProgress < 100 && (
+                  <div style={{ width: '100%', backgroundColor: '#ddd' }}>
+                    <div style={{ height: '20px', backgroundColor: 'blue', width: `${uploadProgress}%` }}>
+                      {uploadProgress}%
+                    </div>
+                  </div>
+                )}
+                 {imagePreviewUrl && (
+                  <div>
+                    <img src={imagePreviewUrl} alt="Preview" style={{ width: '50%', marginTop: '10px' }} />
+                  </div>
+                )}
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="blogCategory">

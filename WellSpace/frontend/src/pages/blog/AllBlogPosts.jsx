@@ -89,7 +89,7 @@ const BlogPost = ({ post }) => (
   <Card className="mb-3 d-flex flex-row">
     <Card.Img 
       variant="left" 
-      src={post.image} 
+      src={post.imageUrl} 
       style={{ 
         width: '200px', 
         height: '150px', 

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Offcanvas, Button, Form } from 'react-bootstrap';
 import Comment from './Comment';
+import axios from 'axios';
 
-const CommentSection = ({ postId, currentUser }) => {
+const CommentSection = ({ postId, currentUser, commentsData }) => {
     const [comments, setComments] = useState([]);
     const [show, setShow] = useState(false);
     const [commentText, setCommentText] = useState('');
@@ -10,6 +11,9 @@ const CommentSection = ({ postId, currentUser }) => {
 
     // Simulate fetching comments
     useEffect(() => {
+
+        console.log('comments', commentsData);
+
         // Simulating fetching comments from your backend
         setComments([
             {
@@ -57,16 +61,30 @@ const CommentSection = ({ postId, currentUser }) => {
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission behavior
+
         const newComment = {
+            username: currentUser, // Assuming 'currentUser' holds the username
             text: commentText,
-            parentId: parentId,
-            username: currentUser
+            parentId: parentId,   // This will be null for new top-level comments
         };
+
         // Submit to backend
-        console.log(newComment);
-        handleClose();
+        axios.post(`/api/v1/blogs/${postId}/comments`, newComment)
+            .then(response => {
+                console.log('Success:', response.data);
+                // Optionally, update local state or trigger a re-fetch of comments
+                setComments(prevComments => [...prevComments, response.data.comment]); // If you want to update the UI immediately
+                setCommentText(''); // Clear the comment text area
+                setParentId(null); // Reset the parentId, important if you are using the same form for replies
+                handleClose(); // Close the form
+            })
+            .catch(error => {
+                console.error('Error adding comment:', error);
+                // Optionally, inform the user of the failure to add a comment
+            });
     };
+
 
     return (
         <div>

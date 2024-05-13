@@ -67,7 +67,7 @@ const BlogPostView = () => {
             <hr />
 
             <div className="text-center">
-              <img src={post.image} alt="Post visual" className="img-fluid w-50" />
+              <img src={post.imageUrl} alt="Post visual" className="img-fluid w-50" />
             </div>
 
             <div className="mt-3">
@@ -88,7 +88,7 @@ const BlogPostView = () => {
 
             <div className="mt-4">
               <h5>Comments</h5>
-              <CommentSection postId={postId} />
+              <CommentSection postId={postId} commentsData={post.comments} />
             </div>
           </Col>
         </Row>

@@ -39,6 +39,7 @@ app.use('/api/v1/blogs', blogRoute)
 app.use('/api/v1/information', informationRoute); // Added
 app.use('/api/v1/quizzes', quizzesRoute); // Added
 
+
 mongoose.set('strictQuery', false)
 
 mongoose
