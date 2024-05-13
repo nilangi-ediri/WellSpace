@@ -342,7 +342,6 @@ const UserProfile = () => {
         if (files) {
             const file = files[0]
             const data = await uploadCloudinary(file)
-            console.log(data);
             setUserDetails(prev => ({
                 ...prev,
                 profilePicture: data.secure_url
@@ -355,7 +354,6 @@ const UserProfile = () => {
         if (files) {
             const file = files[0]
             const data = await uploadCloudinary(file)
-            console.log(data);
             setUserDetails(prev => ({
                 ...prev,
                 verificationDocument: data.secure_url
