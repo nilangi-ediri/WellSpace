@@ -56,9 +56,9 @@ export const getAllBlog = async (req, res) => {
           { title: { $regex: query, $options: "i" } },
           { content: { $regex: query, $options: "i" } }
         ]
-      })
+      }).populate('doctor')
     } else {
-      blogs = await Blog.find({ isPublished: 'published' })
+      blogs = await Blog.find({ isPublished: 'published' }).populate('doctor')
     }
 
     res.status(200).json({

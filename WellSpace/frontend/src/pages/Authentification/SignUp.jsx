@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, ToggleButtonGroup, ToggleButton, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import axios from 'axios';
+import uploadCloudinary from '../../utils/uploadCloudinary';
 
 function UserSignUp() {
   const [userDetails, setUserDetails] = useState({
@@ -22,15 +23,27 @@ function UserSignUp() {
     }));
   };
 
+  const handleFileChange = async (e) => {
+    const { files } = e.target
+    if (files) {
+      const file = files[0]
+      const data = await uploadCloudinary(file)
+      setUserDetails(prev => ({
+        ...prev,
+        verificationDocument: data.secure_url
+      }))
+    }
+  }
+
   const handleRoleChange = (val) => setUserDetails({ ...userDetails, role: val });
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // phone number = 10 digits
     // username must include both numbers and texts
     // email validation
-    
+
     // The form data for the backend API
     const userData = {
       name: `${userDetails.firstName} ${userDetails.lastName}`,
@@ -52,7 +65,7 @@ function UserSignUp() {
         alert('Verification document is required for expert registration.');
         return;
       }
-    } 
+    }
 
     try {
       const response = await axios.post('http://localhost:5000/api/v1/auth/register', userData);
@@ -67,19 +80,19 @@ function UserSignUp() {
   return (
     <div className="signup-container">
       <div className="signup-form">
-      <h2 className="text-center">WellSpace</h2>
-      <img
-      src="/images/Logo.png"
-      style={{
-        display: 'block',
-        margin: '0 auto',
-        width: '60px', // Adjust width as needed
-        height: 'auto' // Keeps the aspect ratio
-      }}
-      alt="WellSpace Logo"
-    />
-   
-      
+        <h2 className="text-center">WellSpace</h2>
+        <img
+          src="/images/Logo.png"
+          style={{
+            display: 'block',
+            margin: '0 auto',
+            width: '60px', // Adjust width as needed
+            height: 'auto' // Keeps the aspect ratio
+          }}
+          alt="WellSpace Logo"
+        />
+
+
         <ToggleButtonGroup type="radio" name="role" defaultValue={userDetails.role} onChange={handleRoleChange}>
           <ToggleButton id="tbg-radio-1" value={'patient'} variant="outline-dark">User</ToggleButton>
           <ToggleButton id="tbg-radio-2" value={'doctor'} variant="outline-dark">Expert</ToggleButton>
@@ -142,15 +155,15 @@ function UserSignUp() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={userDetails.password}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={userDetails.password}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
 
           {userDetails.role === 'doctor' && (
             <Form.Group className="mb-3" controlId="formVerificationDocument">
@@ -158,7 +171,7 @@ function UserSignUp() {
               <Form.Control
                 type="file"
                 name="verificationDocument"
-                onChange={handleChange}
+                onChange={handleFileChange}
                 required={userDetails.role === 'doctor'}
               />
             </Form.Group>
