@@ -18,8 +18,6 @@ const generateToken = user => {
 }
 
 export const register = async (req, res) => {
-
-  // const { email, password, name, role, gender, userName, } = req.body
   const { name, userName, phoneNumber, email, password, verificationDocument, status, role } = req.body
 
   try {
@@ -58,7 +56,9 @@ export const register = async (req, res) => {
         password: hashPassword,
         phoneNumber,
         role,
-        userName
+        userName,
+        verificationDocument,
+        status
       })
     }
 
