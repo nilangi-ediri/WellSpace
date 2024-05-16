@@ -8,7 +8,9 @@ export const blogs = [
     isPublished: "published",
     summary: "Understand anxiety disorders: GAD, panic, social anxiety. Coping strategies, treatment.",
     category: "anxiety",
-    comments: [],
+    comments: [
+      "67035797b5fda9ee74326519"
+    ],
     imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715592252/mountains_mqjclf.jpg"
   },
   {
@@ -19,7 +21,9 @@ export const blogs = [
     isPublished: "published",
     summary: "Combat depression stigma: open conversations, understanding. Recognize signs, seek support, treatment.",
     category: "depression",
-    comments: [],
+    comments: [
+      "67044187b5fda9ee74326519"
+    ],
     imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715592250/forest_lhmchw.jpg"
   },
   {
@@ -30,7 +34,9 @@ export const blogs = [
     isPublished: "pending",
     summary: "Manage stress: mindfulness, relaxation, time management. Build resilience, thrive.",
     category: "stress",
-    comments: [],
+    comments: [
+      "66035797b5fda9ee74326517"
+    ],
     imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715583693/samples/two-ladies.jpg"
   },
   {
@@ -41,7 +47,9 @@ export const blogs = [
     isPublished: "published",
     summary: "Navigate grief: express, seek support, honor memories. Healing journey, seek help.",
     category: "grief",
-    comments: [],
+    comments: [
+      "66035787b5fda9ee74324412"
+    ],
     imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715583673/samples/people/smiling-man.jpg"
   },
   {
@@ -52,7 +60,9 @@ export const blogs = [
     isPublished: "published",
     summary: "Prioritize self-care: exercise, sleep, nutrition, boundaries. Invest in well-being.",
     category: "self-care",
-    comments: [],
+    comments: [
+      "66035787b5fda9ee74324512"
+    ],
     imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715583694/samples/smile.jpg"
   },
   {
@@ -63,7 +73,9 @@ export const blogs = [
     isPublished: "pending",
     summary: "Understanding relationships, emotions, safety. Explore healing approaches for recovery.",
     category: "trauma",
-    comments: [],
+    comments: [
+      "66035787b5fdb9ee74324412"
+    ],
     imageUrl: "https://res.cloudinary.com/de28z5did/image/upload/v1715592494/waterfall_tvayjl.jpg"
   }
 ]

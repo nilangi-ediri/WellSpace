@@ -81,7 +81,9 @@ export const getSingleBlog = async (req, res) => {
 
   try {
 
-    const singleBlog = await Blog.findById(id).populate('doctor')
+    const singleBlog = await Blog.findById(id)
+      .populate('doctor')
+      .populate('comments')
 
     res.status(200).json({
       success: true,
