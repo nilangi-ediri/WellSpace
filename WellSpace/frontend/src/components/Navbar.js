@@ -12,7 +12,7 @@ const NavigationBar = () => {
     // Example user data - you would typically fetch this from your app's user authentication state
     const user = {
         isLoggedIn: true,
-        profilePicture: 'https://cdn.pixabay.com/photo/2015/03/03/08/55/portrait-657116_640.jpg'
+        profilePicture: 'https://cdn-icons-png.flaticon.com/512/6073/6073873.png'
     };
 
     return (
@@ -38,14 +38,14 @@ const NavigationBar = () => {
                         <Nav.Link href="#challenges">Challenges</Nav.Link>
                         <Nav.Link href="#contact">Contact Us</Nav.Link>
                     </Nav>
-                    <Nav>
+                    <Nav className="align-items-center">
                         <Button variant="dark" style={{ height: '30px', fontSize: '12px', marginTop: '9px', padding: '5px 10px' }} onClick={() => window.location.href = '/sign-up'}>
                             Sign up
                         </Button>
                         <Nav.Link style={{ height: '30px', fontSize: '12px', marginTop: '9px', padding: '5px 10px' }} href="/login">Log In</Nav.Link>
                         {user.isLoggedIn && (
                             <Dropdown show={showDropdown} onToggle={handleToggleDropdown}>
-                                <Dropdown.Toggle variant="light" id="dropdown-basic" as="div">
+                                <Dropdown.Toggle variant="light" id="dropdown-basic" as="div" style={{ display: 'flex', alignItems: 'center' }}>
                                     <img
                                         src={user.profilePicture}
                                         width="30"
@@ -57,7 +57,7 @@ const NavigationBar = () => {
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu align="end">
                                     <Dropdown.Item href="/user-profile">My Profile</Dropdown.Item>
-                                    <Dropdown.Item href="/my-blogs">My Blogs</Dropdown.Item>
+                                    <Dropdown.Item href="/user-profile/blog">My Blogs</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         )}

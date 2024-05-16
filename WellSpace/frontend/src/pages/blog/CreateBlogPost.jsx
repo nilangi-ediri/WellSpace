@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card, Container, Row, Col, Form, Button, ListGroup, ToastContainer, Toast } from 'react-bootstrap';
 import NavigationBar from '../../components/Navbar';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -10,8 +10,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import uploadCloudinary from '../../utils/uploadCloudinary';
 import { categoriesArray } from '../../constants/categories';
+import UserContext from '../../contexts/UserContext';
+
 
 const CreateBlogPost = () => {
+  const { user} = useContext(UserContext);
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [image, setImage] = useState('');
@@ -49,7 +52,7 @@ const CreateBlogPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const doctorId = "660247adb56a95c2c97fa68b";
+    // const doctorId = "660247adb56a95c2c97fa68b";
 
     const BlogData = {
       title: title,
@@ -61,7 +64,7 @@ const CreateBlogPost = () => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/v1/blogs/${doctorId}`, BlogData);
+      const response = await axios.post(`http://localhost:5000/api/v1/blogs/${user._id}`, BlogData);
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);

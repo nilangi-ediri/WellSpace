@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Table, Button, Image } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import NavigationBar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import UserContext from '../../contexts/UserContext';
 
 const BlogTable = () => {
+    const {user} = useContext(UserContext);
     const [blogs, setBlogs] = useState([]);
     const navigate = useNavigate();
 
@@ -13,7 +15,8 @@ const BlogTable = () => {
         const fetchBlogs = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/v1/blogs`);
-                setBlogs(response.data.data);
+                const filteredBlogs = response.data.data.filter(blog => blog.doctor._id === user._id);
+                setBlogs(filteredBlogs);
             } catch (error) {
                 console.error('Error fetching blogs:', error);
             }

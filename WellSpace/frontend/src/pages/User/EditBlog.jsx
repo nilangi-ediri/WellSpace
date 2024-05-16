@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Card, Container, Row, Col, Form, Button, ToastContainer, Toast } from 'react-bootstrap';
+import { Card, Container, Row, Col, Form, Button, ToastContainer, Toast, Modal } from 'react-bootstrap';
 import NavigationBar from '../../components/Navbar';
 import ReusableRichTextEditor from '../../components/ReusableRichTextEditor';
 import axios from 'axios';
 import { categoriesArray } from '../../constants/categories';
 import Footer from '../../components/Footer';
+import uploadCloudinary from '../../utils/uploadCloudinary';
 
 const EditBlog = () => {
   const [blogPost, setBlogPost] = useState({
@@ -20,6 +21,8 @@ const EditBlog = () => {
   const [showToast, setShowToast] = useState(false);
   const { postId } = useParams();
   const navigate = useNavigate();
+  const [showDeleteToast, setShowDeleteToast] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchBlogPost = async () => {
@@ -44,36 +47,47 @@ const EditBlog = () => {
     setBlogPost(prev => ({ ...prev, content }));
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreviewUrl(reader.result);
-        setBlogPost(prev => ({ ...prev, image: reader.result }));
-      };
-      reader.readAsDataURL(file);
+  const handleImageChange = async (e) => {
+    const { files } = e.target;
+    if (files.length) {
+      const file = files[0];
+      setImagePreviewUrl(URL.createObjectURL(file));
+      try {
+        const data = await uploadCloudinary(file);
+        setBlogPost(prev => ({ ...prev, image: data.secure_url }));
+      } catch (error) {
+        console.error('Upload failed:', error);
+      }
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/v1/blogs/${postId}`, blogPost);
+      // await axios.put(`http://localhost:5000/api/v1/blogs/${postId}`, blogPost);
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
-        navigate('/blog');
+        navigate('/user-profile/blog');
       }, 2000);
     } catch (error) {
       console.error('Error updating blog:', error);
     }
   };
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
+    setShowModal(true);
+  }
+
+  const funcDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/v1/blogs/${postId}`);
-      navigate('/blog');
+      // await axios.delete(`http://localhost:5000/api/v1/blogs/${postId}`);
+      setShowModal(false);
+      setShowDeleteToast(true);
+      setTimeout(() => {
+        setShowDeleteToast(false);
+        // navigate('/user-profile/blog');
+      }, 2000);
     } catch (error) {
       console.error('Error deleting blog:', error);
     }
@@ -147,14 +161,34 @@ const EditBlog = () => {
           </Col>
         </Row>
 
-        <ToastContainer className="p-3" position="top-end">
+        
+        <ToastContainer className="p-3 position-fixed" position="top-end">
           <Toast onClose={() => setShowToast(false)} show={showToast} delay={2000} autohide>
             <Toast.Header>
               <strong className="me-auto">Blog post updated successfully!</strong>
             </Toast.Header>
             <Toast.Body>Updated!</Toast.Body>
           </Toast>
+
+          <Toast onClose={() => setShowDeleteToast(false)} show={showDeleteToast} delay={2000} autohide>
+            <Toast.Header>
+              <strong className="me-auto">Blog post deleted successfully!</strong>
+            </Toast.Header>
+            <Toast.Body>Deleted!</Toast.Body>
+          </Toast>
         </ToastContainer>
+
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Delete Confirmation</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to delete this blog post?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
+            <Button variant="danger" onClick={funcDelete}>Delete</Button>
+          </Modal.Footer>
+        </Modal>
+
       </Container>
       <Footer />
     </>
