@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, Button, Dropdown } from 'react-bootstrap';
 
 const NavigationBar = () => {
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    const handleToggleDropdown = () => {
+        setShowDropdown(!showDropdown);
+    };
+
     // Example user data - you would typically fetch this from your app's user authentication state
     const user = {
         isLoggedIn: true,
@@ -38,15 +44,22 @@ const NavigationBar = () => {
                         </Button>
                         <Nav.Link style={{ height: '30px', fontSize: '12px', marginTop: '9px', padding: '5px 10px' }} href="/login">Log In</Nav.Link>
                         {user.isLoggedIn && (
-                            <Nav.Link href="/user-profile">
-                                <img
-                                    src={user.profilePicture}
-                                    width="30"
-                                    height="30"
-                                    className="rounded-circle"
-                                    alt="User Profile"
-                                />
-                            </Nav.Link>
+                            <Dropdown show={showDropdown} onToggle={handleToggleDropdown}>
+                                <Dropdown.Toggle variant="light" id="dropdown-basic" as="div">
+                                    <img
+                                        src={user.profilePicture}
+                                        width="30"
+                                        height="30"
+                                        className="rounded-circle"
+                                        alt="User Profile"
+                                        style={{ cursor: 'pointer' }}
+                                    />
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu align="end">
+                                    <Dropdown.Item href="/user-profile">My Profile</Dropdown.Item>
+                                    <Dropdown.Item href="/my-blogs">My Blogs</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         )}
                     </Nav>
                 </Navbar.Collapse>

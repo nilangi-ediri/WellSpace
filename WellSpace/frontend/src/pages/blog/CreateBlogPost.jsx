@@ -9,9 +9,7 @@ import HeroSectionBlog from '../../components/HeroSectionBlog';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import uploadCloudinary from '../../utils/uploadCloudinary';
-
-// Static data for categories, you could dynamically generate this list too
-const categories = ['Technology', 'Health', 'Business', 'Entertainment', 'Sports', 'Science'];
+import { categoriesArray } from '../../constants/categories';
 
 const CreateBlogPost = () => {
   const [title, setTitle] = useState('');
@@ -23,7 +21,6 @@ const CreateBlogPost = () => {
 
   const [imageFile, setImageFile] = useState(null);
   const navigate = useNavigate();
-  const [uploadProgress, setUploadProgress] = useState(0);
   const [imagePreviewUrl, setImagePreviewUrl] = useState('');
 
   // const handleImageChange = (e) => {
@@ -35,8 +32,7 @@ const CreateBlogPost = () => {
       const file = files[0];
       setImagePreviewUrl(URL.createObjectURL(file));
       try {
-        const data = await uploadCloudinary(file, (progress) => setUploadProgress(progress));
-        console.log(data);
+        const data = await uploadCloudinary(file);
         setImageFile(data.secure_url);
         console.log(imageFile)
       } catch (error) {
@@ -121,13 +117,6 @@ const CreateBlogPost = () => {
                   accept="image/*"  // Accepts image files only
                   onChange={handleImageChange}
                 />
-                {uploadProgress > 0 && uploadProgress < 100 && (
-                  <div style={{ width: '100%', backgroundColor: '#ddd' }}>
-                    <div style={{ height: '20px', backgroundColor: 'blue', width: `${uploadProgress}%` }}>
-                      {uploadProgress}%
-                    </div>
-                  </div>
-                )}
                  {imagePreviewUrl && (
                   <div>
                     <img src={imagePreviewUrl} alt="Preview" style={{ width: '50%', marginTop: '10px' }} />
@@ -143,7 +132,7 @@ const CreateBlogPost = () => {
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   <option>Select a category</option>
-                  {categories.map((cat, index) => (
+                  {categoriesArray.map((cat, index) => (
                     <option key={index} value={cat}>{cat}</option>
                   ))}
                 </Form.Control>

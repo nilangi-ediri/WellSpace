@@ -22,6 +22,8 @@ import UserLogin from './pages/Authentification/Login';
 import UserSignUp from './pages/Authentification/SignUp';
 import Information from './pages/Information';
 import UserProfile from './pages/User/UserProfile';
+import BlogTable from './pages/User/BlogTable';
+import EditBlog from './pages/User/EditBlog';
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()))
@@ -40,6 +42,8 @@ function App() {
           <Route path="/sign-up" element={<UserSignUp />} />
           <Route path="/info" element={<Information />} />
           <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/user-profile/blog" element={<BlogTable />} />
+          <Route path="/user-profile/blog/:postId" element={<EditBlog />} />
         </Routes>
       </Router>
     </>
