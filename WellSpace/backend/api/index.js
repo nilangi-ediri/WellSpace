@@ -18,6 +18,8 @@ import quizzesRoute from '../Routes/quizzes.js';
 // import { blogs } from "../seed/blogs.js"
 // import Review from "../Models/ReviewSchema.js"
 // import { reviews } from "../seed/reviews.js"
+// import Comment from "../Models/CommentSchema.js"
+// import { comments } from "../seed/comments.js"
 
 dotenv.config()
 
@@ -50,33 +52,38 @@ mongoose
 // mongoose
 //   .connect(process.env.MONGO_URL)
 //   .then(() => app.listen(port, () => console.log("Server is running on port: " + port)))
-//   .then(async () => {
-//     // Drop all collections
-//     try {
-//       await mongoose.connection.dropCollection('users');
-//       console.log("Collection 'users' dropped.");
+// .then(async () => {
+//   // Drop all collections
+//   try {
+//     await mongoose.connection.dropCollection('users');
+//     console.log("Collection 'users' dropped.");
 
-//       await mongoose.connection.dropCollection('doctors');
-//       console.log("Collection 'doctors' dropped.");
+//     await mongoose.connection.dropCollection('doctors');
+//     console.log("Collection 'doctors' dropped.");
 
-//       await mongoose.connection.dropCollection('blogs');
-//       console.log("Collection 'blogs' dropped.");
+//     await mongoose.connection.dropCollection('blogs');
+//     console.log("Collection 'blogs' dropped.");
 
-//       await mongoose.connection.dropCollection('reviews');
-//       console.log("Collection 'reviews' dropped.");
+//     await mongoose.connection.dropCollection('reviews');
+//     console.log("Collection 'reviews' dropped.");
 
-//     } catch (error) {
-//       console.error("Error dropping collections:", error);
-//     }
-//   })
-//   .then(() => {
-//     Doctor.insertMany(doctors)
-//     console.log("Seeded Doctors...")
-//     User.insertMany(users)
-//     console.log("Seeded Users...")
-//     Blog.insertMany(blogs)
-//     console.log("Seeded Blogs...")
-//     Review.insertMany(reviews)
-//     console.log("Seeded Reviews...")
-//   })
-//   .catch((error) => console.log(`${error}: connection failed`))
+//     await mongoose.connection.dropCollection('comments');
+//     console.log("Collection 'comments' dropped.");
+
+//   } catch (error) {
+//     console.error("Error dropping collections:", error);
+//   }
+// })
+// .then(() => {
+// Doctor.insertMany(doctors)
+// console.log("Seeded Doctors...")
+// User.insertMany(users)
+// console.log("Seeded Users...")
+// Blog.insertMany(blogs)
+// console.log("Seeded Blogs...")
+// Review.insertMany(reviews)
+// console.log("Seeded Reviews...")
+//   Comment.insertMany(comments)
+//   console.log("Seeded Comments...")
+// })
+// .catch((error) => console.log(`${error}: connection failed`))

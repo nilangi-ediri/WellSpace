@@ -80,7 +80,9 @@ export const getSingleBlog = async (req, res) => {
 
   try {
 
-    const singleBlog = await Blog.findById(id).populate('doctor')
+    const singleBlog = await Blog.findById(id)
+      .populate('doctor')
+      .populate('comments')
 
     res.status(200).json({
       success: true,
@@ -125,5 +127,35 @@ export const addComments = async (req, res) => {
     console.error('Error adding comment:', error);
     console.log(error)
     res.status(500).send('Error adding comment');
+  }
+}
+
+export const updateBlog = async (req, res) => {
+  const id = req.params.id
+
+
+  try {
+    const updateBlog = await Blog.findByIdAndUpdate(
+      id,
+      {
+        $set: req.body
+      },
+      {
+        new: true
+      }
+    )
+
+    res.status(200).json({
+      success: true,
+      message: 'Blog successfully updated',
+      data: updateBlog
+    })
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      success: false,
+      message: 'Failed to update'
+    })
   }
 }
