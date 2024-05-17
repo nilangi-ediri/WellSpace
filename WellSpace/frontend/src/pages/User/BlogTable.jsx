@@ -12,17 +12,23 @@ const BlogTable = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchBlogs = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/api/v1/blogs`);
-                const filteredBlogs = response.data.data.filter(blog => blog.doctor._id === user._id);
-                setBlogs(filteredBlogs);
-            } catch (error) {
-                console.error('Error fetching blogs:', error);
-            }
-        };
-        fetchBlogs();
-    }, []);
+        // Only run the effect if the user is not null
+        if (user) {
+            const fetchBlogs = async () => {
+                try {
+                    const response = await axios.get(`http://localhost:5000/api/v1/blogs`); // Same API as get all blogs
+                    // console.log("Hello this is user", user);
+                    // console.log(response.data.data);
+                    const filteredBlogs = response.data.data.filter(blog => blog.doctor._id === user._id);
+                    setBlogs(filteredBlogs);
+                } catch (error) {
+                    console.error('Error fetching blogs:', error);
+                }
+            };
+            fetchBlogs();
+        }
+    }, [user]); // Add user as a dependency to re-run the effect when the user changes
+
 
     const handleDelete = async (id) => {
         try {
