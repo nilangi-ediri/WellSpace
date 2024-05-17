@@ -3,7 +3,7 @@ import Doctor from "../Models/DoctorSchema.js"
 
 export const createBlog = async (req, res) => {
   const id = req.params.doctorId
-  const { title, content, category, image, summary, isPublished, imageUrl } = req.body
+  const { title, content, category, image, summary, isPublished } = req.body
 
   console.log(id)
   console.log(req.body)
@@ -16,8 +16,7 @@ export const createBlog = async (req, res) => {
       imageUrl: image,
       doctor: id,
       isPublished,
-      summary,
-      imageUrl
+      summary
     })
 
     const savedBlog = await newBlog.save()
@@ -96,6 +95,38 @@ export const getSingleBlog = async (req, res) => {
       success: false,
       message: 'No Blog found'
     })
+  }
+}
+
+export const addComments = async (req, res) => {
+  const { username, text, parentId } = req.body;
+  console.log(req.body)
+  try {
+    const post = await Blog.findById(req.params.postId);
+    if (!post) {
+      return res.status(404).send('Post not found');
+    }
+
+    const newComment = { username, text, replies: [] };
+
+    if (parentId) {
+      // Find the parent comment and add the new comment to replies
+      const parentComment = post.comments.id(parentId);
+      if (!parentComment) {
+        return res.status(404).send('Parent comment not found');
+      }
+      parentComment.replies.push(newComment);
+    } else {
+      // Add a new top-level comment
+      post.comments.push(newComment);
+    }
+
+    await post.save();
+    res.status(201).json({ message: 'Comment added successfully', comment: newComment });
+  } catch (error) {
+    console.error('Error adding comment:', error);
+    console.log(error)
+    res.status(500).send('Error adding comment');
   }
 }
 

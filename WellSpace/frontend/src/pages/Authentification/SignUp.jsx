@@ -51,7 +51,7 @@ function UserSignUp() {
       phoneNumber: userDetails.phoneNumber,
       email: userDetails.email,
       password: userDetails.password,
-      verificationDocument: '',
+      verificationDocument: userDetails.verificationDocument,
       status: userDetails.role === 'doctor' ? 'pending' : 'active',
       role: userDetails.role
     };

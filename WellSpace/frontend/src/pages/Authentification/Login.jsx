@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Button, Toast, ToastContainer } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import UserContext from '../../contexts/UserContext';
 
 function UserLogin() {
   const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ function UserLogin() {
   const [error, setError] = useState('');
   const [showToast, setShowToast] = useState(false);
   const navigate = useNavigate();
+  const { login } = useContext(UserContext);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -28,6 +30,10 @@ function UserLogin() {
         email: email,
         password: password
       });
+
+      const userData = response.data; 
+
+      login(userData.data); 
 
       setShowToast(true);
       setTimeout(() => {

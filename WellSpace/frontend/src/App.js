@@ -22,27 +22,29 @@ import UserLogin from './pages/Authentification/Login';
 import UserSignUp from './pages/Authentification/SignUp';
 import Information from './pages/Information';
 import UserProfile from './pages/User/UserProfile';
+import BlogTable from './pages/User/BlogTable';
+import EditBlog from './pages/User/EditBlog';
+import { UserProvider } from './contexts/UserContext';
 
 function App() {
-  const [editor] = useState(() => withReact(createEditor()))
+  const [editor] = useState(() => withReact(createEditor()));
   return (
-    <>
+    <UserProvider>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-
           <Route path="/blog" element={<AllBlogPosts />} />
           <Route path="/create-blog" element={<CreateBlogPost />} />
           <Route path="/blog/:postId" element={<BlogPostView />} />
-          {/* <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} /> */}
           <Route path="/login" element={<UserLogin />} />
           <Route path="/sign-up" element={<UserSignUp />} />
           <Route path="/info" element={<Information />} />
           <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/user-profile/blog" element={<BlogTable />} />
+          <Route path="/user-profile/blog/:postId" element={<EditBlog />} />
         </Routes>
       </Router>
-    </>
+    </UserProvider>
   );
 }
 

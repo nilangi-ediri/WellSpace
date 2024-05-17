@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card, Container, Row, Col, Form, Button, ListGroup, ToastContainer, Toast } from 'react-bootstrap';
 import NavigationBar from '../../components/Navbar';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -9,11 +9,12 @@ import HeroSectionBlog from '../../components/HeroSectionBlog';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import uploadCloudinary from '../../utils/uploadCloudinary';
+import { categoriesArray } from '../../constants/categories';
+import UserContext from '../../contexts/UserContext';
 
-// Static data for categories, you could dynamically generate this list too
-const categories = ['Technology', 'Health', 'Business', 'Entertainment', 'Sports', 'Science'];
 
 const CreateBlogPost = () => {
+  const { user} = useContext(UserContext);
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [image, setImage] = useState('');
@@ -23,19 +24,25 @@ const CreateBlogPost = () => {
 
   const [imageFile, setImageFile] = useState(null);
   const navigate = useNavigate();
+  const [imagePreviewUrl, setImagePreviewUrl] = useState('');
 
   // const handleImageChange = (e) => {
   //   setImageFile(e.target.files[0]);
   // };
   const handleImageChange = async (e) => {
-    const { files } = e.target
-    if (files) {
-      const file = files[0]
-      const data = await uploadCloudinary(file)
-      console.log(data);
-      setImageFile(data.secure_url)
+    const { files } = e.target;
+    if (files.length) {
+      const file = files[0];
+      setImagePreviewUrl(URL.createObjectURL(file));
+      try {
+        const data = await uploadCloudinary(file);
+        setImageFile(data.secure_url);
+        console.log(imageFile)
+      } catch (error) {
+        console.error('Upload failed:', error);
+      }
     }
-  }
+  };
 
   const handleEditorChange = content => {
     setContent(content);
@@ -45,23 +52,19 @@ const CreateBlogPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const doctorId = "660247adb56a95c2c97fa68b";
+    // const doctorId = "660247adb56a95c2c97fa68b";
 
     const BlogData = {
       title: title,
       summary: summary,
-      image: imageFile.path,
+      image: imageFile,
       category: category,
       content: content,
       isPublished: "published"
     }
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/v1/blogs/${doctorId}`, BlogData, {
-        // headers: {
-        //   'Content-Type': 'multipart/form-data'
-        // } //This is to post the image
-      });
+      const response = await axios.post(`http://localhost:5000/api/v1/blogs/${user._id}`, BlogData);
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
@@ -117,7 +120,11 @@ const CreateBlogPost = () => {
                   accept="image/*"  // Accepts image files only
                   onChange={handleImageChange}
                 />
-                {imageFile && <div>Selected file: {imageFile.name}</div>}
+                 {imagePreviewUrl && (
+                  <div>
+                    <img src={imagePreviewUrl} alt="Preview" style={{ width: '50%', marginTop: '10px' }} />
+                  </div>
+                )}
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="blogCategory">
@@ -128,7 +135,7 @@ const CreateBlogPost = () => {
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   <option>Select a category</option>
-                  {categories.map((cat, index) => (
+                  {categoriesArray.map((cat, index) => (
                     <option key={index} value={cat}>{cat}</option>
                   ))}
                 </Form.Control>

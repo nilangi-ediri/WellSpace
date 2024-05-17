@@ -1,8 +1,17 @@
 import mongoose from "mongoose";
 
+const commentSchema = new mongoose.Schema({
+  username: { type: String, required: true },
+  text: { type: String, required: true },
+  replies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
+});
+
+// If you want to allow nested comments to arbitrary depth, you would typically use:
+commentSchema.add({ replies: [commentSchema] });
+
 const BlogSchema = new mongoose.Schema({
   doctor: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Doctor",
   },
   title: { type: String, required: true },
@@ -12,9 +21,8 @@ const BlogSchema = new mongoose.Schema({
     enum: ["pending", "published"],
     default: "pending",
   },
-  // Additional fields requested by frontend
   category: { type: String },
-  comments: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
+  comments: [commentSchema],
   createdAt: { type: Date, default: Date.now },
   summary: { type: String },
   imageUrl: { type: String }
@@ -22,4 +30,7 @@ const BlogSchema = new mongoose.Schema({
   { timestamps: true }
 );
 
-export default mongoose.model("Blog", BlogSchema);
+const Blog = mongoose.model("Blog", BlogSchema);
+const Comment = mongoose.model('Comment', commentSchema); // If needed as a separate model
+
+export default Blog;
