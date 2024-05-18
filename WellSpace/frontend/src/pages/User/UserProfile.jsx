@@ -15,7 +15,6 @@ const UserProfile = () => {
         username: '',
         phoneNumber: '',
         email: '',
-        password: '',
         role: '',
         profilePicture: 'https://via.placeholder.com/150',
         verificationDocument: null
@@ -71,10 +70,14 @@ const UserProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // console.log(userDetails)
-            const response = await axios.put(`http://localhost:5000/api/v1/users/${user._id}`, userDetails);
+            console.log(userDetails)
+            let response = null;
+            if (userDetails.role === 'doctor') {
+                response = await axios.put(`http://localhost:5000/api/v1/doctors/${user._id}`, userDetails);
+            } else if(userDetails.role === 'patient') {
+                response = await axios.put(`http://localhost:5000/api/v1/users/${user._id}`, userDetails);
+            }
             if (response.status === 200) {
-                console.log('xxx',response.data.data)
                 login(response.data.data); // Update context with new user data
                 setEditing(false); // Exit editing mode
                 alert('Profile updated successfully');
@@ -162,26 +165,28 @@ const UserProfile = () => {
                         </Form.Group>
                     ))}
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Expert Verification Document</Form.Label>
-                        {userDetails.verificationDocument && (
-                            <div style={{ marginTop: '10px' }}>
-                                <a href={userDetails.verificationDocument} target="_blank" rel="noopener noreferrer">
-                                    <img src="https://via.placeholder.com/150?text=PDF" alt="PDF Thumbnail" style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
-                                    <p>{userDetails.verificationDocument.split('/').pop()}</p>
-                                </a>
-                            </div>
-                        )}
-                        {editing && (
-                            <Form.Control
-                                type="file"
-                                name="verificationDocument"
-                                onChange={handleFileChange}
-                                required
-                            />
-                        )}
-                    </Form.Group>
-
+                    {userDetails.role === 'doctor' && (
+                          <Form.Group className="mb-3">
+                          <Form.Label>Expert Verification Document</Form.Label>
+                          {userDetails.verificationDocument && (
+                              <div style={{ marginTop: '10px' }}>
+                                  <a href={userDetails.verificationDocument} target="_blank" rel="noopener noreferrer">
+                                      <img src="https://via.placeholder.com/150?text=PDF" alt="PDF Thumbnail" style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
+                                      <p>{userDetails.verificationDocument.split('/').pop()}</p>
+                                  </a>
+                              </div>
+                          )}
+                          {editing && (
+                              <Form.Control
+                                  type="file"
+                                  name="verificationDocument"
+                                  onChange={handleFileChange}
+                                  required
+                              />
+                          )}
+                      </Form.Group>
+                    )}
+                  
                     <Button variant="dark" onClick={toggleEdit} className="mb-5">
                         {editing ? 'Save Changes' : 'Edit Profile'}
                     </Button>
