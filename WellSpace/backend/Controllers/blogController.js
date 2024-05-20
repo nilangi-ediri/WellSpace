@@ -127,3 +127,38 @@ export const updateBlog = async (req, res) => {
     })
   }
 }
+
+export const deleteBlog = async (req, res) => {
+  const id = req.params.id
+
+  try {
+    const deletedBlog = await Blog.findByIdAndDelete(
+      id
+    )
+
+    if (!deletedBlog) {
+      return res.status(400).json({
+        success: false,
+        message: 'Blog not found'
+      })
+    }
+
+    const doctorId = deletedBlog.doctor
+
+    await Doctor.findByIdAndUpdate(doctorId, {
+      $pull: { blogs: id }
+    })
+
+    res.status(200).json({
+      success: true,
+      message: 'Blog successfully deleted'
+    })
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to delete'
+    })
+  }
+}
