@@ -120,7 +120,7 @@ const UserProfile = () => {
                     </Col>
                 </Row>
 
-                <h1 style={{ fontSize: '1.75rem' }}>Profile of {userDetails.name}</h1>
+                <h1 style={{ fontSize: '1.75rem' }}>Profile of {userDetails.name} | [{userDetails.role.toLocaleUpperCase()}]</h1> 
                 <Form onSubmit={handleSubmit}>
                     <Row className="mb-3">
                         <Col xs={12} md={4} className="text-left">
@@ -167,22 +167,20 @@ const UserProfile = () => {
 
                     {userDetails.role === 'doctor' && (
                           <Form.Group className="mb-3">
-                          <Form.Label>Expert Verification Document</Form.Label>
-                          {userDetails.verificationDocument && (
-                              <div style={{ marginTop: '10px' }}>
-                                  <a href={userDetails.verificationDocument} target="_blank" rel="noopener noreferrer">
-                                      <img src="https://via.placeholder.com/150?text=PDF" alt="PDF Thumbnail" style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
-                                      <p>{userDetails.verificationDocument.split('/').pop()}</p>
-                                  </a>
-                              </div>
+                        {userDetails.verificationDocument && (
+                          <><Form.Label>Expert Verification Document</Form.Label><div style={{ marginTop: '10px' }}>
+                                    <a href={userDetails.verificationDocument} target="_blank" rel="noopener noreferrer">
+                                        <img src="https://via.placeholder.com/150?text=PDF" alt="PDF Thumbnail" style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
+                                        <p>{userDetails.verificationDocument.split('/').pop()}</p>
+                                    </a>
+                                </div></>
                           )}
                           {editing && (
-                              <Form.Control
-                                  type="file"
-                                  name="verificationDocument"
-                                  onChange={handleFileChange}
-                                  required
-                              />
+                            <><Form.Label>Expert Verification Document</Form.Label><Form.Control
+                                    type="file"
+                                    name="verificationDocument"
+                                    onChange={handleFileChange}
+                                    required /></>
                           )}
                       </Form.Group>
                     )}
