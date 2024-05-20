@@ -82,6 +82,8 @@ export const login = async (req, res) => {
 
   const { email } = req.body
 
+  console.log(req.body)
+
   try {
     let user = null
 
@@ -95,7 +97,7 @@ export const login = async (req, res) => {
       user = doctor
     }
 
-    console.log(user.status)
+    console.log(user)
 
     if (!user) {
       return res.status(404).json({
@@ -115,7 +117,7 @@ export const login = async (req, res) => {
       status: user.status,
       message: "User successfully logged in!",
       token,
-      data: { ...rest },
+      data: { role, ...rest },
       role
     })
 

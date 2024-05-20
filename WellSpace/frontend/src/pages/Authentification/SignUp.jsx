@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Form, Button, ToggleButtonGroup, ToggleButton, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Form, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import axios from 'axios';
 import uploadCloudinary from '../../utils/uploadCloudinary';
+import { useNavigate, NavLink } from 'react-router-dom';
 
 function UserSignUp() {
   const [userDetails, setUserDetails] = useState({
@@ -15,6 +16,8 @@ function UserSignUp() {
     verificationDocument: null
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setUserDetails(prevDetails => ({
@@ -24,27 +27,22 @@ function UserSignUp() {
   };
 
   const handleFileChange = async (e) => {
-    const { files } = e.target
+    const { files } = e.target;
     if (files) {
-      const file = files[0]
-      const data = await uploadCloudinary(file)
+      const file = files[0];
+      const data = await uploadCloudinary(file);
       setUserDetails(prev => ({
         ...prev,
         verificationDocument: data.secure_url
-      }))
+      }));
     }
-  }
+  };
 
   const handleRoleChange = (val) => setUserDetails({ ...userDetails, role: val });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // phone number = 10 digits
-    // username must include both numbers and texts
-    // email validation
-
-    // The form data for the backend API
     const userData = {
       name: `${userDetails.firstName} ${userDetails.lastName}`,
       userName: userDetails.username,
@@ -56,11 +54,7 @@ function UserSignUp() {
       role: userDetails.role
     };
 
-    // Add verification document for expert
     if (userDetails.role === 'doctor') {
-      // Convert the file to a URL or send the file itself based on your backend implementation
-      // Here we're just using the file name as a placeholder
-      userData.verificationDocumentURL = userDetails.verificationDocument?.name || '';
       if (!userDetails.verificationDocument) {
         alert('Verification document is required for expert registration.');
         return;
@@ -74,7 +68,6 @@ function UserSignUp() {
     } catch (error) {
       console.error('Error:', error);
     }
-
   };
 
   return (
@@ -86,12 +79,11 @@ function UserSignUp() {
           style={{
             display: 'block',
             margin: '0 auto',
-            width: '60px', // Adjust width as needed
-            height: 'auto' // Keeps the aspect ratio
+            width: '60px',
+            height: 'auto'
           }}
           alt="WellSpace Logo"
         />
-
 
         <ToggleButtonGroup type="radio" name="role" defaultValue={userDetails.role} onChange={handleRoleChange}>
           <ToggleButton id="tbg-radio-1" value={'patient'} variant="outline-dark">User</ToggleButton>
@@ -177,9 +169,40 @@ function UserSignUp() {
             </Form.Group>
           )}
 
+          <div className="text-center mt-3">
+            <p style={{ fontSize: '0.875em', color: '#6c757d', textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)' }}>
+              Already have an account?
+              <NavLink 
+                to="/login" 
+                style={{ 
+                  marginLeft: '5px', // Add space before the link
+                  color: '#6c757d', 
+                  textDecoration: 'underline', 
+                  textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)' 
+                }}
+              >
+                Log In
+              </NavLink>
+            </p>
+          </div>
+
           <Button variant="dark" type="submit" className="w-100">
             {userDetails.role === 'doctor' ? 'Register as Expert' : 'Create Account'}
           </Button>
+
+          <div className="text-center mt-3">
+            <Button 
+              variant="link" 
+              onClick={() => navigate('/')} 
+              style={{ 
+                textDecoration: 'underline', 
+                color: '#6c757d', 
+                textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)' 
+              }}
+            >
+              Back to Home
+            </Button>
+          </div>
         </Form>
       </div>
     </div>

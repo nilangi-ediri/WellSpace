@@ -46,9 +46,6 @@ export const getAllUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   const id = req.params.id
 
-  console.log(id)
-  console.log(req.body)
-
   try {
 
     const updatedUser = await User.findByIdAndUpdate(
@@ -66,7 +63,7 @@ export const updateUser = async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'User successfully updated',
-      data: req.body
+      data: updatedUser
     })
 
   } catch (error) {

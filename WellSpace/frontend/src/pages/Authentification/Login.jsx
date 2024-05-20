@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Form, Button, Toast, ToastContainer } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import UserContext from '../../contexts/UserContext';
 
@@ -32,8 +32,6 @@ function UserLogin() {
       });
 
       const userData = response.data; 
-
-      console.log('xxx', userData)
 
       login(userData.data); 
 
@@ -96,6 +94,37 @@ function UserLogin() {
             LogIn
           </Button>
         </Form>
+
+        <div className="text-center mt-3">
+            <p style={{ fontSize: '0.875em', color: '#6c757d', textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)' }}>
+              Don't have an account?
+              <NavLink 
+                to="/sign-up" 
+                style={{ 
+                  marginLeft: '5px', // Add space before the link
+                  color: '#6c757d', 
+                  textDecoration: 'underline', 
+                  textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)' 
+                }}
+              >
+                Sign Up
+              </NavLink>
+            </p>
+          </div>
+
+          <div className="text-center mt-3">
+            <Button 
+              variant="link" 
+              onClick={() => navigate('/')} 
+              style={{ 
+                textDecoration: 'underline', 
+                color: '#6c757d', 
+                textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)' 
+              }}
+            >
+              Back to Home
+            </Button>
+          </div>
 
         <ToastContainer className="p-3" position="top-end">
           <Toast onClose={() => setShowToast(false)} show={showToast} delay={2000} autohide>
