@@ -8,6 +8,7 @@ import doctorRoute from "../Routes/doctor.js";
 import userRoute from "../Routes/user.js";
 import feedbackRoute from "../Routes/feedback.js";
 import blogRoute from "../Routes/blog.js";
+import commentRoute from "../Routes/comment.js";
 import informationRoute from '../Routes/information.js';
 import quizzesRoute from '../Routes/quizzes.js';
 // import Doctor from "../Models/DoctorSchema.js"
@@ -38,6 +39,7 @@ app.use('/api/v1/doctors', doctorRoute)
 app.use('/api/v1/users', userRoute)
 app.use('/api/v1/feedbacks', feedbackRoute)
 app.use('/api/v1/blogs', blogRoute)
+app.use('/api/v1/comments', commentRoute)
 app.use('/api/v1/information', informationRoute); // Added
 app.use('/api/v1/quizzes', quizzesRoute); // Added
 

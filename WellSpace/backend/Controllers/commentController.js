@@ -52,3 +52,38 @@ export const createComment = async (req, res) => {
     })
   }
 }
+
+export const deleteComment = async (req, res) => {
+  const id = req.params.id
+
+  try {
+    const deletedComment = await Comment.findByIdAndDelete(
+      id
+    )
+
+    if (!deletedComment) {
+      return res.status(400).json({
+        success: false,
+        message: 'Comment not found'
+      })
+    }
+
+    const blogId = deletedComment.blog
+
+    await Blog.findByIdAndUpdate(blogId, {
+      $pull: { comments: id }
+    })
+
+    res.status(200).json({
+      success: true,
+      message: 'Comment successfully deleted'
+    })
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to delete'
+    })
+  }
+}
