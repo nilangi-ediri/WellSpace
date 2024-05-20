@@ -52,3 +52,25 @@ export const createComment = async (req, res) => {
     })
   }
 }
+
+export const deleteComment = async (req, res) => {
+  const id = req.params.id
+
+  try {
+    const deleteComment = await Comment.findByIdAndDelete(
+      id
+    )
+
+    res.status(200).json({
+      success: true,
+      message: 'Comment successfully deleted'
+    })
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to delete'
+    })
+  }
+}
