@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -8,8 +8,10 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';  // Import Quill styles
 import CommentSection from '../../components/CommentSection';
 import { useParams } from 'react-router-dom';
+import UserContext from '../../contexts/UserContext';
 
 const BlogPostView = () => {
+  const { user} = useContext(UserContext);
   const [post, setPost] = useState(null);
 
   const { postId } = useParams();
@@ -88,7 +90,7 @@ const BlogPostView = () => {
 
             <div className="mt-4">
               <h5>Comments</h5>
-              <CommentSection postId={postId} commentsData={post.comments} />
+              <CommentSection postId={postId} commentsData={post.comments} currentUserId={user} />
             </div>
           </Col>
         </Row>
