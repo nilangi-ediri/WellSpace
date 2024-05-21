@@ -1,4 +1,3 @@
-// src/pages/ContactUs.js
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Toast } from 'react-bootstrap';
 import '../css/contact.css';
@@ -65,18 +64,22 @@ const ContactUs = () => {
             <Col md={6}>
               <Card className="contact-card form-card">
                 <Card.Body>
+                <Card.Text>
+                    <h6>Send Us Your Questions or Feedback</h6>
+                  </Card.Text>
+                   {/* <h3 className="text-center">Send Us Your Questions or Feedback</h3> */}
                   <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="formName">
-                      <Form.Label>Name:</Form.Label>
-                      <Form.Control type="text" placeholder="Enter your name" />
+                    <Form.Group className = "mb-3" controlId="formName">
+                      {/* <Form.Label>Name:</Form.Label> */}
+                      <Form.Control type="text" placeholder="Name" />
                     </Form.Group>
-                    <Form.Group controlId="formEmail">
-                      <Form.Label>E-mail:</Form.Label>
-                      <Form.Control type="email" placeholder="Enter your email" />
+                    <Form.Group className = "mb-3" controlId="formEmail">
+                      {/* <Form.Label>E-mail:</Form.Label> */}
+                      <Form.Control type="email" placeholder="E-mail" />
                     </Form.Group>
-                    <Form.Group controlId="formMessage">
-                      <Form.Label>Message:</Form.Label>
-                      <Form.Control as="textarea" rows={3} placeholder="Enter your message" />
+                    <Form.Group className = "mb-3"  controlId="formMessage">
+                      {/* <Form.Label>Message:</Form.Label> */}
+                      <Form.Control as="textarea" rows={3} placeholder="Message" />
                     </Form.Group>
                     <Button variant="dark" type="submit" className="mt-3">
                       Submit

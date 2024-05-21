@@ -61,7 +61,7 @@ const BlogTable = () => {
             <div className="container mt-5">
                 <div className="d-flex justify-content-end mb-3">
                     <Link to="/create-blog">
-                    <Button className=" w-100">
+                    <Button variant = "success" className=" w-100">
                                 <FaPenToSquare className="icon mx-1" /> Write a New Article
                     </Button>
                     </Link>
