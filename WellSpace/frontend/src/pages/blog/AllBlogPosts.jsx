@@ -234,6 +234,7 @@ import NavigationBar from '../../components/Navbar';
 import HeroSectionBlog from '../../components/HeroSectionBlog';
 import axios from 'axios';
 import { categoriesArray } from '../../constants/categories';
+import Footer from '../../components/Footer';
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -354,11 +355,6 @@ const AllBlogPosts = () => {
                         </Pagination>
                     </Col>
                     <Col md={4}>
-                        <Link to="/create-blog">
-                            <Button className="mb-4 w-100">
-                                <FaPenToSquare className="icon mx-1" /> Write a New Article
-                            </Button>
-                        </Link>
                         <Form className="mb-4">
                             <Form.Group controlId="searchBar">
                                 <Form.Control type="text" placeholder="Search blog..." onChange={handleSearchChange} />
@@ -375,6 +371,7 @@ const AllBlogPosts = () => {
                     </Col>
                 </Row>
             </Container>
+            <Footer />
         </>
     );
 };
