@@ -394,6 +394,8 @@
     color: white;
     /* White text color */
     padding-top: 1rem;
+    position: relative;
+    bottom: 0;
 }
 
 .page-footer a {

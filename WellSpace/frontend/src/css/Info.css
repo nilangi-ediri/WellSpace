@@ -151,4 +151,10 @@
 
 }
 
+.outer-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 /* You may need additional global styles that were applied on the signup page, such as body font-family, etc. */

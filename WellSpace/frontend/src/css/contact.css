@@ -1,0 +1,32 @@
+/* src/css/contact.css */
+.contact-us {
+    background: linear-gradient(135deg, #008080, #20B2AA);
+    color: white;
+    padding: 50px 0 20px 0;
+    /* Adjusted bottom padding */
+    margin-bottom: 0;
+    /* Remove any bottom margin */
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.contact-card .card-body {
+    text-align: center;
+}
+
+.contact-us h2 {
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.contact-icon {
+    margin-bottom: 15px;
+    color: white;
+}

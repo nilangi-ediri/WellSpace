@@ -25,7 +25,8 @@ import UserProfile from './pages/User/UserProfile';
 import BlogTable from './pages/User/BlogTable';
 import EditBlog from './pages/User/EditBlog';
 import { UserProvider } from './contexts/UserContext';
-import PrivateRoute from './components/PrivateRoute';
+import { PrivateRouteExpert, PrivateRoute } from './components/PrivateRoute';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()));
@@ -34,16 +35,17 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/blog" element={<AllBlogPosts />} />
-          <Route path="/create-blog" element={<PrivateRoute element={CreateBlogPost} />} />
+          <Route path="/create-blog" element={<PrivateRouteExpert element={CreateBlogPost} />} />
           <Route path="/blog/:postId" element={<BlogPostView />} />
           <Route path="/login" element={<UserLogin />} />
           <Route path="/sign-up" element={<UserSignUp />} />
           <Route path="/info" element={<Information />} />
           <Route path="/user-profile" element={<PrivateRoute element={UserProfile} />} />
           {/* <Route path="/user-profile" element={<UserProfile />} /> */}
-          <Route path="/user-profile/blog" element={<PrivateRoute element={BlogTable} />} />
-          <Route path="/user-profile/blog/:postId" element={<PrivateRoute element={EditBlog} />} />
+          <Route path="/user-profile/blog" element={<PrivateRouteExpert element={BlogTable} />} />
+          <Route path="/user-profile/blog/:postId" element={<PrivateRouteExpert element={EditBlog} />} />
         </Routes>
       </Router>
     </UserProvider>

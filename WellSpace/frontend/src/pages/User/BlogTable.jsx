@@ -56,7 +56,7 @@ const BlogTable = () => {
     };
 
     return (
-        <>
+        <div className='outer-container'>
             <NavigationBar />
             <div className="container mt-5">
                 <div className="d-flex justify-content-end mb-3">
@@ -124,7 +124,7 @@ const BlogTable = () => {
                 </Modal.Footer>
             </Modal>
             <Footer />
-        </>
+        </div>
     );
 };
 export default BlogTable;

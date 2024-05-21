@@ -62,7 +62,9 @@ const NavigationBar = () => {
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu align="end">
                                     <Dropdown.Item href="/user-profile">My Profile</Dropdown.Item>
-                                    <Dropdown.Item href="/user-profile/blog">My Blogs</Dropdown.Item>
+                                    {user.role === 'doctor' && (
+                                        <Dropdown.Item href="/user-profile/blog">My Blogs</Dropdown.Item>
+                                    )}
                                     <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
