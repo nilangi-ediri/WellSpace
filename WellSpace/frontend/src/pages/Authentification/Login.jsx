@@ -36,10 +36,8 @@ function UserLogin() {
       login(userData.data); 
 
       setShowToast(true);
-      setTimeout(() => {
-        navigate('/'); // Redirects to the home page after showing the toast
-      }, 2000); // Wait for 2 seconds before redirecting
-
+      navigate('/'); 
+      
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message || 'An error occurred during login.');

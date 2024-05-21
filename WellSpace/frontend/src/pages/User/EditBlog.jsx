@@ -54,7 +54,7 @@ const EditBlog = () => {
       setImagePreviewUrl(URL.createObjectURL(file));
       try {
         const data = await uploadCloudinary(file);
-        setBlogPost(prev => ({ ...prev, image: data.secure_url }));
+        setBlogPost(prev => ({ ...prev, imageUrl: data.secure_url }));
       } catch (error) {
         console.error('Upload failed:', error);
       }
@@ -64,7 +64,8 @@ const EditBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // await axios.put(`http://localhost:5000/api/v1/blogs/${postId}`, blogPost);
+      console.log(blogPost)
+      await axios.put(`http://localhost:5000/api/v1/blogs/${postId}`, blogPost);
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
@@ -91,6 +92,10 @@ const EditBlog = () => {
     } catch (error) {
       console.error('Error deleting blog:', error);
     }
+  };
+
+  const handleDiscard = () => {
+    navigate('/user-profile/blog');
   };
 
   return (
@@ -157,6 +162,8 @@ const EditBlog = () => {
               <Button variant="primary" type="submit">Update</Button>
               {' '}
               <Button variant="danger" onClick={handleDelete}>Delete</Button>
+              {' '}
+              <Button variant="secondary" onClick={handleDiscard}>Discard Changes</Button>
             </Form>
           </Col>
         </Row>
