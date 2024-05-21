@@ -20,7 +20,7 @@ body,
     border-radius: 10px;
 }
 
-.form-card {
+.contact-form-card {
     background: linear-gradient(135deg, #0c969b, #6eced1);
     /* Light teal background color */
     color: black;
