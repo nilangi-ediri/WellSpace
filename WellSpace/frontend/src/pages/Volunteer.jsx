@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Row, Col, Card, Button, Form, Accordion, ListGroup } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Row, Col, Card, Button, Form, Accordion, ListGroup, Toast } from 'react-bootstrap';
 import NavigationBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import HeroVolunteer from '../components/HeroVolunteer';
@@ -8,6 +8,12 @@ import "../css/volunteer.css"
 
 
 const Volunteer = () => {
+    const [showToast, setShowToast] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowToast(true);
+  };
     return (
         <div className="volunteer-page">
             <NavigationBar />
@@ -155,8 +161,8 @@ const Volunteer = () => {
                         <div id="signup" className="mb-4">
                             <Card className="form-card">
                                 <Card.Body>
-                                    <Card.Title className="text-center">Sign-Up Form</Card.Title>
-                                    <Form>
+                                    <Card.Title className="text-center">Volunteer Sign-Up Form</Card.Title>
+                                    <Form onSubmit={handleSubmit}>
                                         <Form.Group controlId="formName">
                                             <Form.Control type="text" placeholder="Name" />
                                         </Form.Group>
@@ -186,6 +192,18 @@ const Volunteer = () => {
                 </Row>
             </Container>
             <Footer />
+            <Toast
+        style={{ position: 'fixed', top: 20, right: 20 }}
+        onClose={() => setShowToast(false)}
+        show={showToast}
+        delay={3000}
+        autohide
+      >
+        <Toast.Header>
+          <strong className="mr-auto">WellSpace</strong>
+        </Toast.Header>
+        <Toast.Body>Thank you for your signing up to Volunteer. We will get back to you soon.</Toast.Body>
+      </Toast>
         </div>
     );
 };
