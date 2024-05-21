@@ -1,22 +1,23 @@
-/* src/css/contact.css */
 .contact-us {
-    background: linear-gradient(135deg, #008080, #20B2AA);
+    background: linear-gradient(135deg, #008080, #101312);
+    /* Original background color */
     color: white;
     padding: 50px 0 20px 0;
-    /* Adjusted bottom padding */
     margin-bottom: 0;
-    /* Remove any bottom margin */
 }
 
-.contact-card {
+.contact-card,
+.form-card {
     background: rgba(255, 255, 255, 0.1);
+    /* Original card background color */
     color: white;
     border: none;
     margin-bottom: 20px;
     border-radius: 10px;
 }
 
-.contact-card .card-body {
+.contact-card .card-body,
+.form-card .card-body {
     text-align: center;
 }
 
@@ -29,4 +30,11 @@
 .contact-icon {
     margin-bottom: 15px;
     color: white;
+}
+
+.form-card .form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    /* Ensure form labels are also white */
 }
