@@ -14,7 +14,6 @@
 
 .form-card {
     background-color: #43a3c0;
-    /* Beige background color */
     color: black;
     border: none;
     border-radius: 10px;
@@ -28,7 +27,7 @@
 }
 
 
-.accordion-button::after {
+/* .accordion-button::after {
     color: black;
 }
 
@@ -40,7 +39,7 @@
 
 .accordion-body {
     background: #a7f1e5;
-}
+} */
 
 .carousel-item p {
     font-size: 1.1em;
