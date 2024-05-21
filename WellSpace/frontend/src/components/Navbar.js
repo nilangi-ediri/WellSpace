@@ -33,7 +33,7 @@ const NavigationBar = () => {
                         <Nav.Link href="#about">About Us</Nav.Link>
                         <Nav.Link href="/blog">Blog & Discussion</Nav.Link>
                         <Nav.Link href="#challenges">Challenges</Nav.Link>
-                        <Nav.Link href="#contact">Contact Us</Nav.Link>
+                        <Nav.Link href="/contact-us">Contact Us</Nav.Link>
                     </Nav>
                     <Nav className="align-items-center">
                         {!user ? (
