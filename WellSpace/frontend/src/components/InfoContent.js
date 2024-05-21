@@ -7,7 +7,7 @@ const InfoContent = () => {
             <Row className="my-4">
                 {/* Side Content Menu */}
                 <Col md={4} lg={3} className="mb-4">
-                    <ListGroup variant="flush">
+                    <ListGroup className="pt-4 sticky-top" variant="flush">
                         <ListGroup.Item action href="#mental-health">
                             Understanding Mental Health
                         </ListGroup.Item>

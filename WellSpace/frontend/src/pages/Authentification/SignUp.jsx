@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import axios from 'axios';
 import uploadCloudinary from '../../utils/uploadCloudinary';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 
 function UserSignUp() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialRole = queryParams.get('role') || 'patient'; // default role is 'patient'
+
   const [userDetails, setUserDetails] = useState({
-    role: 'patient', // default role is 'patient'
+    role: initialRole,
     firstName: '',
     lastName: '',
     username: '',
@@ -17,6 +21,13 @@ function UserSignUp() {
   });
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setUserDetails((prevDetails) => ({
+      ...prevDetails,
+      role: initialRole
+    }));
+  }, [initialRole]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -85,7 +96,7 @@ function UserSignUp() {
           alt="WellSpace Logo"
         />
 
-        <ToggleButtonGroup type="radio" name="role" defaultValue={userDetails.role} onChange={handleRoleChange}>
+        <ToggleButtonGroup type="radio" name="role" value={userDetails.role} onChange={handleRoleChange}>
           <ToggleButton id="tbg-radio-1" value={'patient'} variant="outline-dark">User</ToggleButton>
           <ToggleButton id="tbg-radio-2" value={'doctor'} variant="outline-dark">Expert</ToggleButton>
         </ToggleButtonGroup>

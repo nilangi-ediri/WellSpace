@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const HelpSection = () => {
     return (
@@ -7,16 +8,24 @@ const HelpSection = () => {
             <h2 className="mb-3">Need Help?</h2>
             <Row className="justify-content-center">
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Book a Counsellor</Button>
+                    <Link to="/book-counsellor">
+                        <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Book a Counsellor</Button>
+                    </Link>
                 </Col>
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Get Information</Button>
+                    <Link to="/info">
+                        <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Get Information</Button>
+                    </Link>
                 </Col>
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Discuss with Others</Button>
+                    <Link to="/blog">
+                        <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Discuss with Others</Button>
+                    </Link>
                 </Col>
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Activities</Button>
+                    <Link to="/activities">
+                        <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Activities</Button>
+                    </Link>
                 </Col>
             </Row>
         </Container>
@@ -24,3 +33,4 @@ const HelpSection = () => {
 };
 
 export default HelpSection;
+

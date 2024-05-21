@@ -11,6 +11,7 @@ import axios from 'axios';
 import uploadCloudinary from '../../utils/uploadCloudinary';
 import { categoriesArray } from '../../constants/categories';
 import UserContext from '../../contexts/UserContext';
+import Footer from '../../components/Footer';
 
 
 const CreateBlogPost = () => {
@@ -84,7 +85,7 @@ const CreateBlogPost = () => {
         title="Share Your Expertise"
         subtitle="Your insights could be the guide someone needs. Write an article and join our mission in promoting mental wellness."
       />
-      <Container className='mt-3'>
+      <Container className='mt-3 create-blog-container'>
         <Row>
           <div>
             <Form onSubmit={handleSubmit}>
@@ -157,6 +158,7 @@ const CreateBlogPost = () => {
         </ToastContainer>
 
       </Container>
+      <Footer />
     </>
   );
 };

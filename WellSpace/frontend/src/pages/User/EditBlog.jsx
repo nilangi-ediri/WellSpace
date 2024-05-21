@@ -101,7 +101,7 @@ const EditBlog = () => {
   return (
     <>
       <NavigationBar />
-      <Container className='mt-3'>
+      <Container className='mt-3 edit-blog-container'>
         <Row>
           <Col>
             <Form onSubmit={handleSubmit}>
