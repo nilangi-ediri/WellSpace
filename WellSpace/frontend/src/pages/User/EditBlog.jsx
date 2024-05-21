@@ -82,12 +82,12 @@ const EditBlog = () => {
 
   const funcDelete = async () => {
     try {
-      // await axios.delete(`http://localhost:5000/api/v1/blogs/${postId}`);
+      await axios.delete(`http://localhost:5000/api/v1/blogs/${postId}`);
       setShowModal(false);
       setShowDeleteToast(true);
       setTimeout(() => {
         setShowDeleteToast(false);
-        // navigate('/user-profile/blog');
+        navigate('/user-profile/blog');
       }, 2000);
     } catch (error) {
       console.error('Error deleting blog:', error);

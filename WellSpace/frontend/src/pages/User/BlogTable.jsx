@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { Table, Button, Image } from 'react-bootstrap';
+import { Table, Button, Image, Modal, ToastContainer, Toast } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import NavigationBar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -9,8 +9,12 @@ import { FaPenToSquare } from 'react-icons/fa6';
 
 const BlogTable = () => {
     const { user, loading } = useContext(UserContext);
+    const [refresh, setRefresh] = useState(false);
     const [blogs, setBlogs] = useState([]);
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
+    const [showDeleteToast, setShowDeleteToast] = useState(false);
+    const [postId, setPostId] = useState(null);
 
     useEffect(() => {
         if (!loading && user) {
@@ -19,23 +23,33 @@ const BlogTable = () => {
                     const response = await axios.get(`http://localhost:5000/api/v1/blogs`);
                     const filteredBlogs = response.data.data.filter(blog => blog.doctor._id === user._id);
                     setBlogs(filteredBlogs);
-                    console.log(filteredBlogs)
                 } catch (error) {
                     console.error('Error fetching blogs:', error);
                 }
             };
             fetchBlogs();
         }
-    }, [loading, user]);
+    }, [loading, user, refresh]);
 
-    const handleDelete = async (id) => {
+    const funcDelete = async () => {
         try {
-            await axios.delete(`/api/blogs/${id}`);
-            setBlogs(blogs.filter(blog => blog._id !== id));
+          await axios.delete(`http://localhost:5000/api/v1/blogs/${postId}`);
+          setShowModal(false);
+          setShowDeleteToast(true);
+          setTimeout(() => {
+            setShowDeleteToast(false);
+            navigate('/user-profile/blog');
+            setRefresh(prev => !prev);
+          }, 2000);
         } catch (error) {
-            console.error('Error deleting blog:', error);
+          console.error('Error deleting blog:', error);
         }
-    };
+      };
+
+    const handleDel = (postId) => {
+        setPostId(postId);
+        setShowModal(true);
+      }
 
     const handleEdit = (id) => {
         navigate(`${id}`);
@@ -82,16 +96,35 @@ const BlogTable = () => {
                                 <td>
                                     <Button variant="primary" size="sm" onClick={() => handleEdit(post._id)}>Edit</Button>
                                     {' '}
-                                    <Button variant="danger" size="sm" onClick={() => handleDelete(post._id)}>Delete</Button>
+                                    <Button variant="danger" size="sm" onClick={() => handleDel(post._id)}>Delete</Button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </Table>
             </div>
+
+            <ToastContainer className="p-3 position-fixed" position="top-end">
+            <Toast onClose={() => setShowDeleteToast(false)} show={showDeleteToast} delay={2000} autohide>
+                <Toast.Header>
+                <strong className="me-auto">Blog post deleted successfully!</strong>
+                </Toast.Header>
+                <Toast.Body>Deleted!</Toast.Body>
+            </Toast>
+        </ToastContainer> 
+
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete Confirmation</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to delete this blog post?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
+                    <Button variant="danger" onClick={funcDelete}>Delete</Button>
+                </Modal.Footer>
+            </Modal>
             <Footer />
         </>
     );
 };
-
 export default BlogTable;

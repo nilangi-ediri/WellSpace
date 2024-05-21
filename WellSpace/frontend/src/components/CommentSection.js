@@ -3,51 +3,27 @@ import { Offcanvas, Button, Form } from 'react-bootstrap';
 import Comment from './Comment';
 import axios from 'axios';
 
-const CommentSection = ({ postId, currentUser, commentsData }) => {
+const CommentSection = ({ postId, currentUserId, commentsData }) => {
     const [comments, setComments] = useState([]);
+    const [refresh, setRefresh] = useState(false);
     const [show, setShow] = useState(false);
     const [commentText, setCommentText] = useState('');
     const [parentId, setParentId] = useState(null);
 
-    // Simulate fetching comments
+    // Fetch comments when the component mounts or postId changes
     useEffect(() => {
-
-        console.log('comments', commentsData);
-
-        // Simulating fetching comments from your backend
-        setComments([
-            {
-                id: 1,
-                username: "JohnDoe",
-                text: "This is an insightful post, thanks for sharing!",
-                replies: [
-                    {
-                        id: 2,
-                        username: "JaneSmith",
-                        text: "I totally agree, especially about the innovative approach mentioned.",
-                        replies: [
-                            {
-                                id: 5,
-                                username: "EmilyRoe",
-                                text: "That part was indeed fascinating. Do you think it could be applied to other fields?"
-                            }
-                        ]
-                    },
-                    {
-                        id: 3,
-                        username: "MichaelLee",
-                        text: "Interesting take. However, I think more data is needed to conclude."
-                    }
-                ]
-            },
-            {
-                id: 4,
-                username: "SarahConnor",
-                text: "Could someone elaborate on the implications of this research?",
-                replies: []
+        const fetchComments = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/v1/comments/${postId}`);
+                console.log('comments', response.data.data)
+                setComments(response.data.data);
+            } catch (error) {
+                console.error('Error fetching comments:', error);
             }
-        ]);
-    }, [postId]);
+        };
+
+        fetchComments();
+    }, [postId, refresh]);
 
     const handleShow = (parentId = null) => {
         setParentId(parentId);
@@ -60,36 +36,32 @@ const CommentSection = ({ postId, currentUser, commentsData }) => {
         setParentId(null);
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault(); // Prevent the default form submission behavior
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
         const newComment = {
-            username: currentUser, // Assuming 'currentUser' holds the username
-            text: commentText,
-            parentId: parentId,   // This will be null for new top-level comments
+            blog: postId,
+            user: currentUserId && currentUserId._id,
+            commentText: commentText,
+            parentId: parentId,  // Include parentId if this is a reply
         };
 
-        // Submit to backend
-        axios.post(`/api/v1/blogs/${postId}/comments`, newComment)
-            .then(response => {
-                console.log('Success:', response.data);
-                // Optionally, update local state or trigger a re-fetch of comments
-                setComments(prevComments => [...prevComments, response.data.comment]); // If you want to update the UI immediately
-                setCommentText(''); // Clear the comment text area
-                setParentId(null); // Reset the parentId, important if you are using the same form for replies
-                handleClose(); // Close the form
-            })
-            .catch(error => {
-                console.error('Error adding comment:', error);
-                // Optionally, inform the user of the failure to add a comment
-            });
+        try {
+            const response = await axios.post(`http://localhost:5000/api/v1/comments/${postId}`, newComment);
+            console.log('Success:', response.data);
+            setRefresh(true);
+            setCommentText('');
+            setParentId(null);
+            handleClose();
+        } catch (error) {
+            console.error('Error adding comment:', error);
+        }
     };
-
 
     return (
         <div>
             {comments.map((comment) => (
-                <Comment key={comment.id} comment={comment} handleReply={handleShow} />
+                <Comment key={comment._id} comment={comment} handleReply={handleShow} />
             ))}
             <Button variant="primary" onClick={() => handleShow()}>
                 Add Comment
