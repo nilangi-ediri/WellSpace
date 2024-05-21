@@ -27,29 +27,34 @@ import EditBlog from './pages/User/EditBlog';
 import { UserProvider } from './contexts/UserContext';
 import { PrivateRouteExpert, PrivateRoute } from './components/PrivateRoute';
 import ContactUs from './pages/ContactUs';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()));
   return (
     <UserProvider>
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/blog" element={<AllBlogPosts />} />
-          <Route path="/create-blog" element={<PrivateRouteExpert element={CreateBlogPost} />} />
-          <Route path="/blog/:postId" element={<BlogPostView />} />
-          <Route path="/login" element={<UserLogin />} />
-          <Route path="/sign-up" element={<UserSignUp />} />
-          <Route path="/info" element={<Information />} />
-          <Route path="/user-profile" element={<PrivateRoute element={UserProfile} />} />
-          {/* <Route path="/user-profile" element={<UserProfile />} /> */}
-          <Route path="/user-profile/blog" element={<PrivateRouteExpert element={BlogTable} />} />
-          <Route path="/user-profile/blog/:postId" element={<PrivateRouteExpert element={EditBlog} />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/blog" element={<AllBlogPosts />} />
+            <Route path="/create-blog" element={<PrivateRouteExpert element={CreateBlogPost} />} />
+            <Route path="/blog/:postId" element={<BlogPostView />} />
+            <Route path="/login" element={<UserLogin />} />
+            <Route path="/sign-up" element={<UserSignUp />} />
+            <Route path="/info" element={<Information />} />
+            <Route path="/user-profile" element={<PrivateRoute element={UserProfile} />} />
+            {/* <Route path="/user-profile" element={<UserProfile />} /> */}
+            <Route path="/user-profile/blog" element={<PrivateRouteExpert element={BlogTable} />} />
+            <Route path="/user-profile/blog/:postId" element={<PrivateRouteExpert element={EditBlog} />} />
+          </Routes>
+        </ScrollToTop>
       </Router>
     </UserProvider>
   );
 }
 
 export default App;
+
+

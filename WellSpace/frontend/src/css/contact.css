@@ -1,5 +1,5 @@
 .contact-us {
-    background: linear-gradient(135deg, #008080, #101312);
+    background: linear-gradient(135deg, #008080, #a3ecdc);
     /* Original background color */
     color: white;
     padding: 50px 0 20px 0;
@@ -37,4 +37,6 @@
     margin-bottom: 5px;
     color: white;
     /* Ensure form labels are also white */
+    text-align: left;
+    /* Align labels to the left */
 }

@@ -9,6 +9,7 @@ import 'react-quill/dist/quill.snow.css';  // Import Quill styles
 import CommentSection from '../../components/CommentSection';
 import { useParams } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
+import Footer from '../../components/Footer';
 
 const BlogPostView = () => {
   const { user} = useContext(UserContext);
@@ -47,7 +48,7 @@ const BlogPostView = () => {
   return (
     <>
       <NavigationBar />
-      <Container className="mt-3">
+      <Container className="mt-3 view-blog-container">
         <Row>
           <Col>
             <div className="text-center">
@@ -95,6 +96,7 @@ const BlogPostView = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };

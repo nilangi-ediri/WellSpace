@@ -10,18 +10,13 @@ import { BiDonateHeart } from "react-icons/bi";
 import { FaHandsHelping } from "react-icons/fa";
 
 const cardData = [
-    { title: "Are you a Help Seeker?", text: "Begin Your Journey Here", link: "/sign-up", icon: <RiMentalHealthLine /> },
-    { title: "Are you an Expert?", text: "Share Your Expertise and Help Others", link: "/path-for-card-2", icon: <GrUserExpert /> },
+    { title: "Are you a Help Seeker?", text: "Begin Your Journey Here", link: "/sign-up?role=patient", icon: <RiMentalHealthLine /> },
+    { title: "Are you an Expert?", text: "Share Your Expertise and Help Others", link: "/sign-up?role=doctor", icon: <GrUserExpert /> },
     { title: "Would you like to Donate?", text: "Offer Your Donations", link: "/path-for-card-3", icon: <BiDonateHeart /> },
     { title: "Would you like to Volunteer?", text: "Join the Volunteer Community", link: "/path-for-card-4", icon: <FaHandsHelping /> },
 ];
 
 function GetInvolvedCards() {
-    // const gradientStyle = {
-    //     background: '#a7f1e5'
-    //     // background: 'linear-gradient(to right, black, white)'
-    // };
-
     return (
         <Container className="text-center my-4">
             <h2 className="mb-3">Get Involved with WellSpace Today!</h2>
@@ -31,7 +26,6 @@ function GetInvolvedCards() {
                         <Link to={card.link} style={{ textDecoration: 'none', color: 'inherit' }}>
                             <Card style={{ backgroundColor: '#e0f7fa' }}
                                 className="card-hoverable card-clickable"
-                            // style={gradientStyle}
                             >
                                 <div className="icon-container" style={{ fontSize: '4rem' }}>{card.icon}</div>
                                 <Card.Body>
