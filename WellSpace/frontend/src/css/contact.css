@@ -1,16 +1,30 @@
+/* Set the background color of the page to white */
+body,
+.content {
+    background-color: white;
+}
+
 .contact-us {
-    background: linear-gradient(135deg, #008080, #a3ecdc);
-    /* Original background color */
-    color: white;
     padding: 50px 0 20px 0;
     margin-bottom: 0;
 }
 
-.contact-card,
-.form-card {
-    background: rgba(255, 255, 255, 0.1);
-    /* Original card background color */
-    color: white;
+.contact-card {
+    background: linear-gradient(135deg, #008080, #6eced1);
+    /* Gradient from teal to light blue */
+    /* Light teal background color */
+    color: black;
+    /* Set text color to black for better readability */
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.contact-form-card {
+    background: linear-gradient(135deg, #0c969b, #6eced1);
+    /* Light teal background color */
+    color: black;
+    /* Set text color to black for better readability */
     border: none;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -25,18 +39,21 @@
     margin-bottom: 40px;
     font-size: 2.5em;
     font-weight: bold;
+    color: black;
+    /* Set heading color to black */
 }
 
 .contact-icon {
     margin-bottom: 15px;
-    color: white;
+    color: black;
+    /* Set icon color to black */
 }
 
 .form-card .form-label {
     display: block;
     margin-bottom: 5px;
-    color: white;
-    /* Ensure form labels are also white */
+    color: black;
+    /* Ensure form labels are also black */
     text-align: left;
     /* Align labels to the left */
 }

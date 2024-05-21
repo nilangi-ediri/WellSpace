@@ -13,7 +13,7 @@ const cardData = [
     { title: "Are you a Help Seeker?", text: "Begin Your Journey Here", link: "/sign-up?role=patient", icon: <RiMentalHealthLine /> },
     { title: "Are you an Expert?", text: "Share Your Expertise and Help Others", link: "/sign-up?role=doctor", icon: <GrUserExpert /> },
     { title: "Would you like to Donate?", text: "Offer Your Donations", link: "/path-for-card-3", icon: <BiDonateHeart /> },
-    { title: "Would you like to Volunteer?", text: "Join the Volunteer Community", link: "/path-for-card-4", icon: <FaHandsHelping /> },
+    { title: "Would you like to Volunteer?", text: "Join the Volunteer Community", link: "/volunteer", icon: <FaHandsHelping /> },
 ];
 
 function GetInvolvedCards() {

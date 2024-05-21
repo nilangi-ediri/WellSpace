@@ -27,6 +27,7 @@ import EditBlog from './pages/User/EditBlog';
 import { UserProvider } from './contexts/UserContext';
 import { PrivateRouteExpert, PrivateRoute } from './components/PrivateRoute';
 import ContactUs from './pages/ContactUs';
+import Volunteer from './pages/Volunteer';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             {/* <Route path="/user-profile" element={<UserProfile />} /> */}
             <Route path="/user-profile/blog" element={<PrivateRouteExpert element={BlogTable} />} />
             <Route path="/user-profile/blog/:postId" element={<PrivateRouteExpert element={EditBlog} />} />
+            <Route path="/volunteer" element={<Volunteer />} />
           </Routes>
         </ScrollToTop>
       </Router>

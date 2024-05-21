@@ -386,69 +386,6 @@
 
 /* user testimonials */
 
-/* Footer.css */
-
-.page-footer {
-    background-color: #009688;
-    /* A nice teal background */
-    color: white;
-    /* White text color */
-    padding-top: 1rem;
-    position: relative;
-    bottom: 0;
-}
-
-.page-footer a {
-    color: #d0e8f2;
-    /* A lighter shade for links */
-}
-
-.page-footer a:hover {
-    color: #a1cbef;
-    /* Color for link hover state */
-    text-decoration: none;
-    /* Removes underline on hover */
-}
-
-.page-footer h5 {
-    margin-bottom: 1rem;
-}
-
-.page-footer ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.page-footer ul li a {
-    padding: 5px 0;
-    display: block;
-    /* Make the links fill the list item for easier clicking */
-}
-
-.footer-copyright {
-    background-color: #00796b;
-    /* A darker shade of the main footer color for contrast */
-    color: #d0e8f2;
-    padding: 10px 0;
-    margin-top: 1rem;
-}
-
-/* Add responsiveness to the footer */
-@media (max-width: 768px) {
-    .text-center.text-md-left {
-        text-align: center !important;
-    }
-
-    .row {
-        text-align: center;
-    }
-
-    .clearfix {
-        display: none;
-        /* Hide the hr element on small screens */
-    }
-}
-
 /* For Testimonials Container*/
 .smaller {
     transform: scale(0.9);

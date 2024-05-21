@@ -159,11 +159,12 @@ const EditBlog = () => {
                 </Form.Control>
               </Form.Group>
 
+              <Button variant="secondary" onClick={handleDiscard}>Discard Changes</Button>
+              {' '}
               <Button variant="primary" type="submit">Update</Button>
               {' '}
               <Button variant="danger" onClick={handleDelete}>Delete</Button>
-              {' '}
-              <Button variant="secondary" onClick={handleDiscard}>Discard Changes</Button>
+                       
             </Form>
           </Col>
         </Row>
