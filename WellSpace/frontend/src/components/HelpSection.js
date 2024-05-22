@@ -23,7 +23,7 @@ const HelpSection = () => {
                     </Link>
                 </Col>
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Link to="/activities">
+                    <Link to="/challenges">
                         <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Activities</Button>
                     </Link>
                 </Col>
