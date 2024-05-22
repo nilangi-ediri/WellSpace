@@ -29,6 +29,7 @@ import { PrivateRouteExpert, PrivateRoute } from './components/PrivateRoute';
 import ContactUs from './pages/ContactUs';
 import Volunteer from './pages/Volunteer';
 import ScrollToTop from './components/ScrollToTop';
+import Challenges from './pages/Challenges';
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()));
@@ -50,6 +51,7 @@ function App() {
             <Route path="/user-profile/blog" element={<PrivateRouteExpert element={BlogTable} />} />
             <Route path="/user-profile/blog/:postId" element={<PrivateRouteExpert element={EditBlog} />} />
             <Route path="/volunteer" element={<Volunteer />} />
+            <Route path="/challenges" element={<Challenges />} />
           </Routes>
         </ScrollToTop>
       </Router>

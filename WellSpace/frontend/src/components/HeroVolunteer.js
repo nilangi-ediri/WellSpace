@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import '../css/Home.css'
 
-const HeroInfo = () => {
+const HeroVol = () => {
     return (
         <div className="hero-section-info">
             <Container fluid className="p-0">
@@ -24,4 +24,4 @@ const HeroInfo = () => {
     );
 };
 
-export default HeroInfo;
+export default HeroVol;
