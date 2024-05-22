@@ -29,7 +29,8 @@ import { PrivateRouteExpert, PrivateRoute } from './components/PrivateRoute';
 import ContactUs from './pages/ContactUs';
 import Volunteer from './pages/Volunteer';
 import ScrollToTop from './components/ScrollToTop';
-import Challenges from './pages/Challenges';
+import Challenges from './pages/Challenges/Challenges';
+import MindfulnessQuiz from './pages/Challenges/MindfulnessQuiz';
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()));
@@ -52,6 +53,7 @@ function App() {
             <Route path="/user-profile/blog/:postId" element={<PrivateRouteExpert element={EditBlog} />} />
             <Route path="/volunteer" element={<Volunteer />} />
             <Route path="/challenges" element={<Challenges />} />
+            <Route path="/mind-quiz" element={<MindfulnessQuiz />} />
           </Routes>
         </ScrollToTop>
       </Router>
