@@ -1,15 +1,15 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import '../css/challenges.css';
-import NavigationBar from '../components/Navbar';
-import Footer from '../components/Footer';
-import HeroChallenges from '../components/HeroChallenges';
+import '../../css/challenges.css';
+import NavigationBar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import HeroChallenges from '../../components/HeroChallenges';
 
 const challenges = [
   {
     title: '7-Day Mindfulness Challenge',
     image: 'https://images.unsplash.com/photo-1571935538821-8ecb6b4dea17?q=80&w=1994&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    link: '/mindfulness-challenge'
+    link: '/mind-quiz'
   },
   {
     title: 'Gratitude Journaling Challenge',

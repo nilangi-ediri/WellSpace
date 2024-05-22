@@ -20,6 +20,7 @@ function UserSignUp() {
     verificationDocument: null
   });
 
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +36,7 @@ function UserSignUp() {
       ...prevDetails,
       [name]: files ? files[0] : value
     }));
+    validateField(name, value);
   };
 
   const handleFileChange = async (e) => {
@@ -51,8 +53,57 @@ function UserSignUp() {
 
   const handleRoleChange = (val) => setUserDetails({ ...userDetails, role: val });
 
+  const validateField = (name, value) => {
+    let errorMsg = '';
+    switch (name) {
+      case 'firstName':
+      case 'lastName':
+        if (!/^[A-Za-z]+$/.test(value)) {
+          errorMsg = 'Only alphabetic characters are allowed';
+        } else if (value.length < 2) {
+          errorMsg = 'Must be at least 2 characters long';
+        }
+        break;
+      case 'username':
+        if (!/^[A-Za-z0-9]+$/.test(value)) {
+          errorMsg = 'Only alphanumeric characters are allowed';
+        } else if (value.length < 3) {
+          errorMsg = 'Must be at least 3 characters long';
+        }
+        break;
+      case 'phoneNumber':
+        if (!/^\d{10}$/.test(value)) {
+          errorMsg = 'Phone number must be exactly 10 digits';
+        }
+        break;
+      case 'email':
+        if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)) {
+          errorMsg = 'Invalid email format';
+        }
+        break;
+      case 'password':
+        if (value.length < 3) {
+          errorMsg = 'Password must be at least 3 characters long';
+        }
+        break;
+      default:
+        break;
+    }
+    setErrors(prevErrors => ({
+      ...prevErrors,
+      [name]: errorMsg
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if there are any errors before submitting
+    const formErrors = Object.values(errors).filter(error => error);
+    if (formErrors.length > 0) {
+      alert('Please fix the errors in the form');
+      return;
+    }
 
     const userData = {
       name: `${userDetails.firstName} ${userDetails.lastName}`,
@@ -76,8 +127,14 @@ function UserSignUp() {
       const response = await axios.post('http://localhost:5000/api/v1/auth/register', userData);
       console.log('Data sent successfully:', response.data);
       alert(userDetails.role === 'doctor' ? 'Thank you for registering as an expert. You will be notified once your documents are verified.' : 'Your account has been created successfully.');
+      navigate('/login');
     } catch (error) {
-      console.error('Error:', error);
+      if (error.response && error.response.status === 400 && error.response.data.message === "User exists!") {
+        alert('A user with this email already exists. Please log in or use a different email.');
+      } else {
+        console.error('Error:', error);
+        alert('An error occurred while creating your account. Please try again.');
+      }
     }
   };
 
@@ -109,8 +166,10 @@ function UserSignUp() {
               placeholder="First Name"
               value={userDetails.firstName}
               onChange={handleChange}
+              isInvalid={!!errors.firstName}
               required
             />
+            <Form.Control.Feedback type="invalid">{errors.firstName}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formLastName">
@@ -120,8 +179,10 @@ function UserSignUp() {
               placeholder="Last Name"
               value={userDetails.lastName}
               onChange={handleChange}
+              isInvalid={!!errors.lastName}
               required
             />
+            <Form.Control.Feedback type="invalid">{errors.lastName}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formUsername">
@@ -131,19 +192,23 @@ function UserSignUp() {
               placeholder="User Name"
               value={userDetails.username}
               onChange={handleChange}
+              isInvalid={!!errors.username}
               required
             />
+            <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formPhone">
             <Form.Control
-              type="number"
+              type="text"
               name="phoneNumber"
               placeholder="Phone Number"
               value={userDetails.phoneNumber}
               onChange={handleChange}
+              isInvalid={!!errors.phoneNumber}
               required
             />
+            <Form.Control.Feedback type="invalid">{errors.phoneNumber}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -153,19 +218,23 @@ function UserSignUp() {
               placeholder="E-mail"
               value={userDetails.email}
               onChange={handleChange}
+              isInvalid={!!errors.email}
               required
             />
+            <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control
               type="password"
               name="password"
               placeholder="Password"
               value={userDetails.password}
               onChange={handleChange}
+              isInvalid={!!errors.password}
               required
             />
+            <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
           </Form.Group>
 
           {userDetails.role === 'doctor' && (
@@ -221,3 +290,9 @@ function UserSignUp() {
 }
 
 export default UserSignUp;
+
+/* First Name and Last Name: Only alphabetic characters, minimum length of 2 characters.
+Username: Alphanumeric characters only, minimum length of 3 characters.
+Phone Number: Exactly 10 digits.
+Email: Valid email format.
+Password: Minimum 6 characters. */
