@@ -51,9 +51,6 @@ export const createComment = async (req, res) => {
   if (!req.body.blog) {
     req.body.blog = req.params.postId
   }
-  if (!req.body.user) {
-    req.body.user = req.userId // doctorId
-  }
 
   const newComment = new Comment(req.body)
 
