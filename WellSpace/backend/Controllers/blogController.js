@@ -5,9 +5,6 @@ export const createBlog = async (req, res) => {
   const id = req.params.doctorId
   const { title, content, category, image, summary, isPublished } = req.body
 
-  console.log(id)
-  console.log(req.body)
-
   try {
     const newBlog = new Blog({
       title,

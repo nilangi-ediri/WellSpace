@@ -58,8 +58,6 @@ export const updateUser = async (req, res) => {
       }
     )
 
-    console.log(updatedUser)
-
     res.status(200).json({
       success: true,
       message: 'User successfully updated',

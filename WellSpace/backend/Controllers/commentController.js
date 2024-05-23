@@ -26,8 +26,6 @@ export const getCommentsByBlogId = async (req, res) => {
   try {
     const comments = await Comment.find({ blog: postId });
 
-    console.log(comments)
-
     if (comments.length === 0) {
       return res.status(404).json({
         success: false,
@@ -54,7 +52,7 @@ export const createComment = async (req, res) => {
     req.body.blog = req.params.postId
   }
   if (!req.body.user) {
-    req.body.user = req.userId
+    req.body.user = req.userId // doctorId
   }
 
   const newComment = new Comment(req.body)
