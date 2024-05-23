@@ -235,6 +235,7 @@ import HeroSectionBlog from '../../components/HeroSectionBlog';
 import axios from 'axios';
 import { categoriesArray } from '../../constants/categories';
 import Footer from '../../components/Footer';
+import '../../css/AllBlogPosts.css'; // Import the CSS file
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -246,34 +247,29 @@ const formatDate = (dateString) => {
 };
 
 const BlogPost = ({ post }) => (
-    <Card className="mb-3 d-flex flex-row">
+    <Card className="mb-3 d-flex flex-row all-blog-posts-card">
         <Card.Img
             variant="left"
             src={post.imageUrl}
-            style={{
-                width: '200px',
-                height: '150px',
-                objectFit: 'cover',
-                objectPosition: 'center'
-            }}
+            className="all-blog-posts-card-img"
         />
         <Card.Body>
-            <Card.Title>{post.title}</Card.Title>
-            <Card.Text>{post.summary}</Card.Text>
-            <div className="d-flex justify-content-between">
-                <div className="d-flex align-items-center">
+            <Card.Title className="all-blog-posts-card-title">{post.title}</Card.Title>
+            <Card.Text className="all-blog-posts-card-text">{post.summary}</Card.Text>
+            <div className="all-blog-posts-card-meta">
+                <div>
                     <FaRegCalendarAlt className="icon mx-1" />
                     <span>{formatDate(post.createdAt)}</span>
                 </div>
-                <div className="d-flex align-items-center">
+                <div>
                     <FaRegUser className="icon mx-1" />
                     <span>{post.doctor.name}</span>
                 </div>
-                <div className="d-flex align-items-center">
+                <div>
                     <FaRegComments className="icon mx-1" />
                     <span>{Array.isArray(post.comments) ? post.comments.length : post.comments.replies.length}</span>
                 </div>
-                <div className="d-flex align-items-center">
+                <div>
                     <FaList className="icon mx-1" />
                     <span>{post.category}</span>
                 </div>
