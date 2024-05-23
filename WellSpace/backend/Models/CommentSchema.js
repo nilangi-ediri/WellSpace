@@ -9,6 +9,12 @@ const commentSchema = new mongoose.Schema(
     user: {
       type: mongoose.Types.ObjectId,
       ref: "User",
+      default: null,
+    },
+    doctor: {
+      type: mongoose.Types.ObjectId,
+      ref: "Doctor",
+      default: null,
     },
     commentText: {
       type: String,
@@ -21,6 +27,9 @@ const commentSchema = new mongoose.Schema(
 commentSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
+    select: "name userName",
+  }).populate({
+    path: "doctor",
     select: "name userName",
   })
 

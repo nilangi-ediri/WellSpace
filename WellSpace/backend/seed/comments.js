@@ -26,13 +26,13 @@ export const comments = [
   {
     _id: "66035787b5fda9ee74324512",
     blog: "66024d63110e6ceadbca8b33",
-    user: "6602d3d1155e8f469cffdde9",
+    doctor: "660247adb56a95c2c97fa68b",
     commentText: "Alright 💀",
   },
   {
     _id: "66035787b5fdb9ee74324412",
     blog: "66024fb2d9dd3754be293fdc",
-    user: "6602d3d1155e8f469cffdde9",
+    doctor: "660247adb56a95c2c97fa68c",
     commentText: "Boring 💀",
   },
 ]
