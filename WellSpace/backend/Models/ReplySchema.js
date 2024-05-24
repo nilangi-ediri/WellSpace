@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-const commentSchema = new mongoose.Schema(
+const replySchema = new mongoose.Schema(
   {
-    blog: {
+    comment: {
       type: mongoose.Types.ObjectId,
-      ref: "Blog",
+      ref: "Comment",
     },
     user: {
       type: mongoose.Types.ObjectId,
@@ -16,19 +16,15 @@ const commentSchema = new mongoose.Schema(
       ref: "Doctor",
       default: null,
     },
-    commentText: {
+    replyText: {
       type: String,
       required: true,
     },
-    reply: [{
-      type: mongoose.Types.ObjectId,
-      ref: "Reply",
-    }]
   },
   { timestamps: true }
 );
 
-commentSchema.pre(/^find/, function (next) {
+replySchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
     select: "name userName",
@@ -40,4 +36,4 @@ commentSchema.pre(/^find/, function (next) {
   next()
 })
 
-export default mongoose.model("Comment", commentSchema);
+export default mongoose.model("Reply", replySchema);

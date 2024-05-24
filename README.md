@@ -41,7 +41,7 @@ Team-22N/
 │   └── timesheets/
 └── WellSpace/
     ├── backend/
-    └── frontend/ (Currently undergoing rearrangement)
+    └── frontend/
 ```
 
 ## Backend Development Documentation
