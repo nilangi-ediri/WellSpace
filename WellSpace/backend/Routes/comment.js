@@ -1,9 +1,7 @@
 import express from "express"
 import { getAllComments, createComment, deleteComment, getCommentsByBlogId } from "../Controllers/commentController.js"
 
-const router = express.Router({
-  mergeParams: true
-})
+const router = express.Router()
 
 router.route('/:postId').post(createComment)
 router.get('/:postId', getCommentsByBlogId)
