@@ -8,7 +8,7 @@ const HelpSection = () => {
             <h2 className="mb-3">Need Help?</h2>
             <Row className="justify-content-center">
                 <Col xs={12} sm={6} md={3} className="mb-3 mb-md-0">
-                    <Link to="/book-counsellor">
+                    <Link to="/booking">
                         <Button variant="light" className="help-button" style={{ backgroundColor: '#a7f1e5' }}>Book a Counsellor</Button>
                     </Link>
                 </Col>

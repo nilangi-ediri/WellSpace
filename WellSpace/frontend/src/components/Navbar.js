@@ -30,7 +30,7 @@ const NavigationBar = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="/info">Learn About Mental Health</Nav.Link>
-                        <Nav.Link href="#about">About Us</Nav.Link>
+                        <Nav.Link href="/about-us">About Us</Nav.Link>
                         <Nav.Link href="/blog">Blog & Discussion</Nav.Link>
                         <Nav.Link href="/challenges">Challenges</Nav.Link>
                         <Nav.Link href="/contact-us">Contact Us</Nav.Link>
