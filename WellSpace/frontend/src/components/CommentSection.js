@@ -41,10 +41,15 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
 
         const newComment = {
             blog: postId,
-            user: currentUserId && currentUserId._id,
             commentText: commentText,
-            parentId: parentId,  // Include parentId if this is a reply
+            parentId: parentId,
         };
+
+        if (currentUserId.role === 'doctor') {
+            newComment.doctor = currentUserId._id;
+        } else if (currentUserId.role === 'patient') {
+            newComment.user = currentUserId._id;
+        }
 
         try {
             const response = await axios.post(`http://localhost:5000/api/v1/comments/${postId}`, newComment);
@@ -61,7 +66,7 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
     return (
         <div>
             {comments.map((comment) => (
-                <Comment key={comment._id} comment={comment} handleReply={handleShow} />
+                <Comment key={comment._id} comment={comment} handleReply={handleShow} refreshComments={setRefresh} />
             ))}
             <Button variant="primary" onClick={() => handleShow()}>
                 Add Comment
