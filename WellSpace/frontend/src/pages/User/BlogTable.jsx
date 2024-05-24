@@ -59,59 +59,72 @@ const BlogTable = () => {
         <div className='outer-container'>
             <NavigationBar />
             <div className="container mt-5">
-                <div className="d-flex justify-content-end mb-3">
-                    <Link to="/create-blog">
-                    <Button variant = "success" className=" w-100">
+                {blogs.length > 0 ? (
+                    <>
+                        <div className="d-flex justify-content-end mb-3">
+                            <Link to="/create-blog">
+                                <Button variant="success" className="w-100">
+                                    <FaPenToSquare className="icon mx-1" /> Write a New Article
+                                </Button>
+                            </Link>
+                        </div>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {blogs.map((post) => (
+                                    <tr key={post._id}>
+                                        <td>
+                                            <Image
+                                                src={post.imageUrl}
+                                                style={{
+                                                    width: '100px',
+                                                    height: '75px',
+                                                    objectFit: 'cover'
+                                                }}
+                                                rounded
+                                            />
+                                        </td>
+                                        <td><strong>{post.title}</strong> <br /> {post.summary}</td>
+                                        <td>{post.category}</td>
+                                        <td>{new Date(post.createdAt).toLocaleDateString()}</td>
+                                        <td>
+                                            <Button variant="primary" size="sm" onClick={() => handleEdit(post._id)}>Edit</Button>
+                                            {' '}
+                                            <Button variant="danger" size="sm" onClick={() => handleDel(post._id)}>Delete</Button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </>
+                ) : (
+                    <div className="text-center">
+                        <p style={{ fontSize: '1.5rem' }}>No blog posts found. Write a new article to get started!</p>
+                        <Link to="/create-blog">
+                            <Button variant="success">
                                 <FaPenToSquare className="icon mx-1" /> Write a New Article
-                    </Button>
-                    </Link>
-                </div>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {blogs.map((post) => (
-                            <tr key={post._id}>
-                                <td>
-                                    <Image
-                                        src={post.imageUrl}
-                                        style={{
-                                            width: '100px',
-                                            height: '75px',
-                                            objectFit: 'cover'
-                                        }}
-                                        rounded
-                                    />
-                                </td>
-                                <td><strong>{post.title}</strong> <br /> {post.summary}</td>
-                                <td>{post.category}</td>
-                                <td>{new Date(post.createdAt).toLocaleDateString()}</td>
-                                <td>
-                                    <Button variant="primary" size="sm" onClick={() => handleEdit(post._id)}>Edit</Button>
-                                    {' '}
-                                    <Button variant="danger" size="sm" onClick={() => handleDel(post._id)}>Delete</Button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
+                            </Button>
+                        </Link>
+                    </div>
+                )}
             </div>
 
             <ToastContainer className="p-3 position-fixed" position="top-end">
-            <Toast onClose={() => setShowDeleteToast(false)} show={showDeleteToast} delay={2000} autohide>
-                <Toast.Header>
-                <strong className="me-auto">Blog post deleted successfully!</strong>
-                </Toast.Header>
-                <Toast.Body>Deleted!</Toast.Body>
-            </Toast>
-        </ToastContainer> 
+                <Toast onClose={() => setShowDeleteToast(false)} show={showDeleteToast} delay={2000} autohide>
+                    <Toast.Header>
+                        <strong className="me-auto">Blog post deleted successfully!</strong>
+                    </Toast.Header>
+                    <Toast.Body>Deleted!</Toast.Body>
+                </Toast>
+            </ToastContainer> 
 
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
@@ -127,4 +140,5 @@ const BlogTable = () => {
         </div>
     );
 };
+
 export default BlogTable;
