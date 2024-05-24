@@ -67,9 +67,9 @@ const Footer = () => (
                 <div className="col-md-6 text-center">
                     <ul className="list-unstyled" style={{ textAlign: 'center', fontSize: '16px' }}>
                         <li><Nav.Link href="/info" style={{ color: 'white' }}>Learn About Mental Health</Nav.Link></li>
-                        <li><Nav.Link href="#about" style={{ color: 'white' }}>About Us</Nav.Link></li>
+                        <li><Nav.Link href="/about-us" style={{ color: 'white' }}>About Us</Nav.Link></li>
                         <li><Nav.Link href="/blog" style={{ color: 'white' }}>Blog & Discussion</Nav.Link></li>
-                        <li><Nav.Link href="#challenges" style={{ color: 'white' }}>Challenges</Nav.Link></li>
+                        <li><Nav.Link href="/challenges" style={{ color: 'white' }}>Challenges</Nav.Link></li>
                         <li><Nav.Link href="/contact-us" style={{ color: 'white' }}>Contact Us</Nav.Link></li>
                     </ul>
 

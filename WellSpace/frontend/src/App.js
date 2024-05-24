@@ -31,6 +31,9 @@ import Volunteer from './pages/Volunteer';
 import ScrollToTop from './components/ScrollToTop';
 import Challenges from './pages/Challenges/Challenges';
 import MindfulnessQuiz from './pages/Challenges/MindfulnessQuiz';
+import Booking from './pages/Booking/booking';
+import DoctorsPage from './pages/Booking/doctorspage';
+import AboutUs from './pages/aboutus';
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()));
@@ -54,6 +57,9 @@ function App() {
             <Route path="/volunteer" element={<Volunteer />} />
             <Route path="/challenges" element={<Challenges />} />
             <Route path="/mind-quiz" element={<MindfulnessQuiz />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/doctorspage" element={<DoctorsPage />} />
+            <Route path="/about-us" element={<AboutUs />} />
           </Routes>
         </ScrollToTop>
       </Router>
