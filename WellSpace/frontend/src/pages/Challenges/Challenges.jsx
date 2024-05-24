@@ -7,12 +7,12 @@ import HeroChallenges from '../../components/HeroChallenges';
 
 const challenges = [
   {
-    title: '7-Day Mindfulness Challenge',
+    title: 'Minfulness Challenge',
     image: 'https://images.unsplash.com/photo-1571935538821-8ecb6b4dea17?q=80&w=1994&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     link: '/mind-quiz'
   },
   {
-    title: 'Gratitude Journaling Challenge',
+    title: 'Personality Challenge',
     image: 'https://images.unsplash.com/photo-1528938102132-4a9276b8e320?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     link: '/gratitude-challenge'
   },
@@ -47,7 +47,7 @@ const challenges = [
     link: '/affirmations-challenge'
   },
   {
-    title: 'Stress Management Challenge',
+    title: 'Stress Level Test',
     image: 'https://images.unsplash.com/photo-1577253313708-cab167d2c474?q=80&w=2038&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     link: '/stress-management-challenge'
   }
@@ -67,7 +67,7 @@ const Challenges = () => {
                 <Card.Img variant="top" src={challenge.image} alt={challenge.title} className="chall-card-img" />
                 <Card.Body className="d-flex flex-column">
                   <Card.Title className="chall-card-title">{challenge.title}</Card.Title>
-                  <Button variant="primary" href={challenge.link} className="chall-mt-auto">Go to Quiz</Button>
+                  <Button variant="primary" href={challenge.link} className="chall-mt-auto">Go to Challenge</Button>
                 </Card.Body>
               </Card>
             </Col>
