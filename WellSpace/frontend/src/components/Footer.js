@@ -84,7 +84,7 @@ const Footer = () => (
         </div>
 
         <div className="footer copyright text-center py-3">© 2023 Copyright:
-            <a href="#" style={{ color: 'white' }}> WellSpace</a>
+            <a href="/" style={{ color: 'white' }}> WellSpace</a>
         </div>
     </footer>
 );

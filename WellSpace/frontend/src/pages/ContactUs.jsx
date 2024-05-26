@@ -4,13 +4,40 @@ import '../css/contact.css';
 import NavigationBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import axios from 'axios';
 
 const ContactUs = () => {
   const [showToast, setShowToast] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowToast(true);
+    sendFeedback(formData);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const sendFeedback = async (data) => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/v1/feedbacks/create', data);
+      if (response.status === 200) {
+        setShowToast(true);
+      }
+    } catch (error) {
+      console.error('Error sending feedback:', error);
+      // Handle error appropriately here
+    }
   };
 
   return (
@@ -64,22 +91,46 @@ const ContactUs = () => {
             <Col md={6}>
               <Card className="contact-card form-card">
                 <Card.Body>
-                <Card.Text>
+                  <Card.Text>
                     <h6>Send Us Your Questions or Feedback</h6>
                   </Card.Text>
-                   {/* <h3 className="text-center">Send Us Your Questions or Feedback</h3> */}
                   <Form onSubmit={handleSubmit}>
-                    <Form.Group className = "mb-3" controlId="formName">
-                      {/* <Form.Label>Name:</Form.Label> */}
-                      <Form.Control type="text" placeholder="Name" />
+                    <Form.Group className="mb-3" controlId="formName">
+                      <Form.Control
+                        type="text"
+                        placeholder="Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                      />
                     </Form.Group>
-                    <Form.Group className = "mb-3" controlId="formEmail">
-                      {/* <Form.Label>E-mail:</Form.Label> */}
-                      <Form.Control type="email" placeholder="E-mail" />
+                    <Form.Group className="mb-3" controlId="formEmail">
+                      <Form.Control
+                        type="email"
+                        placeholder="E-mail"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                      />
                     </Form.Group>
-                    <Form.Group className = "mb-3"  controlId="formMessage">
-                      {/* <Form.Label>Message:</Form.Label> */}
-                      <Form.Control as="textarea" rows={3} placeholder="Message" />
+                    <Form.Group className="mb-3" controlId="formSubject">
+                      <Form.Control
+                        type="text"
+                        placeholder="Subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formMessage">
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        placeholder="Message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                      />
                     </Form.Group>
                     <Button variant="dark" type="submit" className="mt-3">
                       Submit

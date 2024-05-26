@@ -68,9 +68,12 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
             {comments.map((comment) => (
                 <Comment key={comment._id} comment={comment} handleReply={handleShow} refreshComments={setRefresh} />
             ))}
-            <Button variant="primary" onClick={() => handleShow()}>
-                Add Comment
-            </Button>
+            {currentUserId && (
+                <Button variant="primary" onClick={() => handleShow()}>
+                    Add Comment
+                </Button>
+            )}
+
             <Offcanvas show={show} onHide={handleClose} placement="end">
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>{parentId ? 'Reply to Comment' : 'New Comment'}</Offcanvas.Title>

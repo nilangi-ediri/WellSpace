@@ -33,7 +33,8 @@ const Comment = ({ comment, handleReply, refreshComments }) => {
             </strong>
             <p>{comment.commentText}</p>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Button variant="link" onClick={() => handleReply(comment._id)}>Reply</Button>
+                {user && (<Button variant="link" onClick={() => handleReply(comment._id)}>Reply</Button>)}
+
                 {isCommentOwner && (
                     <Button variant="link" onClick={() => deleteComment(comment._id)}>
                         <FaTrash />
