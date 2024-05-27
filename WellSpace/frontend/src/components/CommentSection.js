@@ -10,20 +10,19 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
     const [commentText, setCommentText] = useState('');
     const [parentId, setParentId] = useState(null);
 
-    // Fetch comments when the component mounts or postId changes
-    useEffect(() => {
-        const fetchComments = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/api/v1/comments/${postId}`);
-                console.log('comments', response.data.data)
-                setComments(response.data.data);
-            } catch (error) {
-                console.error('Error fetching comments:', error);
-            }
-        };
+    const fetchComments = async () => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/v1/comments/${postId}`);
+            setComments(response.data.data);
+        } catch (error) {
+            console.error('Error fetching comments:', error);
+        }
+    };
 
+    useEffect(() => {
         fetchComments();
-    }, [postId, refresh]);
+    }, []);
+
 
     const handleShow = (parentId = null) => {
         setParentId(parentId);
@@ -62,7 +61,7 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
             }
 
             console.log('Success:', response.data);
-            setRefresh(true);
+            fetchComments();
             setCommentText('');
             setParentId(null);
             handleClose();
@@ -74,7 +73,7 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
     return (
         <div>
             {comments.map((comment) => (
-                <Comment key={comment._id} comment={comment} handleReply={handleShow} refreshComments={setRefresh} />
+                <Comment key={comment._id} comment={comment} handleReply={handleShow} refreshComments={fetchComments} />
             ))}
             {currentUserId && (
                 <Button variant="primary" onClick={() => handleShow()}>
