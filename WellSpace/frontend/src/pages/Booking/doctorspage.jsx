@@ -14,31 +14,31 @@ import Footer from '../../components/Footer';
 const DoctorsPage = () => {
   const doctors = [
     {
-      name: 'Dr. John Watson',
+      name: 'Juliet Burke',
       expertise: 'Psychiatrist',
       experience: '10 years',
       photo: doctor1Photo,
     },
     {
-      name: 'Dr. James Simon',
+      name: 'Anna Howard',
       expertise: 'Counsellor',
       experience: '12 years',
       photo: doctor2Photo,
     },
     {
-      name: 'Dr. Steven Strange',
+      name: 'Naomi Bennett',
       expertise: 'Psychiatrist',
       experience: '15 years',
       photo: doctor3Photo,
     },
     {
-      name: 'Dr. James Cameron',
+      name: 'James Cameron',
       expertise: 'Psychologist',
       experience: '5 years',
       photo: doctor4Photo,
     },
     {
-      name: 'Tom Holland',
+      name: 'David Thompson',
       expertise: 'Mentor',
       experience: '12 years',
       photo: doctor5Photo,
@@ -50,7 +50,7 @@ const DoctorsPage = () => {
     <NavigationBar/>
     <Container className="mt-5">
        
-      <h2 className="text-center mb-4">Our Doctors</h2>
+      <h2 className="text-center mb-4">Explore Our Team of Healthcare Experts</h2>
       <Row>
         {doctors.map((doctor, index) => (
           <Col key={index} md={4} className="mb-4">

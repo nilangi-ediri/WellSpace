@@ -23,11 +23,11 @@ const Booking = () => {
 
   // Array of doctors
   const doctors = [
-    'Dr. John Watson',
-    'Dr. James Simon',
-    'Dr. Mac Strange',
+    'Dr. Juliet Burke',
+    'Dr. Anna Howard',
+    'Dr. Naomi Bennett',
     'Dr. James Cameron',
-    'Tom Holland'
+    'Dr. Tom Holland'
   ];
 
   // Array of time slots in 30-minute intervals
@@ -65,12 +65,12 @@ const Booking = () => {
     <div>
       <main>
         <NavigationBar />
-        <section className="hero" style={{ backgroundColor: '#f8f9fa', padding: '50px 0' }}>
+        <section className="hero" style={{ backgroundColor: '#b2edeb', padding: '50px 0' }}>
           <div className="hero-content" style={{ textAlign: 'center' }}>
             <Container>
-              <h1>Welcome to WellSpace</h1>
+              <h1>Discover Your Path to Wellness at WellSpace</h1>
               <p>We provide a safe and supportive environment for your mental wellness journey.</p>
-              <Link to="/doctorspage" className="btn btn-success">View Our Doctors</Link>
+              <Link to="/doctorspage" className="btn btn-success">View Our Experts</Link>
             </Container>
           </div>
         </section>

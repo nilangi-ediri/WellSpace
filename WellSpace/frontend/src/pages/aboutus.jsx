@@ -13,7 +13,7 @@ export default function AboutUs() {
     <div>
       <main>
         <NavigationBar/>
-        <section className="hero" style={{ backgroundColor: '#f8f9fa', padding: '50px 0', textAlign: 'center' }}>
+        <section className="hero" style={{ backgroundColor: '#b2edeb', padding: '50px 0', textAlign: 'center' }}>
           <Container>
             <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '20px' }}>Welcome to WellSpace</h1>
             <p style={{ fontSize: '1.25rem', marginBottom: '30px' }}>We provide a safe and supportive environment for your mental wellness journey.</p>
@@ -79,7 +79,7 @@ export default function AboutUs() {
                 <Card style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
                   <Card.Img variant="top" src={doctor1Photo} alt="Team Member" style={{ height: '300px', objectFit: 'cover', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} />
                   <Card.Body style={{ textAlign: 'center' }}>
-                    <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Dr. James Simon</Card.Title>
+                    <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Dr. Anna Howard</Card.Title>
                     <Card.Text style={{ fontSize: '1rem' }}>Counsellor</Card.Text>
                   </Card.Body>
                 </Card>
@@ -88,7 +88,7 @@ export default function AboutUs() {
                 <Card style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
                   <Card.Img variant="top" src={doctor2Photo} alt="Team Member" style={{ height: '300px', objectFit: 'cover', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} />
                   <Card.Body style={{ textAlign: 'center' }}>
-                    <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Dr. John Watson</Card.Title>
+                    <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Dr. Juliet Burke</Card.Title>
                     <Card.Text style={{ fontSize: '1rem' }}>Psychiatrist</Card.Text>
                   </Card.Body>
                 </Card>
@@ -97,7 +97,7 @@ export default function AboutUs() {
                 <Card style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
                   <Card.Img variant="top" src={doctor3Photo} alt="Team Member" style={{ height: '300px', objectFit: 'cover', borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }} />
                   <Card.Body style={{ textAlign: 'center' }}>
-                    <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Dr. Steven Strange</Card.Title>
+                    <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Dr. Naomi Bennett</Card.Title>
                     <Card.Text style={{ fontSize: '1rem' }}>Psychiatrist</Card.Text>
                   </Card.Body>
                 </Card>
