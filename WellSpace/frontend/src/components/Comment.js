@@ -16,7 +16,20 @@ const Comment = ({ comment, handleReply, refreshComments }) => {
         }
     };
 
+    const deleteReply = async (replyId) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/v1/replies/${replyId}`);
+            refreshComments(); // Call the function to refresh the comments list
+        } catch (error) {
+            console.error('Error deleting comment:', error);
+        }
+    };
+
     const isCommentOwner = user && ((comment.user && comment.user._id === user._id) || (comment.doctor && comment.doctor._id === user._id));
+
+    const isReplyOwner = (reply) => {
+        return (reply.user && reply.user._id === user._id) || (reply.doctor && reply.doctor._id === user._id)
+    }
 
     return (
         <div style={{ marginBottom: '10px', border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
@@ -42,7 +55,7 @@ const Comment = ({ comment, handleReply, refreshComments }) => {
                 )}
             </div>
             {comment.reply && comment.reply.map((reply) => (
-                <div key={reply.id} style={{ marginLeft: '20px', marginTop: '10px' }}>
+                <div key={reply.id} style={{ marginLeft: '20px', marginTop: '10px', position: 'relative' }}>
                     <strong>
                         {reply.user
                             ? reply.user.userName
@@ -54,9 +67,21 @@ const Comment = ({ comment, handleReply, refreshComments }) => {
                             )
                         }
                     </strong>
-                    <p>{reply.replyText}</p>
+                    <div style={{ position: 'relative', paddingBottom: '20px' }}>
+                        <p>{reply.replyText}</p>
+                        {isReplyOwner(reply) && (
+                            <Button
+                                variant="link"
+                                onClick={() => deleteReply(reply._id)}
+                                style={{ position: 'absolute', bottom: '0', right: '0' }}
+                            >
+                                <FaTrash />
+                            </Button>
+                        )}
+                    </div>
                 </div>
             ))}
+
         </div>
     );
 };
