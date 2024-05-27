@@ -1,0 +1,118 @@
+.challenge-body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e0f7fa 0%, #00796b 100%); /* Gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    font-size: 18px;
+    overflow: auto;
+}
+
+.challenge-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.challenge-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for animation */
+}
+
+.challenge-container:hover {
+    transform: translateY(-10px); /* Hover animation */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.challenge-h1 {
+    font-family: 'Merriweather', serif; /* Use Merriweather font */
+    color: #004d40; /* Darker teal color */
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.challenge-list {
+    list-style: none;
+    padding: 0;
+}
+
+.challenge-item {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure positioning context for button */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
+}
+
+.challenge-item h2 {
+    font-size: 24px;
+    color: #00796b; /* Teal color */
+    margin-bottom: 10px;
+}
+
+.challenge-item p {
+    color: #555;
+}
+
+.check-in-button {
+    background-color: #00796b; /* Teal color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for button */
+}
+
+.check-in-button:hover {
+    background-color: #004d40; /* Darker teal color */
+}
+
+.check-in-button.completed {
+    background-color: #004d40; /* Darker teal color for completed */
+    cursor: default;
+}
+
+/* Congratulations message */
+.congratulations {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #004d40; /* Darker teal color */
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

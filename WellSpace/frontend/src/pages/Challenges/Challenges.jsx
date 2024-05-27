@@ -14,7 +14,7 @@ const challenges = [
   {
     title: 'Personality Challenge',
     image: 'https://images.unsplash.com/photo-1528938102132-4a9276b8e320?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    link: '/gratitude-challenge'
+    link: '/challenge1'
   },
   {
     title: 'Digital Detox Challenge',
@@ -49,7 +49,7 @@ const challenges = [
   {
     title: 'Stress Level Test',
     image: 'https://images.unsplash.com/photo-1577253313708-cab167d2c474?q=80&w=2038&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    link: '/stress-management-challenge'
+    link: '/challenge2'
   }
 ];
 

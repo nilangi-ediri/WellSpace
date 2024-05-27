@@ -34,6 +34,17 @@ import MindfulnessQuiz from './pages/Challenges/MindfulnessQuiz';
 import Booking from './pages/Booking/booking';
 import DoctorsPage from './pages/Booking/doctorspage';
 import AboutUs from './pages/aboutus';
+import Donation from './pages/Donation/Donation';
+import Payment from './pages/Donation/Payment';
+import Challenge1 from './pages/Challenges/Challenge1'
+import Challenge2 from './pages/Challenges/Challenge2'
+import DailySteps from './pages/Challenges/DailySteps'
+import DigitalDetox from './pages/Challenges/DigitalDetox'
+import HealthyEating from './pages/Challenges/HealthyEating'
+import HydrationBoost from './pages/Challenges/HydrationBoost';
+import PositiveAffirmations from './pages/Challenges/PositiveAffirmations'
+import RestfulSleep from './pages/Challenges/RestfulSleep'
+import SevenDayMindfulness from './pages/Challenges/SevenDayMindfulness'
 
 function App() {
   const [editor] = useState(() => withReact(createEditor()));
@@ -60,6 +71,18 @@ function App() {
             <Route path="/booking" element={<Booking />} />
             <Route path="/doctorspage" element={<DoctorsPage />} />
             <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/donation" element={<Donation />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/challenge1" element={<Challenge1 />} />
+            <Route path="/challenge2" element={<Challenge2 />} />
+            <Route path="/steps-challenge" element={<DailySteps />} />
+            <Route path="/digital-detox-challenge" element={<DigitalDetox />} />
+            <Route path="/healthy-eating-challenge" element={<HealthyEating />} />
+            <Route path="/hydration-challenge" element={<HydrationBoost />} />
+            <Route path="/affirmations-challenge" element={<PositiveAffirmations />} />
+            <Route path="/restful-sleep-challenge" element={<RestfulSleep />} />
+            <Route path="/seven" element={<SevenDayMindfulness />} />
+
           </Routes>
         </ScrollToTop>
       </Router>
