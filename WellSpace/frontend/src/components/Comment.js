@@ -41,11 +41,22 @@ const Comment = ({ comment, handleReply, refreshComments }) => {
                     </Button>
                 )}
             </div>
-            {/* {comment.replies && comment.replies.map((reply) => (
+            {comment.reply && comment.reply.map((reply) => (
                 <div key={reply.id} style={{ marginLeft: '20px', marginTop: '10px' }}>
-                    <Comment comment={reply} handleReply={handleReply} />
+                    <strong>
+                        {reply.user
+                            ? reply.user.userName
+                            : (
+                                <>
+                                    {reply.doctor && reply.doctor.name}
+                                    <FaCheckCircle style={{ color: 'blue', marginLeft: '5px' }} />
+                                </>
+                            )
+                        }
+                    </strong>
+                    <p>{reply.replyText}</p>
                 </div>
-            ))} */}
+            ))}
         </div>
     );
 };

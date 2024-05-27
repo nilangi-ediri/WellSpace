@@ -43,6 +43,7 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
             blog: postId,
             commentText: commentText,
             parentId: parentId,
+            replyText: commentText
         };
 
         if (currentUserId.role === 'doctor') {
@@ -52,7 +53,14 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
         }
 
         try {
-            const response = await axios.post(`http://localhost:5000/api/v1/comments/${postId}`, newComment);
+            let response;
+            console.log(parentId)
+            if (parentId) {
+                response = await axios.post(`http://localhost:5000/api/v1/replies/${parentId}`, newComment);
+            } else {
+                response = await axios.post(`http://localhost:5000/api/v1/comments/${postId}`, newComment);
+            }
+
             console.log('Success:', response.data);
             setRefresh(true);
             setCommentText('');

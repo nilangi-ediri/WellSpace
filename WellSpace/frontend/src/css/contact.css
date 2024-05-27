@@ -1,9 +1,9 @@
 /* Set the background gradient of the page */
-body,
+/* body,
 .content {
     background: linear-gradient(135deg, #e0f7fa, #f0f4f8);
     /* Gradient from light cyan to light grayish-blue */
-}
+
 
 .contact-us {
     padding: 50px 0 20px 0;
