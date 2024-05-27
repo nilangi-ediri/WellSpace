@@ -35,6 +35,9 @@ commentSchema.pre(/^find/, function (next) {
   }).populate({
     path: "doctor",
     select: "name userName",
+  }).populate({
+    path: "reply",
+    select: "user doctor replyText createdAt"
   })
 
   next()
