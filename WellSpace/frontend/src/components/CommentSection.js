@@ -53,7 +53,6 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
 
         try {
             let response;
-            console.log(parentId)
             if (parentId) {
                 response = await axios.post(`http://localhost:5000/api/v1/replies/${parentId}`, newComment);
             } else {
