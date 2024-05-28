@@ -60,7 +60,7 @@ export const doctors = [
       "6602486dd9dd3754be293fc3",
       "660249e90d2a3caa5dabb80f",
     ],
-    verificationDocument: "",
+    verificationDocument: "https://res.cloudinary.com/de28z5did/image/upload/v1716859631/mock-medical-certificate-1_bgdrxe.pdf",
   },
   {
     _id: "660247adb56a95c2c97fa68c",
@@ -118,6 +118,6 @@ export const doctors = [
       "66024d63110e6ceadbca8b33",
       "66024fb2d9dd3754be293fdc",
     ],
-    verificationDocument: "",
+    verificationDocument: "https://res.cloudinary.com/de28z5did/image/upload/v1716859726/mock-medical-certificate-2_lvavyt.pdf",
   }
 ]
