@@ -1,36 +1,17 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import About from '../Models/AboutSchema.js';
+import bcrypt from "bcryptjs";
 
-dotenv.config(); // Load environment variables
+const salt = await bcrypt.genSalt(10);
+const hashPassword = await bcrypt.hash("1234", salt);
 
-const aboutData = {
-    content: 'Welcome to WellSpace! We provide a safe and supportive environment for your mental wellness journey.'
-};
+export const about = [
+  {
+    _id: "660247adb56a95c2c97fa68d",
+    email: "admin@wellspace.com",
+    password: hashPassword,
+    title: "About Us",
+    content: "WellSpace provides a safe and supportive environment for your mental wellness journey. Our team of experts is here to help you navigate through life's challenges and improve your mental health."
+  }
+];
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log('MongoDB connected');
-    seedAbout();
-}).catch((err) => {
-    console.error('Error connecting to MongoDB:', err.message);
-    process.exit(1);
-});
-
-// Seed about data
-const seedAbout = async () => {
-    try {
-        await About.deleteMany({});
-        await About.create(aboutData);
-        console.log('About data seeded');
-        mongoose.connection.close();
-    } catch (error) {
-        console.error('Error seeding about data:', error.message);
-        mongoose.connection.close();
-    }
-};
 
 
