@@ -12,6 +12,9 @@ import commentRoute from "../Routes/comment.js";
 import replyRoute from "../Routes/reply.js";
 import informationRoute from '../Routes/information.js';
 import quizzesRoute from '../Routes/quizzes.js';
+import aboutRoutes from '../Routes/about.js';
+import bookingRoutes from '../Routes/bookings.js';
+import notificationRoutes from '../Routes/notifications.js';
 // import Doctor from "../Models/DoctorSchema.js"
 // import { doctors } from "../seed/doctors.js"
 // import User from "../Models/UserSchema.js"
@@ -24,7 +27,9 @@ import quizzesRoute from '../Routes/quizzes.js';
 // import { comments } from "../seed/comments.js"
 // import Reply from "../Models/ReplySchema.js"
 // import { replies } from "../seed/reply.js"
-
+//import aboutRoutes from '../Routes/about.js';
+//import bookingRoutes from '../Routes/bookings.js';
+//import notificationRoutes from '../Routes/notifications.js';
 dotenv.config()
 
 const app = express()
@@ -46,6 +51,9 @@ app.use('/api/v1/comments', commentRoute)
 app.use('/api/v1/replies', replyRoute)
 app.use('/api/v1/information', informationRoute); // Added
 app.use('/api/v1/quizzes', quizzesRoute); // Added
+app.use('/api/about', aboutRoutes);
+app.use('/api/bookings', bookingRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 
 mongoose.set('strictQuery', false)
