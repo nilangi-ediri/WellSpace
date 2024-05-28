@@ -1,53 +1,28 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import Booking from '../Models/BookingSchema.js';
+import bcrypt from "bcryptjs";
 
-dotenv.config(); // Load environment variables
+const salt = await bcrypt.genSalt(10);
+const hashPassword = await bcrypt.hash("1234", salt);
 
-const bookings = [
-    {
-        name: 'Alice Johnson',
-        email: 'alice@example.com',
-        preferredDate: '2024-06-01',
-        preferredTime: '10:00',
-        doctorId: '660247adb56a95c2c97fa68b', // Replace with actual doctor ID from your database
-        service: 'Counseling',
-        notes: 'Looking forward to the session.'
-    },
-    {
-        name: 'Bob Smith',
-        email: 'bob@example.com',
-        preferredDate: '2024-06-02',
-        preferredTime: '11:00',
-        doctorId: '660247adb56a95c2c97fa68c', // Replace with actual doctor ID from your database
-        service: 'Therapy',
-        notes: 'Need some guidance and support.'
-    }
+export const bookings = [
+  {
+    _id: "6602483a0d2a3caa5dabb800",
+    patientId: "660247adb56a95c2c97fa68b",
+    doctorId: "660247adb56a95c2c97fa68c",
+    date: "2024-06-01",
+    time: "10:00",
+    status: "confirmed",
+    notes: "Initial consultation."
+  },
+  {
+    _id: "6602486dd9dd3754be293f01",
+    patientId: "660247adb56a95c2c97fa68b",
+    doctorId: "660247adb56a95c2c97fa68d",
+    date: "2024-06-02",
+    time: "11:00",
+    status: "confirmed",
+    notes: "Follow-up session."
+  }
 ];
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log('MongoDB connected');
-    seedBookings();
-}).catch((err) => {
-    console.error('Error connecting to MongoDB:', err.message);
-    process.exit(1);
-});
-
-// Seed bookings data
-const seedBookings = async () => {
-    try {
-        await Booking.deleteMany({});
-        await Booking.insertMany(bookings);
-        console.log('Bookings data seeded');
-        mongoose.connection.close();
-    } catch (error) {
-        console.error('Error seeding bookings data:', error.message);
-        mongoose.connection.close();
-    }
-};
 
 
