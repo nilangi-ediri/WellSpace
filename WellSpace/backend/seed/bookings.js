@@ -41,3 +41,4 @@ const seedBookings = async () => {
         mongoose.connection.close();
     }
 };
+
