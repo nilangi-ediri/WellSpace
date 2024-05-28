@@ -2,9 +2,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import About from '../Models/AboutSchema.js';
 
-dotenv.config();
+dotenv.config(); // Load environment variables
 
-// Sample about data
 const aboutData = {
     content: 'Welcome to WellSpace! We provide a safe and supportive environment for your mental wellness journey.'
 };
@@ -17,7 +16,7 @@ mongoose.connect(process.env.MONGO_URL, {
     console.log('MongoDB connected');
     seedAbout();
 }).catch((err) => {
-    console.error(err);
+    console.error('Error connecting to MongoDB:', err.message);
     process.exit(1);
 });
 
@@ -29,8 +28,9 @@ const seedAbout = async () => {
         console.log('About data seeded');
         mongoose.connection.close();
     } catch (error) {
-        console.error(error);
+        console.error('Error seeding about data:', error.message);
         mongoose.connection.close();
     }
 };
+
 
