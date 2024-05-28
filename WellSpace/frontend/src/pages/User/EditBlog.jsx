@@ -64,7 +64,6 @@ const EditBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(blogPost)
       await axios.put(`http://localhost:5000/api/v1/blogs/${postId}`, blogPost);
       setShowToast(true);
       setTimeout(() => {

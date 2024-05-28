@@ -1,28 +1,27 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaPenToSquare, FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import NavigationBar from '../../components/Navbar';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';  // Import Quill styles
+import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import CommentSection from '../../components/CommentSection';
 import { useParams } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import Footer from '../../components/Footer';
 
 const BlogPostView = () => {
-  const { user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [post, setPost] = useState(null);
-
   const { postId } = useParams();
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/v1/blogs/${postId}`);
-        setPost(response.data.data);
         console.log(response.data.data)
+        setPost(response.data.data);
       } catch (error) {
         console.error('Error fetching post:', error);
         // Optionally, handle the error by showing a message or redirecting
@@ -43,6 +42,21 @@ const BlogPostView = () => {
       month: 'long',
       day: 'numeric'
     });
+  };
+
+  const shareOnFacebook = () => {
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const shareOnTwitter = () => {
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const shareOnLinkedIn = () => {
+    const url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(post.title)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -76,15 +90,15 @@ const BlogPostView = () => {
             <div className="mt-3">
               <ReactQuill value={post.content} readOnly={true} theme="bubble" />
             </div>
-            
+
             <div className="mt-4 d-flex justify-content-center">
-              <Button variant="outline-primary" className="mx-1">
+              <Button variant="outline-primary" className="mx-1" onClick={shareOnFacebook}>
                 <FaFacebookF /> Share on Facebook
               </Button>
-              <Button variant="outline-info" className="mx-1">
+              <Button variant="outline-info" className="mx-1" onClick={shareOnTwitter}>
                 <FaTwitter /> Tweet
               </Button>
-              <Button variant="outline-secondary" className="mx-1">
+              <Button variant="outline-secondary" className="mx-1" onClick={shareOnLinkedIn}>
                 <FaLinkedinIn /> Share on LinkedIn
               </Button>
             </div>

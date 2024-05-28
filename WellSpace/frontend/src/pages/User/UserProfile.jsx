@@ -23,7 +23,6 @@ const UserProfile = () => {
     const [verificationDocPreview, setVerificationDocPreview] = useState(null);
 
     useEffect(() => {
-        console.log(user)
         if (user) {
             setUserDetails(prev => ({
                 ...prev,
@@ -32,7 +31,6 @@ const UserProfile = () => {
             }));
    
         }
-        console.log(user)
     }, [user]);
 
     const handleChange = (e) => {

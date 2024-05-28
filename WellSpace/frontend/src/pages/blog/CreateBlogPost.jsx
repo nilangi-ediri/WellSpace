@@ -38,7 +38,6 @@ const CreateBlogPost = () => {
       try {
         const data = await uploadCloudinary(file);
         setImageFile(data.secure_url);
-        console.log(imageFile)
       } catch (error) {
         console.error('Upload failed:', error);
       }
