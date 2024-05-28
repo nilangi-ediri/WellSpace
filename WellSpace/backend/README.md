@@ -24,6 +24,8 @@ When you first time pull and run the backend project locally, do the following c
 ```bash
 cd backend
 npm install
+npm install nodemailer
+
 ```
 
 ## Create Local .env File
