@@ -28,7 +28,7 @@ const Comment = ({ comment, handleReply, refreshComments }) => {
     const isCommentOwner = user && ((comment.user && comment.user._id === user._id) || (comment.doctor && comment.doctor._id === user._id));
 
     const isReplyOwner = (reply) => {
-        return (reply.user && reply.user._id === user._id) || (reply.doctor && reply.doctor._id === user._id)
+        return user && ((reply.user && reply.user._id === user._id) || (reply.doctor && reply.doctor._id === user._id))
     }
 
     return (
