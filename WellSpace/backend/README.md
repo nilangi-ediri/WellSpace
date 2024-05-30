@@ -83,3 +83,4 @@ Comprehensive documentation of backend APIs is available in the GitHub repositor
 ## Acknowledgements
 
 - Initial README author: `Li-Ting (a1847791)`
+- Further README author: `Siyu Ni (a1872641)`
