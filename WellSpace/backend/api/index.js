@@ -55,8 +55,8 @@ app.use('/api/v1/feedbacks', feedbackRoute)
 app.use('/api/v1/blogs', blogRoute)
 app.use('/api/v1/comments', commentRoute)
 app.use('/api/v1/replies', replyRoute)
-app.use('/api/v1/information', informationRoute); // Added
-app.use('/api/v1/quizzes', quizzesRoute); // Added
+app.use('/api/v1/information', informationRoute);
+app.use('/api/v1/quizzes', quizzesRoute);
 app.use('/api/about', aboutRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/notifications', notificationRoutes);
@@ -64,70 +64,84 @@ app.use('/api/notifications', notificationRoutes);
 
 mongoose.set('strictQuery', false)
 
-// mongoose
-//   .connect(process.env.MONGO_URL)
-//   .then(() => app.listen(port, () => console.log("Server is running on port: " + port)))
-//   .catch((error) => console.log(`${error}: connection failed`))
+if (process.env.SEED_DB === 'true') {
+  console.log(("Seeding starts..."));
+  mongoose
+    .connect(process.env.MONGO_URL)
+    .then(() => app.listen(port, () => console.log("Server is running on port: " + port)))
+    .then(async () => {
+      try {
+        await mongoose.connection.dropCollection('users');
+        console.log("Collection 'users' dropped.");
 
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => app.listen(port, () => console.log("Server is running on port: " + port)))
-  .then(async () => {
-    try {
-      await mongoose.connection.dropCollection('users');
-      console.log("Collection 'users' dropped.");
+        await mongoose.connection.dropCollection('doctors');
+        console.log("Collection 'doctors' dropped.");
 
-      await mongoose.connection.dropCollection('doctors');
-      console.log("Collection 'doctors' dropped.");
+        await mongoose.connection.dropCollection('blogs');
+        console.log("Collection 'blogs' dropped.");
 
-      await mongoose.connection.dropCollection('blogs');
-      console.log("Collection 'blogs' dropped.");
+        await mongoose.connection.dropCollection('reviews');
+        console.log("Collection 'reviews' dropped.");
 
-      await mongoose.connection.dropCollection('reviews');
-      console.log("Collection 'reviews' dropped.");
+        await mongoose.connection.dropCollection('comments');
+        console.log("Collection 'comments' dropped.");
 
-      await mongoose.connection.dropCollection('comments');
-      console.log("Collection 'comments' dropped.");
+        await mongoose.connection.dropCollection('replies');
+        console.log("Collection 'replies' dropped.");
 
-      await mongoose.connection.dropCollection('replies');
-      console.log("Collection 'replies' dropped.");
+        await mongoose.connection.dropCollection('abouts');
+        console.log("Collection 'About' dropped.");
 
-      await mongoose.connection.dropCollection('abouts');
-      console.log("Collection 'About' dropped.");
+        await mongoose.connection.dropCollection('bookings');
+        console.log("Collection 'Booking' dropped.");
 
-      await mongoose.connection.dropCollection('bookings');
-      console.log("Collection 'Booking' dropped.");
+        await mongoose.connection.dropCollection('informations');
+        console.log("Collection 'informations' dropped.");
 
-      await mongoose.connection.dropCollection('informations');
-      console.log("Collection 'informations' dropped.");
+        await mongoose.connection.dropCollection('quizs');
+        console.log("Collection 'quiz' dropped.");
 
-      await mongoose.connection.dropCollection('quizs');
-      console.log("Collection 'quiz' dropped.");
+      } catch (error) {
+        console.error("Error dropping collections:", error);
+      }
+    })
+    .then(() => {
+      Doctor.insertMany(doctors)
+      console.log("Seeded Doctors...")
 
-    } catch (error) {
-      console.error("Error dropping collections:", error);
-    }
-  })
-  .then(() => {
-    Doctor.insertMany(doctors)
-    console.log("Seeded Doctors...")
-    User.insertMany(users)
-    console.log("Seeded Users...")
-    Blog.insertMany(blogs)
-    console.log("Seeded Blogs...")
-    Review.insertMany(reviews)
-    console.log("Seeded Reviews...")
-    Comment.insertMany(comments)
-    console.log("Seeded Comments...")
-    Reply.insertMany(replies)
-    console.log("Seeded replies...")
-    Booking.insertMany(bookings)
-    console.log("Seeded bookings...")
-    About.insertMany(about)
-    console.log("Seeded about...")
-    Information.insertMany(seedInformation)
-    console.log("Seeded Information...")
-    Quiz.insertMany(seedQuizzes)
-    console.log("Seeded Quizzes...")
-  })
-  .catch((error) => console.log(`${error}: connection failed`))
+      User.insertMany(users)
+      console.log("Seeded Users...")
+
+      Blog.insertMany(blogs)
+      console.log("Seeded Blogs...")
+
+      Review.insertMany(reviews)
+      console.log("Seeded Reviews...")
+
+      Comment.insertMany(comments)
+      console.log("Seeded Comments...")
+
+      Reply.insertMany(replies)
+      console.log("Seeded replies...")
+
+      Booking.insertMany(bookings)
+      console.log("Seeded bookings...")
+
+      About.insertMany(about)
+      console.log("Seeded about...")
+
+      Information.insertMany(seedInformation)
+      console.log("Seeded Information...")
+
+      Quiz.insertMany(seedQuizzes)
+      console.log("Seeded Quizzes...")
+    })
+    .catch((error) => console.log(`${error}: connection failed`))
+
+} else {
+  console.log(("Seeding skipped..."));
+  mongoose
+    .connect(process.env.MONGO_URL)
+    .then(() => app.listen(port, () => console.log("Server is running on port: " + port)))
+    .catch((error) => console.log(`${error}: connection failed`))
+}
