@@ -5,6 +5,5 @@ const quizSchema = new mongoose.Schema({
   questions: Number
 });
 
-const Quiz = mongoose.model('Quiz', quizSchema);
+export default mongoose.model('Quiz', quizSchema);
 
-export default Quiz;

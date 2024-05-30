@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Container, Navbar, Form, Button, Modal, Row, Col } from 'react-bootstrap';
 import NavigationBar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import axios from 'axios';
 
 const Booking = () => {
   // State for form fields
@@ -46,7 +47,7 @@ const Booking = () => {
   }, [doctorName]);
 
   // Function to handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Perform validation and submission logic here
     console.log('Form submitted!');
@@ -58,7 +59,29 @@ const Booking = () => {
     console.log('Notes:', notes);
     console.log('Doctor Name:', selectedDoctor);
 
-    setShowModal(true);
+    try {
+      const response = await axios.post(`http://localhost:5000/api/bookings/`,{
+        name:fullName,
+        email:email,
+        patientId: "660247adb56a95c2c97fa68b",
+        doctorId: "660247adb56a95c2c97fa68d",
+        preferredDate: selectedDate,
+        preferredTime: selectedTime,
+        service: selectedService,
+        notes: notes
+      });
+      console.log('bookings',response.data)
+      setShowModal(true);
+      const notifyRes = await axios.post(`http://localhost:5000/api/notifications/booking-reminder`,{
+        bookingId:response.data._id,
+        email:email,
+      });
+      console.log('notifyRes',notifyRes.data)
+    } catch (error) {
+      console.error('Error fetching post:', error);
+      setShowModal(false);
+    }
+
   };
 
   return (

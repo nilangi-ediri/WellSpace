@@ -11,16 +11,18 @@ export const sendBookingConfirmation = async (req, res) => {
         }
         
         // Send email logic using nodemailer
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
+        let transporter = nodemailer.createTransport("SMTP",{
+            host: "smtp.qq.com", // 主机
+            secureConnection: true, // 使用 SSL
+            port: 465, // SMTP 端口
             auth: {
-                user: 'your-email@gmail.com',
-                pass: 'your-password'
+              user: "362625119@qq.com", // 账号
+              pass: "curbchedhmvybhje" // 密码
             }
-        });
+          });
 
         let mailOptions = {
-            from: 'your-email@gmail.com',
+            from: '362625119@qq.com',
             to: email,
             subject: 'Booking Confirmation',
             text: `Your booking is confirmed for ${booking.preferredDate} at ${booking.preferredTime}.`
@@ -48,15 +50,17 @@ export const sendBookingReminder = async (req, res) => {
         
         // Send email logic using nodemailer
         let transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: "smtp.qq.com", // 主机
+            secureConnection: true, // 使用 SSL
+            port: 465, // SMTP 端口
             auth: {
-                user: 'your-email@gmail.com',
-                pass: 'your-password'
+              user: "362625119@qq.com", // 账号
+              pass: "curbchedhmvybhje" // 密码
             }
-        });
+          });
 
         let mailOptions = {
-            from: 'your-email@gmail.com',
+            from: '362625119@qq.com',
             to: email,
             subject: 'Booking Reminder',
             text: `This is a reminder for your booking on ${booking.preferredDate} at ${booking.preferredTime}.`

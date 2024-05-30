@@ -5,6 +5,6 @@ const informationSchema = new mongoose.Schema({
   content: String
 });
 
-const Information = mongoose.model('Information', informationSchema);
+export default mongoose.model('Information', informationSchema);
 
-export default Information;
+ 
