@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/sevenDayMindfulness.css'; // use the same css file as SevenDayMindfulness
+import NavigationBar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 const HealthyEating = () => {
     const challenges = [
@@ -33,6 +35,8 @@ const HealthyEating = () => {
     };
 
     return (
+        <>
+        <NavigationBar/>
         <div className="challenge-body">
             <div className="challenge-page">
                 <div className="challenge-container">
@@ -64,6 +68,9 @@ const HealthyEating = () => {
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
+        
     );
 };
 

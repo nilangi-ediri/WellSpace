@@ -118,7 +118,7 @@ const UserProfile = () => {
                     </Col>
                 </Row>
 
-                <h1 style={{ fontSize: '1.75rem' }}>Profile of {userDetails.name} | [{userDetails.role.toLocaleUpperCase()}]</h1> 
+                <h1 style={{ fontSize: '1.75rem' }}>Profile of {userDetails.name}</h1> 
                 <Form onSubmit={handleSubmit}>
                     <Row className="mb-3">
                         <Col xs={12} md={4} className="text-left">
