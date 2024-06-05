@@ -136,7 +136,9 @@ const BlogTable = () => {
                     <Button variant="danger" onClick={funcDelete}>Delete</Button>
                 </Modal.Footer>
             </Modal>
+            <div style={{ height: '100px' }}></div>
             <Footer />
+           
         </div>
     );
 };

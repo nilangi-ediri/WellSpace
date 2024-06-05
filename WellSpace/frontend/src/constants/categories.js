@@ -1,5 +1,6 @@
 // src/constants/categories.js
 export const Categories = {
+    ALL: 'All',
     ANXIETY: 'Anxiety',
     DEPRESSION: 'Depression',
     SLEEP: 'Sleep',

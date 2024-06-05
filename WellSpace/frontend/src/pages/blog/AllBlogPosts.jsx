@@ -226,14 +226,13 @@
 // export default AllBlogPosts;
 
 import React, { useState, useEffect } from 'react';
-import { Card, Container, Row, Pagination, Col, Form, ListGroup, Button } from 'react-bootstrap';
+import { Card, Container, Row, Pagination, Col, Form, ListGroup} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaRegCalendarAlt, FaRegUser, FaRegComments, FaList } from 'react-icons/fa';
-import { FaPenToSquare } from 'react-icons/fa6';
 import NavigationBar from '../../components/Navbar';
 import HeroSectionBlog from '../../components/HeroSectionBlog';
 import axios from 'axios';
-import { categoriesArray } from '../../constants/categories';
+import { Categories } from '../../constants/categories';
 import Footer from '../../components/Footer';
 import '../../css/AllBlogPosts.css'; // Import the CSS file
 
@@ -284,7 +283,7 @@ const AllBlogPosts = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(5);
     const [searchQuery, setSearchQuery] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [selectedCategory, setSelectedCategory] = useState(Categories.ALL);
 
     // Fetch blog posts from the backend
     useEffect(() => {
@@ -317,7 +316,7 @@ const AllBlogPosts = () => {
 
     // Filter posts by search query and selected category
     const filteredPosts = posts.filter(post => {
-        const inCategory = selectedCategory === 'All' || post.category === selectedCategory;
+        const inCategory = selectedCategory === Categories.ALL || post.category === selectedCategory;
         const inSearch = post.title?.toLowerCase().includes(searchQuery) || post.summary?.toLowerCase().includes(searchQuery);
         return inCategory && inSearch;
     });
@@ -358,7 +357,7 @@ const AllBlogPosts = () => {
                         </Form>
                         <ListGroup>
                             <ListGroup.Item active>Categories</ListGroup.Item>
-                            {categoriesArray.map((category, index) => (
+                            {Object.values(Categories).map((category, index) => (
                                 <ListGroup.Item key={index} action onClick={() => handleCategorySelect(category)}>
                                     {category}
                                 </ListGroup.Item>
