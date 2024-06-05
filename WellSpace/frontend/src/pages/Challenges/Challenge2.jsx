@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../../css/challenge1.css'; // use the same css file as challenge1
+import NavigationBar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 const Challenge2 = () => {
     const [answers, setAnswers] = useState({ q1: '', q2: '', q3: '' });
@@ -30,6 +32,8 @@ const Challenge2 = () => {
     };
 
     return (
+        <>
+        <NavigationBar/>
         <div className="quiz-body">
             <div className="quiz-page">
                 <div className="quiz-container">
@@ -72,6 +76,8 @@ const Challenge2 = () => {
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     );
 };
 

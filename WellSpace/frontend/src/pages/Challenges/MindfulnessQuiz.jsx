@@ -239,7 +239,7 @@ const MindfulnessQuiz = () => {
           <Modal.Title>Quiz Result</Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-center">
-          <p>Your total score is: {score}</p>
+          <p>Your total score is: {score} out of 80</p>
           <p>Your grade is: {grade}</p>
           <p>{comment}</p>
         </Modal.Body>
