@@ -24,9 +24,9 @@ export default function AboutUs() {
         <section className="services" style={{ padding: '50px 0' }}>
           <Container>
             <h2 style={{ textAlign: 'center', marginBottom: '40px', fontSize: '2rem' }}>Our Services</h2>
-            <Row>
-              <Col md={6} className="mb-4">
-                <Card style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
+            <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
+              <Col md={6} className="mb-4" style={{ display: 'flex' }}>
+                <Card style={{ flex: 1, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
                   <Card.Body>
                     <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Counseling</Card.Title>
                     <Card.Text style={{ fontSize: '1rem' }}>
@@ -35,8 +35,8 @@ export default function AboutUs() {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col md={6} className="mb-4">
-                <Card style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
+              <Col md={6} className="mb-4" style={{ display: 'flex' }}>
+                <Card style={{ flex: 1, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
                   <Card.Body>
                     <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Therapy Sessions</Card.Title>
                     <Card.Text style={{ fontSize: '1rem' }}>
@@ -47,8 +47,8 @@ export default function AboutUs() {
               </Col>
             </Row>
             <Row>
-              <Col md={6} className="mb-4">
-                <Card style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
+              <Col md={6} className="mb-4" style={{ display: 'flex' }}>
+                <Card style={{ flex: 1, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
                   <Card.Body>
                     <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Mindfulness Workshops</Card.Title>
                     <Card.Text style={{ fontSize: '1rem' }}>
@@ -57,8 +57,8 @@ export default function AboutUs() {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col md={6} className="mb-4">
-                <Card style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
+              <Col md={6} className="mb-4" style={{ display: 'flex' }}>
+                <Card style={{ flex: 1, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
                   <Card.Body>
                     <Card.Title style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Group Therapy</Card.Title>
                     <Card.Text style={{ fontSize: '1rem' }}>
