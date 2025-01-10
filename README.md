@@ -37,7 +37,6 @@ WellSpace is a comprehensive platform dedicated to enhancing mental well-being. 
 This project was initially developed as part of a group effort hosted on the University of Adelaide's GitHub repository. Due to access restrictions, individual commits, issues, and pull requests are not publicly visible. However, after completion, the repository was downloaded and transferred to my personal GitHub account to showcase the project's code and features to potential employers.
 
 ---
-
 ## How to Run the Project
 1. Clone the repository:
    ```bash
@@ -67,19 +66,30 @@ This project was initially developed as part of a group effort hosted on the Uni
    ```
    http://localhost:3000
    ```
-
 ---
+## Screenshots
+![Home Page ](https://github.com/user-attachments/assets/0b82d837-0e62-4dfb-97ce-c3426fd5f5a8)
+![localhost_3000_blog](https://github.com/user-attachments/assets/4448a7db-fb4f-4431-831d-9c76e63377e3)
+![localhost_3000_blog_665b161e095fa53025f65e10](https://github.com/user-attachments/assets/b6489588-27ce-4b16-ba09-d8058b1a1b7e)
+![localhost_3000_blog (1)](https://github.com/user-attachments/assets/d01df343-9862-4076-957e-a05830f16550)
+![localhost_3001_challenges](https://github.com/user-attachments/assets/19ff5e3e-4c1e-4500-b74b-b343ae6b0e49)
+![localhost_3000_user-profile_blog (1)](https://github.com/user-attachments/assets/cf5e94c2-679c-4b8c-9db0-1069096ef04a)
+![localhost_3000_user-profile_bl![localhost_3000_user-profile_blog_6602486dd9dd3754be293fc3](https://github.com/user-attachments/assets/f688fae4-a6d9-4fd6-86e2-5b67d7ed9902)
+og](https://github.com/user-attachments/assets/64367d09-b1cf-446b-a713-d9799b55bab0)
+![localhost_3001_contact-us](https://github.com/user-attachments/assets/e63c36fc-3838-49c9-b77c-4e48c6a84d2b)
+![localhost_3001_volunteer](https://github.com/user-attachments/assets/a8e94c33-9d9a-4368-a95f-fe2d5b50766c)
+![localhost_3001_mind-quiz](https://github.com/user-attachments/assets/709d68df-f8db-401d-b845-10880003365c)
+![Blog-Final](https://github.com/user-attachments/assets/18b1f322-9b85-422a-850f-0aab8031ee5f)
 
 
 ## Contributors
+
 - **Team Members**: A collaborative effort with peers under the guidance of Dr. Diana Shah.
-
 ---
-
-
-
 ## Contact
 For any inquiries or collaboration opportunities, please reach out:
 - **Name**: Nilangi Edirisinghe
 - **Email**: nilangi.ediri@gmail.com
 - **GitHub**: nilangi-ediri
+
+
