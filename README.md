@@ -126,31 +126,43 @@ This platform offers:
 
 🌟 *Together, we can create a safer and healthier space for mental well-being!* 🌟  
 
+## 📸 Screenshots  
 
-## Screenshots
-![Home Page ](https://github.com/user-attachments/assets/0b82d837-0e62-4dfb-97ce-c3426fd5f5a8)
+Here are some screenshots showcasing WellSpace’s user interface:  
 
-![localhost_3000_blog](https://github.com/user-attachments/assets/4448a7db-fb4f-4431-831d-9c76e63377e3)
+### 🏠 Home Page  
+![Home Page](screenshots/home-page.png)  
 
-![localhost_3000_blog_665b161e095fa53025f65e10](https://github.com/user-attachments/assets/b6489588-27ce-4b16-ba09-d8058b1a1b7e)
+### 📝 Blog Section  
+![Blog Page](screenshots/blog-page.png)  
 
-![localhost_3000_blog (1)](https://github.com/user-attachments/assets/d01df343-9862-4076-957e-a05830f16550)
+### 📖 Individual Blog Post  
+![Single Blog](screenshots/single-blog.png)  
 
-![localhost_3001_challenges](https://github.com/user-attachments/assets/19ff5e3e-4c1e-4500-b74b-b343ae6b0e49)
+### ℹ️ Information Page  
+![Information Page](screenshots/information-page.png)  
 
-![localhost_3000_user-profile_blog (1)](https://github.com/user-attachments/assets/cf5e94c2-679c-4b8c-9db0-1069096ef04a)
+### ✍️ Create Blog Page (For Experts)  
+![Create Blog](screenshots/create-blog-page.png)  
 
-![localhost_3000_user-profile_bl![localhost_3000_user-profile_blog_6602486dd9dd3754be293fc3](https://github.com/user-attachments/assets/f688fae4-a6d9-4fd6-86e2-5b67d7ed9902)
+### 📜 My Blogs Page (For Experts)  
+![My Blogs](screenshots/my-blogs-page.png)  
 
-og](https://github.com/user-attachments/assets/64367d09-b1cf-446b-a713-d9799b55bab0)
+### ✏️ Edit Blog Page (For Experts)  
+![Edit Blog](screenshots/edit-blog-page.png)  
 
-![localhost_3001_contact-us](https://github.com/user-attachments/assets/e63c36fc-3838-49c9-b77c-4e48c6a84d2b)
+### 🎯 Challenges Page  
+![Challenges Page](screenshots/challenges-page.png)  
 
-![localhost_3001_volunteer](https://github.com/user-attachments/assets/a8e94c33-9d9a-4368-a95f-fe2d5b50766c)
+### 📞 Contact Us Page  
+![Contact Us](screenshots/contact-us.png)  
 
-![localhost_3001_mind-quiz](https://github.com/user-attachments/assets/709d68df-f8db-401d-b845-10880003365c)
+### 🧘 Mindfulness Quiz Page  
+![Mindfulness Quiz](screenshots/mindfulness-quiz.png)  
 
-![Blog-Final](https://github.com/user-attachments/assets/18b1f322-9b85-422a-850f-0aab8031ee5f)
+### 💙 Volunteer Page  
+![Volunteer Page](screenshots/volunteer-page.png)  
+
 
 
 
