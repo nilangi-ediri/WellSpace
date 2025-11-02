@@ -32,14 +32,14 @@ This platform offers:
 
 ## 🏗️ Technology Stack  
 
-### 🎨 Frontend (Developed by Nilangi Edirisinghe)  
+### 🎨 Frontend 
 - **React.js** ⚛️  
 - **CSS & Bootstrap** 🎨  
 - **React Context API** for state management 🧩  
 - **React Quill** for rich text editing 🖊️  
 - **Cloudinary API** for image uploads 🖼️  
 
-### 🔧 Backend (Developed by Team Members)  
+### 🔧 Backend
 - **Node.js + Express.js** 🏗️  
 - **MongoDB (Cloud-hosted)** 💾  
 - **Mongoose for database schema management** 📊  
