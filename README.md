@@ -1,65 +1,170 @@
-# Team-22N
+# 🌿 WellSpace – A Website for Well-being and Mental Health 💙
 
-## Table of Contents
+🚀 **Developed by:** Nilangi Edirisinghe and Team 
+🏫 **Institution:** The University of Adelaide, South Australia  
+🎓 **Degree:** Master of Computing and Innovation  
+👥 **Team:** 22-N  
 
-- [About WellSpace](#about-wellSpace)
-- [Team Members](#team-members)
-- [Responsibilities](#responsibilities)
-- [File Structure](#file-structure)
-- [Backend Development Documentation](#backend-development-documentation)
-- [Acknowledgements](#acknowledgements)
+---
 
-## About WellSpace
+## 📝 Overview  
 
-WellSpace is an online platform dedicated to promoting mental health wellness. By combining peer support, professional counseling services, and educational resources, we address the need for accessible mental health support in today's fast-paced world. Our platform integrates peer support and professional counseling, offering key pages including Information, Challenges, Blog, Forum, Events, Booking a Doctor, and Donation & Volunteer, providing a comprehensive solution for mental health resources.
+WellSpace is a comprehensive **mental health support platform** that integrates **peer support, professional counseling, and educational content** to make mental health resources more **accessible, engaging, and supportive**.
 
-## Team Members
+This platform offers:  
+✅ A **blog with interactive discussions** 📝  
+✅ **Informational content** on mental health 📚  
+✅ **Counseling services** with booking functionality 🩺  
+✅ **Engaging quizzes and challenges** to enhance self-awareness 🎯  
+✅ **Volunteer & donation options** to support the community ❤️  
 
-- Li-Ting Liao (a1847791)
-- Nilangi Edirisinghe (a1882259)
-- Siyu Ni (a1872641)
-- Vishal Dixit (a1880759)
-- Yuyue Chang (a1893609)
+---
 
-## Responsibilities
+## 🎯 Project Aims  
 
-- Frontend:
-  - Nilangi Edirisinghe (a1882259)
-  - Vishal Dixit (a1880759)
-  - Yuyue Chang (a1893609)
-- Backend:
-  - Li-Ting Liao (a1847791)
-  - Siyu Ni (a1872641)
+1️⃣ **Provide universal and accessible mental health support** 🌍  
+2️⃣ **Foster a supportive community** through discussions and interactions 🗣️  
+3️⃣ **Enhance user engagement** via interactive quizzes and challenges 🤹  
+4️⃣ **Offer booking services** for professional counseling 🗓️  
+5️⃣ **Ensure privacy and credibility** for all users 🔐  
 
-## File Structure
+---
 
-```bash
-Team-22N/
-├── README.md
-├── Project Management/
-│   ├── Client Meetings/
-│   └── timesheets/
-└── WellSpace/
-    ├── backend/
-    └── frontend/
-```
+## 🏗️ Technology Stack  
 
-## Backend Development Documentation
+### 🎨 Frontend (Developed by Nilangi Edirisinghe)  
+- **React.js** ⚛️  
+- **CSS & Bootstrap** 🎨  
+- **React Context API** for state management 🧩  
+- **React Quill** for rich text editing 🖊️  
+- **Cloudinary API** for image uploads 🖼️  
 
-### Backend Project Setup Guide
+### 🔧 Backend (Developed by Team Members)  
+- **Node.js + Express.js** 🏗️  
+- **MongoDB (Cloud-hosted)** 💾  
+- **Mongoose for database schema management** 📊  
+- **RESTful APIs with Axios** 🔄  
 
-For detailed instructions on installing and setting up the backend project, refer to the README file located in the `WellSpace > backend` folder. 
+### 🔐 User Authentication  
+- JWT-based authentication 🔑  
+- **Private routes & session management** 🚪  
 
-This README provides step-by-step guidance on installing dependencies, configuring the environment, and other essential setup procedures necessary to run the backend project seamlessly.
+---
 
-### Task Tracking and Milestone Planning
+## 📜 Features  
 
-The backend development tasks, both pending and completed, are documented in this GitHub repository's Issues tab. Each task is tagged appropriately to indicate its inclusion in either milestone 1 or milestone 2, providing a clear overview of the project's progress and planned objectives.
+🔹 **Home Page** – Engaging landing page with navigation & user testimonials 🏠  
+🔹 **Blog & Discussion Forum** – Experts create articles, users comment and engage 📝  
+🔹 **Counselor Booking System** – Secure online consultation appointments 📅  
+🔹 **Challenges & Quizzes** – Self-assessment tools for mental well-being 🎭  
+🔹 **Volunteer & Donation Pages** – Supporting community-driven mental health initiatives 🤝  
+🔹 **User Authentication System** – Secure sign-up and login system 🔐  
+🔹 **State Management** – Seamless user experience across the platform 🔄  
 
-### API Documentation for Frontend Integration
+---
 
-Comprehensive documentation of backend APIs is available in the GitHub repository's Wiki tab. This documentation serves as a valuable resource for the frontend team, offering a comprehensive overview into request URLs and the data fields included in the API responses. This hopes to ensure smooth integration between the frontend and backend components of the project.
+## 🚀 My Contributions  
 
-## Acknowledgements
+🎨 **Front-end Development:**  
+- Designed and implemented the **majority of web pages** 🖥️  
+- Styled pages using **CSS & Bootstrap** 🎨  
+- Integrated **state management** using React Context API 🔄  
+- Developed **private routes** for user authentication 🔐  
 
-- Initial README author: `Li-Ting (a1847791)`
+📝 **Blog & Discussion System:**  
+- Created **all front-end pages** for the blog ✍️  
+- Integrated blog features with backend using **REST APIs** 🌐  
+- Implemented **comments & replies system** 💬  
+
+🔐 **User Authentication System:**  
+- Designed and implemented **signup & login functionalities** 🚪  
+- Managed **session-based state management** for authentication 🔑  
+
+🔗 **Integration with Backend:**  
+- Worked closely with the backend team to integrate APIs 🤝  
+- Ensured seamless **frontend-backend communication** via Axios 📡  
+
+---
+
+## 🏆 Project Achievements  
+
+✅ Successfully developed and deployed all **front-end pages** 🎨  
+✅ Fully integrated **blog system** (frontend & backend) 📝  
+✅ Implemented **user authentication** with secure access 🔑  
+✅ Completed **booking system** for online counseling 🩺  
+✅ Developed and tested **API endpoints & database models** 🛠️  
+✅ Conducted **manual testing** (unit, integration, and usability) ✔️  
+
+---
+
+## 🙌 Acknowledgments  
+
+💡 **A collaborative effort with peers under the guidance of:**  
+👩‍🏫 **Supervisor:** Dr. Diana Shah, The University of Adelaide.
+📚 **Course Coordinator:** Dr. Cruz Izu, The University of Adelaide.  
+🛠️ **Back-End Web Development Team Leader:** Li-Ting Liao (now a Software Engineer at Telstra)  
+
+🌟 *Special thanks to my team members for their contributions to backend development and database management!*  
+
+---
+
+## 💡 Future Enhancements  
+
+🚀 **Administrative Dashboard** – For monitoring & managing users/admins 🛠️  
+🚀 **Enhanced Privacy & Security** – Strengthening data protection 🔐  
+🚀 **AI-Driven Personalized Suggestions** – Tailoring resources for users 🤖  
+🚀 **Mobile Application** – Expanding accessibility 📱  
+🚀 **Search Engine Optimization (SEO)** – Improving online visibility 🔍  
+
+---
+
+## 📩 Contact  
+
+🔗 **Developed by:** Nilangi Edirisinghe and Team
+📧 **Email:** nilangi.ediri@gmail.com  
+🏫 **University:** The University of Adelaide  
+
+🌟 *Together, we can create a safer and healthier space for mental well-being!* 🌟  
+
+## 📸 Screenshots  
+
+Here are some screenshots showcasing WellSpace’s user interface:  
+
+### 🏠 Home Page  
+![Home Page](screenshots/home-page.png)  
+
+### 📝 Blog Section  
+![Blog Page](screenshots/blog-page.png)  
+
+### 📖 Individual Blog Post  
+![Single Blog](screenshots/single-blog.png)  
+
+### ℹ️ Information Page  
+![Information Page](screenshots/information-page.png)  
+
+### ✍️ Create Blog Page (For Experts)  
+![Create Blog](screenshots/create-blog-page.png)  
+
+### 📜 My Blogs Page (For Experts)  
+![My Blogs](screenshots/my-blogs-page.png)  
+
+### ✏️ Edit Blog Page (For Experts)  
+![Edit Blog](screenshots/edit-blog-page.png)  
+
+### 🎯 Challenges Page  
+![Challenges Page](screenshots/challenges-page.png)  
+
+### 📞 Contact Us Page  
+![Contact Us](screenshots/contact-us.png)  
+
+### 🧘 Mindfulness Quiz Page  
+![Mindfulness Quiz](screenshots/mindfulness-quiz.png)  
+
+### 💙 Volunteer Page  
+![Volunteer Page](screenshots/volunteer-page.png)  
+
+
+
+
+
+

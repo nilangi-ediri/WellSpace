@@ -1,0 +1,32 @@
+.chall-hero-section {
+    background-color: #45bdbd;
+}
+
+.chall-hero-text h1 {
+    font-size: 3rem;
+    /* Larger font size for the main title */
+    color: #ffffff;
+    /* White color for the title to stand out on gradient */
+    margin-bottom: 0.5em;
+    /* Space below the title */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Text shadow for better readability */
+    text-align: center;
+}
+
+.chall-hero-text p {
+    font-size: 1.25rem;
+    /* Slightly larger paragraph font size */
+    color: #f8f8f8;
+    /* Lighter text color for the paragraph */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    /* Text shadow for better readability */
+    text-align: center;
+}
+
+.chall-hero-image img {
+    height: 350px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}

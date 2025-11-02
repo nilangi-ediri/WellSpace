@@ -1,0 +1,71 @@
+/* Set the background gradient of the page */
+/* body,
+.content {
+    background: linear-gradient(135deg, #e0f7fa, #f0f4f8);
+    /* Gradient from light cyan to light grayish-blue */
+
+
+.contact-us {
+    padding: 50px 0 20px 0;
+    margin-bottom: 0;
+}
+
+.contact-card {
+    background: linear-gradient(135deg, #005f73, #0a9396);
+    /* Gradient from dark teal to medium teal */
+    color: white;
+    /* Set text color to white for better readability */
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.contact-card:hover {
+    box-shadow: 0 0 20px rgba(10, 147, 150, 0.5);
+    transform: scale(1.02);
+}
+
+.contact-form-card {
+    background: linear-gradient(135deg, #0a9396, #94d2bd);
+    /* Gradient from medium teal to light teal */
+    color: white;
+    /* Set text color to white for better readability */
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.contact-form-card:hover {
+    box-shadow: 0 0 20px rgba(148, 210, 189, 0.5);
+    transform: scale(1.02);
+}
+
+.contact-card .card-body,
+.form-card .card-body {
+    text-align: center;
+}
+
+.contact-us h2 {
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #005f73;
+    /* Set heading color to dark teal */
+}
+
+.contact-icon {
+    margin-bottom: 15px;
+    color: white;
+    /* Set icon color to white */
+}
+
+.form-card .form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    /* Ensure form labels are also white */
+    text-align: left;
+    /* Align labels to the left */
+}
