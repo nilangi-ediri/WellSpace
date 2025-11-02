@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# 🧠 WellSpace Frontend (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the **frontend** for the WellSpace web application — a platform that promotes mental wellbeing through community engagement, expert content, and interactive challenges.  
+The frontend is built with **React (Create React App)** and styled using **Bootstrap** and custom CSS.
 
-## Available Scripts
+---
+
+## 🚀 Features
+
+- 🧭 **Routing** via `react-router-dom`  
+- 🧑‍💻 **User authentication** via backend API  
+- 📝 **Rich text editor** for creating and editing blog posts  
+- ☁️ **Cloudinary integration** for image uploads  
+- 💬 **Toast notifications** for success and error feedback  
+- 🧩 **Dynamic API base URL** via `.env` file  
+
+---
+
+## 🛠️ Tech Stack
+
+| Area | Technology |
+|------|-------------|
+| Frontend | React (Create React App), Bootstrap |
+| State Management | React Hooks (`useState`, `useEffect`, Context) |
+| HTTP Requests | Axios |
+| Text Editing | Reusable Rich Text Editor (based on Quill.js / Draft.js) |
+| Image Uploads | Cloudinary |
+| Deployment | Vercel / Netlify |
+
+---
+
+## ⚙️ Environment Variables
+
+Create a file named **`.env`** in the root of your `frontend/` directory:
+
+```bash
+# Backend API endpoint (update for production)
+REACT_APP_API_URL=https://wellspace.onrender.com
+```
+
+> 🧩 This variable is used across the app (for example, in `EditBlog.jsx` and other API calls) to dynamically connect to your deployed backend.  
+
+Remember to **restart the dev server** after editing `.env`.
+
+---
+
+## 📦 Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the app in development mode.  
+Visit [http://localhost:3000](http://localhost:3000) to view it in your browser.  
+Hot-reload is enabled for real-time updates.
 
 ### `npm run build`
+Builds the app for production in the `build` folder.  
+Minifies JS/CSS and optimizes performance.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm test`
+Runs unit tests in interactive watch mode.
 
 ### `npm run eject`
+⚠️ *Irreversible operation.*  
+Copies all CRA configs for manual customization.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🌐 Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### ▶️ Option 1: Deploy to Vercel
+1. Push the repo to GitHub.  
+2. Import the `frontend` folder as a project on [Vercel](https://vercel.com/).  
+3. Add environment variable:
+   ```
+   REACT_APP_API_URL = https://wellspace.onrender.com
+   ```
+4. Build command: `npm run build`  
+   Output directory: `build`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### ▶️ Option 2: Deploy to Netlify
+1. Connect the repo to Netlify.  
+2. Set build command and publish directory:
+   - Build command: `npm run build`
+   - Publish directory: `build`
+3. Add the same environment variable under  
+   *Site Settings → Build & Deploy → Environment.*
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧱 Folder Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+frontend/
+│
+├── public/                # Static assets
+├── src/
+│   ├── components/        # Navbar, Footer, Reusable editor, etc.
+│   ├── constants/         # Categories, config data
+│   ├── pages/             # React pages (Blog, EditBlog, etc.)
+│   ├── utils/             # Helper functions (uploadCloudinary.js)
+│   ├── App.js             # Main app component
+│   └── index.js           # Entry point
+│
+├── .env                   # Environment variables
+└── package.json
+```
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🧰 Troubleshooting
 
-### Analyzing the Bundle Size
+| Problem | Fix |
+|----------|-----|
+| `Missing REACT_APP_API_URL` | Ensure `.env` exists and restart dev server |
+| `CORS error` | Whitelist frontend origin in backend CORS config |
+| API not reachable in production | Check Render/Railway backend URL and update `.env` |
+| Image upload fails | Verify Cloudinary credentials and internet connection |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 📚 Learn More
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [React Documentation](https://react.dev/)
+- [Create React App Docs](https://create-react-app.dev/)
+- [Bootstrap Docs](https://getbootstrap.com/)
+- [Vercel Deployment Guide](https://vercel.com/docs)
+- [Netlify Deployment Guide](https://docs.netlify.com/)

@@ -7,6 +7,7 @@ import axios from 'axios';
 import { categoriesArray } from '../../constants/categories';
 import Footer from '../../components/Footer';
 import uploadCloudinary from '../../utils/uploadCloudinary';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const EditBlog = () => {
   const [blogPost, setBlogPost] = useState({
@@ -27,7 +28,7 @@ const EditBlog = () => {
   useEffect(() => {
     const fetchBlogPost = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/v1/blogs/${postId}`);
+        const { data } = await axios.get(`${API_BASE_URL}/api/v1/blogs/${postId}`);
         setBlogPost(data.data);
         setImagePreviewUrl(data.data.imageUrl);
       } catch (error) {
@@ -64,7 +65,7 @@ const EditBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/v1/blogs/${postId}`, blogPost);
+      await axios.put(`${API_BASE_URL}/api/v1/blogs/${postId}`, blogPost);
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
@@ -81,7 +82,7 @@ const EditBlog = () => {
 
   const funcDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/v1/blogs/${postId}`);
+      await axios.delete(`${API_BASE_URL}/api/v1/blogs/${postId}`);
       setShowModal(false);
       setShowDeleteToast(true);
       setTimeout(() => {

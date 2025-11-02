@@ -3,6 +3,7 @@ import { Form, Button, Toast, ToastContainer } from 'react-bootstrap';
 import { useNavigate, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import UserContext from '../../contexts/UserContext';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 function UserLogin() {
   const [email, setEmail] = useState('');
@@ -57,7 +58,7 @@ function UserLogin() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/auth/login', {
+      const response = await axios.post(`${API_BASE_URL}/api/v1/auth/login`, {
         email: email,
         password: password
       });

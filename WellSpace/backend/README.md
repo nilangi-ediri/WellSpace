@@ -1,86 +1,45 @@
-# Backend
+from pathlib import Path
 
-Include step-by-step instructions on how to install and set up the backend project. This may include dependencies, environment setup, etc.
+# Updated backend README content
+backend_readme_content = """# 🧩 WellSpace Backend (Node.js + Express + MongoDB)
 
-## Table of Contents
+This is the **backend** service for the WellSpace web application — powering authentication, blogs, feedback, and other APIs for the platform.
+
+The backend is built with **Node.js**, **Express.js**, and **MongoDB Atlas** and follows the MVC (Model–View–Controller) architecture pattern.
+
+---
+
+## 📘 Table of Contents
 
 - [Project Setup](#project-setup)
 - [Installation](#installation)
 - [Create Local .env File](#create-local-env-file)
 - [File Structure](#file-structure)
+- [Starting the Development Server](#starting-the-development-server)
+- [Deployment](#deployment)
 - [Variable Naming](#variable-naming)
 - [API Documentation](#api-documentation)
 - [Acknowledgements](#acknowledgements)
 
-## Project Setup
+---
 
-- MongoDB atlas database setup: `Li-Ting (a1847791)`
-- To access MongoDB atlas database, please go to https://www.mongodb.com/ and log in using our group account: `mcigroupn22@gmail.com`
+## ⚙️ Project Setup
 
-## Installation
+The backend connects to a **MongoDB Atlas** database.  
+To access it:
 
-When you first time pull and run the backend project locally, do the following command:
+1. Visit [MongoDB Atlas](https://www.mongodb.com/).
+2. Log in using the shared group account credentials:  
+   **Email:** `mcigroupn22@gmail.com`  
+   **Password:** `WellSpace@Diana@2024`  
+
+---
+
+## 🧩 Installation
+
+When setting up the backend project locally for the first time:
 
 ```bash
 cd backend
 npm install
 npm install nodemailer
-
-```
-
-## Create Local .env File
-
-For each parameters, there will be actually secret keys that you need to fill in. 
-
-`Li-Ting (a1847791)` will put the secret keys in the `resources` channel in our private Discord server as the secret keys shouldn't be exposed in the public repository. 
-
-```bash
-PORT=5000
-MONGO_URL=
-JWT_SECRET_KEY=
-```
-
-## File Structure
-The main entry point of the backend functionality is located in the index.js file within the api directory.
-
-```bash
-WellSpace
-└── backend
-    └── api
-        └── index.js
-```
-
-## Starting the Development Server
-
-To start the development server, follow these steps:
-
-- Open your terminal.
-- Navigate to the WellSpace/backend directory using the cd command.
-- Run the following command:
-
-```bash
-npm run start-dev
-```
-
-Once the server starts successfully, you should see the following message in the terminal:
-
-```bash
-MongoDB database is connected successfully
-Server is running on port: 5000
-```
-
-## Variable Naming
-
-Since "users" can be the general public or the experts (doctors):
-
-- The general public is called "patient" and
-- The experts is called "doctors" in the code base.
-
-## API Documentation
-
-Comprehensive documentation of backend APIs is available in the GitHub repository's Wiki tab.
-
-## Acknowledgements
-
-- Initial README author: `Li-Ting (a1847791)`
-- Further README author: `Siyu Ni (a1872641)`

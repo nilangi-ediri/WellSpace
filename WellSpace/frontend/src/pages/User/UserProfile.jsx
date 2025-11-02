@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'; // Ensure this is correctly export
 import uploadCloudinary from '../../utils/uploadCloudinary';
 import UserContext from '../../contexts/UserContext';
 import axios from 'axios';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const UserProfile = () => {
     const { user, login, logout } = useContext(UserContext);
@@ -71,9 +72,9 @@ const UserProfile = () => {
             console.log(userDetails)
             let response = null;
             if (userDetails.role === 'doctor') {
-                response = await axios.put(`http://localhost:5000/api/v1/doctors/${user._id}`, userDetails);
+                response = await axios.put(`${API_BASE_URL}/api/v1/doctors/${user._id}`, userDetails);
             } else if(userDetails.role === 'patient') {
-                response = await axios.put(`http://localhost:5000/api/v1/users/${user._id}`, userDetails);
+                response = await axios.put(`${API_BASE_URL}/api/v1/users/${user._id}`, userDetails);
             }
             if (response.status === 200) {
                 login(response.data.data); // Update context with new user data
