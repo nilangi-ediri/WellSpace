@@ -12,7 +12,7 @@ import uploadCloudinary from '../../utils/uploadCloudinary';
 import { categoriesArray } from '../../constants/categories';
 import UserContext from '../../contexts/UserContext';
 import Footer from '../../components/Footer';
-
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const CreateBlogPost = () => {
   const { user} = useContext(UserContext);
@@ -64,7 +64,7 @@ const CreateBlogPost = () => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/v1/blogs/${user._id}`, BlogData);
+      const response = await axios.post(`${API_BASE_URL}/api/v1/blogs/${user._id}`, BlogData);
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);

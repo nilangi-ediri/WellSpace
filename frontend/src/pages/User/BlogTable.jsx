@@ -6,6 +6,7 @@ import NavigationBar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import UserContext from '../../contexts/UserContext';
 import { FaPenToSquare } from 'react-icons/fa6';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const BlogTable = () => {
     const { user, loading } = useContext(UserContext);
@@ -20,7 +21,7 @@ const BlogTable = () => {
         if (!loading && user) {
             const fetchBlogs = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:5000/api/v1/blogs`);
+                    const response = await axios.get(`${API_BASE_URL}/api/v1/blogs`);
                     const filteredBlogs = response.data.data.filter(blog => blog.doctor._id === user._id);
                     setBlogs(filteredBlogs);
                 } catch (error) {
@@ -33,7 +34,7 @@ const BlogTable = () => {
 
     const funcDelete = async () => {
         try {
-          await axios.delete(`http://localhost:5000/api/v1/blogs/${postId}`);
+          await axios.delete(`${API_BASE_URL}/api/v1/blogs/${postId}`);
           setShowModal(false);
           setShowDeleteToast(true);
           setTimeout(() => {

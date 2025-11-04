@@ -3,6 +3,7 @@ import { Form, Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import axios from 'axios';
 import uploadCloudinary from '../../utils/uploadCloudinary';
 import { useNavigate, NavLink, useLocation } from 'react-router-dom';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 function UserSignUp() {
   const location = useLocation();
@@ -124,7 +125,7 @@ function UserSignUp() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/auth/register', userData);
+      const response = await axios.post(`${API_BASE_URL}/api/v1/auth/register`, userData);
       console.log('Data sent successfully:', response.data);
       alert(userDetails.role === 'doctor' ? 'Thank you for registering as an expert. You will be notified once your documents are verified.' : 'Your account has been created successfully.');
       navigate('/login');

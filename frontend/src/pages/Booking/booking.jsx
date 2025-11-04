@@ -4,6 +4,7 @@ import { Container, Navbar, Form, Button, Modal, Row, Col } from 'react-bootstra
 import NavigationBar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import axios from 'axios';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const Booking = () => {
   // State for form fields
@@ -60,7 +61,7 @@ const Booking = () => {
     console.log('Doctor Name:', selectedDoctor);
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/bookings/`,{
+      const response = await axios.post(`${API_BASE_URL}/api/bookings/`,{
         name:fullName,
         email:email,
         patientId: "660247adb56a95c2c97fa68b",
@@ -72,7 +73,7 @@ const Booking = () => {
       });
       console.log('bookings',response.data)
       setShowModal(true);
-      const notifyRes = await axios.post(`http://localhost:5000/api/notifications/booking-reminder`,{
+      const notifyRes = await axios.post(`${API_BASE_URL}/api/notifications/booking-reminder`,{
         bookingId:response.data._id,
         email:email,
       });

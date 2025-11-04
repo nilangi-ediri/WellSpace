@@ -10,6 +10,7 @@ import CommentSection from '../../components/CommentSection';
 import { useParams } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import Footer from '../../components/Footer';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const BlogPostView = () => {
   const { user } = useContext(UserContext);
@@ -19,7 +20,7 @@ const BlogPostView = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/v1/blogs/${postId}`);
+        const response = await axios.get(`${API_BASE_URL}/api/v1/blogs/${postId}`);
         console.log(response.data.data)
         setPost(response.data.data);
       } catch (error) {

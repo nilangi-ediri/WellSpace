@@ -5,6 +5,7 @@ import NavigationBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import axios from 'axios';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const ContactUs = () => {
   const [showToast, setShowToast] = useState(false);
@@ -30,7 +31,7 @@ const ContactUs = () => {
 
   const sendFeedback = async (data) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/feedbacks/create', data);
+      const response = await axios.post(`${API_BASE_URL}/api/v1/feedbacks/create`, data);
       if (response.status === 200) {
         setShowToast(true);
       }

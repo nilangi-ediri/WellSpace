@@ -65,7 +65,6 @@ const AllBlogPosts = () => {
             try {
                 const response = await axios.get(`${API_BASE_URL}/api/v1/blogs?query=${searchQuery}`);
                 setPosts(response.data.data);
-                console.log(response.data.data);
             } catch (error) {
                 console.error('Failed to fetch blogs:', error);
             }
@@ -76,7 +75,6 @@ const AllBlogPosts = () => {
 
     // Handling search input change
     const handleSearchChange = (e) => {
-        console.log(e.target.value.toLowerCase());
         const lowerCase = e.target.value.toLowerCase();
         setSearchQuery(lowerCase);
         setCurrentPage(1); // Reset to first page on search change

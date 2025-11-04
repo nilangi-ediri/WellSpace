@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Offcanvas, Button, Form } from 'react-bootstrap';
 import Comment from './Comment';
 import axios from 'axios';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const CommentSection = ({ postId, currentUserId, commentsData }) => {
     const [comments, setComments] = useState([]);
@@ -12,7 +13,7 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
 
     const fetchComments = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/v1/comments/${postId}`);
+            const response = await axios.get(`${API_BASE_URL}/api/v1/comments/${postId}`);
             setComments(response.data.data);
         } catch (error) {
             console.error('Error fetching comments:', error);
@@ -54,9 +55,9 @@ const CommentSection = ({ postId, currentUserId, commentsData }) => {
         try {
             let response;
             if (parentId) {
-                response = await axios.post(`http://localhost:5000/api/v1/replies/${parentId}`, newComment);
+                response = await axios.post(`${API_BASE_URL}/api/v1/replies/${parentId}`, newComment);
             } else {
-                response = await axios.post(`http://localhost:5000/api/v1/comments/${postId}`, newComment);
+                response = await axios.post(`${API_BASE_URL}/api/v1/comments/${postId}`, newComment);
             }
 
             console.log('Success:', response.data);

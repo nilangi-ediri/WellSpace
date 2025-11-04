@@ -1,0 +1,2 @@
+Backend has been deployed on render. The URL is: https://wellspace.onrender.com
+Frontend hass been deployed on Vercel. The URL is: https://vercel.com/nilangis-projects/well-space
